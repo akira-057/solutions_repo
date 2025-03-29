@@ -173,14 +173,12 @@
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
 <p>Investigating the Range as a Function of the Angle of Projection</p>
-<ol>
-<li>Theoretical Foundation</li>
-</ol>
+<p>📌 1. Theoretical Foundation</p>
 <p>Projectile motion follows Newton's laws and is governed by kinematic equations. The motion can be broken down into:</p>
-<p>Horizontal Motion: Constant velocity motion since there are no horizontal forces (ignoring air resistance).</p>
-<p>Vertical Motion: Accelerated motion under gravity.</p>
+<p>✅ Horizontal Motion: Constant velocity motion since there are no horizontal forces (ignoring air resistance).
+✅ Vertical Motion: Accelerated motion under gravity.</p>
 <p>We consider an object launched from ground level with an initial velocity  at an angle  from the horizontal.</p>
-<p>Equations of Motion</p>
+<p>🔹 Equations of Motion</p>
 <p>The initial velocity components are:</p>
 <p>Using the kinematic equations:</p>
 <p>where:</p>
@@ -188,25 +186,19 @@
 <p>is time.</p>
 <p>The time to reach the highest point:</p>
 <p>The total time of flight (since time to go up = time to come down):</p>
-<ol>
-<li>Analysis of the Range</li>
-</ol>
+<p>📌 2. Analysis of the Range</p>
 <p>The range  is the total horizontal distance traveled by the projectile before landing. It is found by using:</p>
 <p>Substituting  and :</p>
 <p>Using the identity , we simplify:</p>
-<p>Key Observations:</p>
-<p>The range depends on , meaning the maximum range occurs at .</p>
-<p>For any angle , there is a complementary angle  that gives the same range.</p>
-<p>Increasing  increases the range proportionally to .</p>
-<ol>
-<li>Practical Applications</li>
-</ol>
-<p>Sports: Understanding how to kick or throw a ball for maximum distance.</p>
-<p>Engineering: Designing missile or projectile trajectories.</p>
-<p>Astrophysics: Studying planetary motion without air resistance.</p>
-<ol>
-<li>Implementation in Python</li>
-</ol>
+<p>🔹 Key Observations:</p>
+<p>🔹 The range depends on , meaning the maximum range occurs at .
+🔹 For any angle , there is a complementary angle  that gives the same range.
+🔹 Increasing  increases the range proportionally to .</p>
+<p>📌 3. Practical Applications</p>
+<p>📍 Sports: Understanding how to kick or throw a ball for maximum distance.
+📍 Engineering: Designing missile or projectile trajectories.
+📍 Astrophysics: Studying planetary motion without air resistance.</p>
+<p>📌 4. Implementation in Python</p>
 <p>A simple Python script to visualize the relationship between range and angle:</p>
 <p>import numpy as np
 import matplotlib.pyplot as plt</p>
@@ -214,22 +206,19 @@ import matplotlib.pyplot as plt</p>
 v0 = 20   # Initial velocity (m/s)
 angles = np.linspace(0, 90, 100)  # Angles from 0 to 90 degrees
 radii = (v0**2 * np.sin(np.radians(2 * angles))) / g  # Compute range</p>
-<p>plt.plot(angles, radii, label='Range')
+<p>plt.figure(figsize=(8, 5))
+plt.plot(angles, radii, label='Range', color='b', linewidth=2)
 plt.axvline(x=45, color='r', linestyle='--', label='Max Range (45°)')
-plt.xlabel('Angle of Projection (degrees)')
-plt.ylabel('Range (m)')
-plt.title('Range vs Angle of Projection')
+plt.xlabel('Angle of Projection (degrees)', fontsize=12)
+plt.ylabel('Range (m)', fontsize=12)
+plt.title('🔹 Range vs Angle of Projection 🔹', fontsize=14, fontweight='bold')
 plt.legend()
-plt.grid()
+plt.grid(True, linestyle='--', alpha=0.6)
 plt.show()</p>
-<p><img alt="alt text" src="../image.png"/></p>
-<ol>
-<li>Limitations and Future Considerations</li>
-</ol>
-<p>Air Resistance: Real-world motion is affected by drag, reducing range.</p>
-<p>Uneven Terrain: The formula assumes a flat landing surface.</p>
-<p>Non-Uniform Gravity: On different planets,  changes.</p>
-<p>This foundational study of projectile motion provides a strong base for further analysis in physics and engineering.</p>
+<p>📌 5. Limitations and Future Considerations</p>
+<p>⚠️ Air Resistance: Real-world motion is affected by drag, reducing range.
+⚠️ Uneven Terrain: The formula assumes a flat landing surface.
+⚠️ Non-Uniform Gravity: On different planets,  changes.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
