@@ -172,53 +172,123 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
-<p>Investigating the Range as a Function of the Angle of Projection</p>
-<p>📌 1. Theoretical Foundation</p>
-<p>Projectile motion follows Newton's laws and is governed by kinematic equations. The motion can be broken down into:</p>
-<p>✅ Horizontal Motion: Constant velocity motion since there are no horizontal forces (ignoring air resistance).
-✅ Vertical Motion: Accelerated motion under gravity.</p>
-<p>We consider an object launched from ground level with an initial velocity  at an angle  from the horizontal.</p>
-<p>🔹 Equations of Motion</p>
-<p>The initial velocity components are:</p>
-<p>Using the kinematic equations:</p>
-<p>where:</p>
-<p>is gravitational acceleration ( m/s² on Earth).</p>
-<p>is time.</p>
-<p>The time to reach the highest point:</p>
-<p>The total time of flight (since time to go up = time to come down):</p>
-<p>📌 2. Analysis of the Range</p>
-<p>The range  is the total horizontal distance traveled by the projectile before landing. It is found by using:</p>
-<p>Substituting  and :</p>
-<p>Using the identity , we simplify:</p>
-<p>🔹 Key Observations:</p>
-<p>🔹 The range depends on , meaning the maximum range occurs at .
-🔹 For any angle , there is a complementary angle  that gives the same range.
-🔹 Increasing  increases the range proportionally to .</p>
-<p>📌 3. Practical Applications</p>
-<p>📍 Sports: Understanding how to kick or throw a ball for maximum distance.
-📍 Engineering: Designing missile or projectile trajectories.
-📍 Astrophysics: Studying planetary motion without air resistance.</p>
-<p>📌 4. Implementation in Python</p>
-<p>A simple Python script to visualize the relationship between range and angle:</p>
-<p>import numpy as np
+<h1 id="mechanics-investigating-the-range-as-a-function-of-the-angle-of-projection">📌 <em>Mechanics: Investigating the Range as a Function of the Angle of Projection</em></h1>
+<h2 id="motivation">🏹 <em>Motivation</em></h2>
+<p>Projectile motion appears simple, yet it encapsulates deep physical principles. By analyzing how the range of a projectile varies with its launch angle, we uncover fascinating relationships governed by linear and quadratic equations. These equations have broad applications, from sports (e.g., the trajectory of a soccer ball) to engineering (e.g., missile launch dynamics).  </p>
+<hr/>
+<h2 id="1-theoretical-foundation">⚖ <em>1. Theoretical Foundation</em></h2>
+<h3 id="equations-of-motion">📜 <em>Equations of Motion</em></h3>
+<p>A projectile launched with an initial velocity <span class="arithmatex">\( v_0 \)</span> at an angle <span class="arithmatex">\( \theta \)</span> follows a <em>parabolic</em> trajectory under the influence of gravity. We derive its motion using Newton's laws.</p>
+<h4 id="horizontal-motion">🔹 <em>Horizontal Motion</em></h4>
+<p>Since there is no acceleration in the horizontal direction (assuming no air resistance), the velocity remains constant:</p>
+<div class="arithmatex">\[
+x(t) = v_0 \cos\theta \cdot t
+\]</div>
+<h4 id="vertical-motion">🔹 <em>Vertical Motion</em></h4>
+<p>The vertical motion is governed by constant acceleration due to gravity <span class="arithmatex">\( g \)</span>:</p>
+<div class="arithmatex">\[
+y(t) = v_0 \sin\theta \cdot t - \frac{1}{2} g t^2
+\]</div>
+<p>The projectile reaches the ground when <span class="arithmatex">\( y = 0 \)</span>, solving for <span class="arithmatex">\( t \)</span>:</p>
+<div class="arithmatex">\[
+t_f = \frac{2 v_0 \sin\theta}{g}
+\]</div>
+<p>This is the total <em>time of flight</em>.</p>
+<hr/>
+<h2 id="2-analysis-of-the-range">📏 <em>2. Analysis of the Range</em></h2>
+<p>The <em>range</em> <span class="arithmatex">\( R \)</span> is the horizontal distance covered by the projectile when it lands:</p>
+<div class="arithmatex">\[
+R = x(t_f) = v_0 \cos\theta \cdot \frac{2 v_0 \sin\theta}{g}
+\]</div>
+<p>Using the identity <span class="arithmatex">\( 2\sin\theta\cos\theta = \sin 2\theta \)</span>, we get:</p>
+<div class="arithmatex">\[
+R = \frac{v_0^2}{g} \sin 2\theta
+\]</div>
+<h3 id="key-observations">📌 <em>Key Observations:</em></h3>
+<ol>
+<li>
+<p><em>Maximum Range:</em><br/>
+   The range is maximized when <span class="arithmatex">\( \sin 2\theta = 1 \)</span>, i.e., <span class="arithmatex">\( 2\theta = 90^\circ \)</span> → <em><span class="arithmatex">\( \theta = 45^\circ \)</span></em>.</p>
+</li>
+<li>
+<p><em>Symmetry:</em><br/>
+   The function <span class="arithmatex">\( R(\theta) \)</span> is <em>symmetric</em> around <span class="arithmatex">\( 45^\circ \)</span>, meaning <span class="arithmatex">\( R(\theta) = R(90^\circ - \theta) \)</span>.</p>
+</li>
+<li>
+<p><em>Effect of Initial Velocity:</em><br/>
+   Since <span class="arithmatex">\( R \propto v_0^2 \)</span>, doubling <span class="arithmatex">\( v_0 \)</span> quadruples the range.</p>
+</li>
+<li>
+<p><em>Effect of Gravity:</em><br/>
+   Since <span class="arithmatex">\( R \propto \frac{1}{g} \)</span>, projectiles travel <em>farther</em> on planets with lower gravity (e.g., the Moon).  </p>
+</li>
+</ol>
+<hr/>
+<h2 id="3-practical-applications">🌎 <em>3. Practical Applications</em></h2>
+<ol>
+<li><em>Sports:</em> </li>
+<li>Soccer: Kicking a ball at <span class="arithmatex">\( 45^\circ \)</span> for maximum distance.  </li>
+<li>
+<p>Basketball: Analyzing the optimal shooting angle.  </p>
+</li>
+<li>
+<p><em>Engineering &amp; Ballistics:</em> </p>
+</li>
+<li>Missile trajectories and range optimization.  </li>
+<li>
+<p>Water fountains and fluid mechanics.  </p>
+</li>
+<li>
+<p><em>Astrophysics:</em> </p>
+</li>
+<li>Moon landings require adjusting launch angles based on gravity.  </li>
+</ol>
+<hr/>
+<h2 id="4-implementation-python-simulation">💻 <em>4. Implementation (Python Simulation)</em></h2>
+<p>Below is a Python script to simulate the projectile range as a function of <span class="arithmatex">\( \theta \)</span>:</p>
+<p>python
+import numpy as np
 import matplotlib.pyplot as plt</p>
-<p>g = 9.81  # Acceleration due to gravity
-v0 = 20   # Initial velocity (m/s)
-angles = np.linspace(0, 90, 100)  # Angles from 0 to 90 degrees
-radii = (v0**2 * np.sin(np.radians(2 * angles))) / g  # Compute range</p>
+<h1 id="constants">Constants</h1>
+<p>v0 = 20  # Initial velocity (m/s)
+g = 9.81  # Gravity (m/s²)</p>
+<h1 id="angles-from-0-to-90-degrees">Angles from 0 to 90 degrees</h1>
+<p>theta = np.linspace(0, 90, 100)
+theta_rad = np.radians(theta)  # Convert to radians</p>
+<h1 id="compute-range-for-each-angle">Compute range for each angle</h1>
+<p>R = (v0**2 / g) * np.sin(2 * theta_rad)</p>
+<h1 id="plot-results">Plot results</h1>
 <p>plt.figure(figsize=(8, 5))
-plt.plot(angles, radii, label='Range', color='b', linewidth=2)
-plt.axvline(x=45, color='r', linestyle='--', label='Max Range (45°)')
-plt.xlabel('Angle of Projection (degrees)', fontsize=12)
-plt.ylabel('Range (m)', fontsize=12)
-plt.title('🔹 Range vs Angle of Projection 🔹', fontsize=14, fontweight='bold')
+plt.plot(theta, R, label=r'Range <span class="arithmatex">\(R = \frac{v_0^2}{g} \sin 2\theta\)</span>', color='b')
+plt.axvline(45, linestyle="--", color="r", label=r'Maximum at <span class="arithmatex">\(\theta = 45^\circ\)</span>')
+plt.xlabel("Launch Angle (degrees)")
+plt.ylabel("Range (m)")
+plt.title("Projectile Range vs. Launch Angle")
 plt.legend()
-plt.grid(True, linestyle='--', alpha=0.6)
+plt.grid()
 plt.show()</p>
-<p>📌 5. Limitations and Future Considerations</p>
-<p>⚠️ Air Resistance: Real-world motion is affected by drag, reducing range.
-⚠️ Uneven Terrain: The formula assumes a flat landing surface.
-⚠️ Non-Uniform Gravity: On different planets,  changes.</p>
+<p><img alt="alt text" src="../image.png"/></p>
+<h2 id="5-results-and-discussion">📊 <em>5. Results and Discussion</em></h2>
+<h3 id="graph-interpretation">🔹 <em>Graph Interpretation</em></h3>
+<ul>
+<li>The <em>maximum range</em> occurs at <span class="arithmatex">\( \theta = 45^\circ \)</span>.  </li>
+<li>The function is <em>symmetric</em> about <span class="arithmatex">\( 45^\circ \)</span>.  </li>
+<li>Higher <span class="arithmatex">\( v_0 \)</span> increases range quadratically.  </li>
+</ul>
+<h3 id="limitations-of-the-model">🔹 <em>Limitations of the Model</em></h3>
+<ul>
+<li>Assumes <em>no air resistance</em>.  </li>
+<li>Assumes <em>flat terrain</em> (ignores hills, obstacles).  </li>
+<li>Ignores <em>wind effects</em>, which can alter trajectories.  </li>
+</ul>
+<h3 id="enhancements">🔹 <em>Enhancements</em></h3>
+<ul>
+<li>Add <em>air drag</em> to create more realistic simulations.  </li>
+<li>Consider launches from <em>elevated platforms</em> (e.g., artillery firing from a hill).  </li>
+</ul>
+<hr/>
+<h2 id="conclusion">🎯 <em>Conclusion</em></h2>
+<p>This study shows how the range of a projectile depends on launch angle, initial velocity, and gravity. The ideal case follows the classic <span class="arithmatex">\( R = \frac{v_0^2}{g} \sin 2\theta \)</span> relation, peaking at <span class="arithmatex">\( 45^\circ \)</span>. However, real-world factors like air resistance modify this behavior, making computational modeling essential for accurate predictions.  </p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
