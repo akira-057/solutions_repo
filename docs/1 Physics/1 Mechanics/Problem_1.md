@@ -86,32 +86,7 @@ R = \frac{v_0^2}{g} \sin 2\theta
 
 Below is a Python script to simulate the projectile range as a function of \( \theta \):
 
-python
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Constants
-v0 = 20  # Initial velocity (m/s)
-g = 9.81  # Gravity (m/s²)
-
-# Angles from 0 to 90 degrees
-theta = np.linspace(0, 90, 100)
-theta_rad = np.radians(theta)  # Convert to radians
-
-# Compute range for each angle
-R = (v0**2 / g) * np.sin(2 * theta_rad)
-
-# Plot results
-plt.figure(figsize=(8, 5))
-plt.plot(theta, R, label=r'Range $R = \frac{v_0^2}{g} \sin 2\theta$', color='b')
-plt.axvline(45, linestyle="--", color="r", label=r'Maximum at $\theta = 45^\circ$')
-plt.xlabel("Launch Angle (degrees)")
-plt.ylabel("Range (m)")
-plt.title("Projectile Range vs. Launch Angle")
-plt.legend()
-plt.grid()
-plt.show()
-
+![alt text](image-1.png)
 
 ![alt text](image.png)
 
