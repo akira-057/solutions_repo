@@ -90,6 +90,8 @@ Below is a Python script to simulate the projectile range as a function of \( \t
 
 ![alt text](image.png)
 
+https://colab.research.google.com/drive/15aipIXpntUFvD30gQxap78OZghCNOeKy
+
 ## 📊 *5. Results and Discussion*  
 
 ### 🔹 *Graph Interpretation*
