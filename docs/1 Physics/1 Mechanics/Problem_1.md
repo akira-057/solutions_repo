@@ -15,7 +15,7 @@ Projectile motion appears simple, yet it encapsulates deep physical principles. 
 A projectile launched with an initial velocity \( v_0 \) at an angle \( \theta \) follows a *parabolic* trajectory under the influence of gravity. We derive its motion using Newton's laws.
 
 #### 🔹 *Horizontal Motion*
-Since there is no acceleration in the horizontal direction (assuming no air resistance), the velocity remains constant:
+Since there is no acceleration in the horizontal direction (assuming no air resistance), the velocity remains constant
 
 \[
 x(t) = v_0 \cos\theta \cdot t
