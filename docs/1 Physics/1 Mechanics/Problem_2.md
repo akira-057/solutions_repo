@@ -9,7 +9,7 @@ The *forced damped pendulum* is a fascinating system that exhibits a range of be
 This system is crucial for understanding:  
 - *Resonance in mechanical systems* (e.g., bridges, buildings under periodic stress).  
 - *Nonlinear dynamics and chaos theory* (e.g., weather patterns, heart rhythms).  
-- *Energy harvesting* from oscillations.  
+- *Energy harvesting* from oscillations.
 
 ---
 
