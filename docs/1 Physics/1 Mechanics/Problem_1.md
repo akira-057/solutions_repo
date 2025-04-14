@@ -170,129 +170,56 @@ plt.tight_layout()
 plt.show()
 ```
 
-📊 Graph (a): Different Initial Speeds, Same Angle (45°)
-Launch angle: 45° — this is the optimal angle for achieving maximum range when the initial speed is fixed.
+# 🎯 Projectile Motion Analysis
 
-Initial speeds:
+## 📊 Graph (a): Different Initial Speeds, Same Angle (45°)
 
-30 m/s (red trajectory)
+**Launch angle:** `45°` — this is the optimal angle for achieving maximum range when the initial speed is fixed.
 
-40 m/s (purple trajectory)
+**Initial speeds:**
+- `30 m/s` (🔴 red trajectory)  
+- `40 m/s` (🟣 purple trajectory)  
+- `50 m/s` (🟢 green trajectory)  
 
-50 m/s (green trajectory)
+**Conclusion:** The greater the initial speed (with a fixed angle), the farther the projectile travels.
 
-Conclusion: The greater the initial speed (with a fixed angle), the farther the projectile travels.
+**Example ranges (R):**
+- `30 m/s` → `R ≈ 91.8 m`
+- `40 m/s` → `R ≈ 163 m`
+- `50 m/s` → `R ≈ 255 m`
 
-Example ranges (R):
+### 📌 Range formula:
 
-30 m/s → R ≈ 91.8 m
+R = (v₀² * sin(2θ)) / g
 
-40 m/s → R ≈ 163 m
+When `θ = 45°`, `sin(2θ) = sin(90°) = 1` → So the range depends only on `v₀²`.
 
-50 m/s → R ≈ 255 m
+---
 
-📌 Range formula:
+## 📊 Graph (b): Same Initial Speed (50 m/s), Different Angles
 
-𝑅
-=
-𝑣
-0
-2
-sin
-⁡
-(
-2
-𝑡
-ℎ
-𝑒
-𝑡
-𝑎
-)
-𝑔
-R= 
-g
-v 
-0
-2
-​
- sin(2theta)
-​
- 
-When θ = 45°, sin(2θ) = sin(90°) = 1 → So the range depends only on 
-𝑣
-0
-2
-v 
-0
-2
-​
- 
+**Initial speed:** `50 m/s` for all three trajectories.
 
-📊 Graph (b): Same Initial Speed (50 m/s), Different Angles
-Initial speed: 50 m/s for all three trajectories.
+**Angles:**
+- `15°` (🔴 red): low trajectory, small height and short range.
+- `45°` (🟣 purple): maximum range.
+- `75°` (🟢 green): high trajectory, but shorter range.
 
-Angles:
+**Interesting fact:** `15°` and `75°` give equal range (`R ≈ 128 m`), even though the shapes of the trajectories are very different.
 
-15° (red): low trajectory, small height and short range.
+### 📌 Symmetry Law:
+Angles `θ` and `90° − θ` give the same range, because:  
 
-45° (purple): maximum range.
+sin(2θ) = sin(2(90° − θ)) = sin(180° − 2θ) = sin(2θ)
 
-75° (green): high trajectory, but shorter range.
+---
 
-Interesting fact: 15° and 75° give equal range (R ≈ 128 m), even though the shapes of the trajectories are very different.
+## 🧠 Main Takeaways:
+- The best angle for maximum range with a given speed is `45°`.
+- With the same angle, higher speed means greater range.
+- Angles that add up to `90°` (like `15°` and `75°`) give the same range, but different heights and flight paths.
 
-📌 Symmetry Law:
-Angles 
-𝜃
-θ and 
-90
-°
-−
-𝜃
-90°−θ give the same range, because:
 
-sin
-⁡
-(
-2
-𝜃
-)
-=
-sin
-⁡
-(
-2
-(
-90
-°
-−
-𝜃
-)
-)
-=
-sin
-⁡
-(
-180
-°
-−
-2
-𝜃
-)
-=
-sin
-⁡
-(
-2
-𝜃
-)
-sin(2θ)=sin(2(90°−θ))=sin(180°−2θ)=sin(2θ)
-🧠 Main Takeaways:
-The best angle for maximum range with a given speed is 45°.
-
-With the same angle, higher speed means greater range.
-
-Angles that add up to 90° (like 15° and 75°) give the same range, but different heights and flight paths.
 
 ![alt text](image-3.png)
 
