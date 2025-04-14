@@ -223,21 +223,24 @@ sin(2θ) = sin(2(90° − θ)) = sin(180° − 2θ) = sin(2θ)
 
 ![alt text](image-3.png)
 
-## 📊 *5. Results and Discussion*  
+### 🔹 Graph Interpretation
+- The *maximum range* occurs at **θ = 45°**  
+- The function is *symmetric* about **45°**  
+- Higher **v₀** increases range *quadratically*
 
-### 🔹 *Graph Interpretation*
-- The *maximum range* occurs at \( \theta = 45^\circ \).  
-- The function is *symmetric* about \( 45^\circ \).  
-- Higher \( v_0 \) increases range quadratically.  
+---
 
-### 🔹 *Limitations of the Model*
-- Assumes *no air resistance*.  
-- Assumes *flat terrain* (ignores hills, obstacles).  
-- Ignores *wind effects*, which can alter trajectories.  
+### 🔹 Limitations of the Model
+- Assumes **no air resistance**
+- Assumes **flat terrain** (ignores hills, obstacles)
+- Ignores **wind effects**, which can alter trajectories
 
-### 🔹 *Enhancements*
-- Add *air drag* to create more realistic simulations.  
-- Consider launches from *elevated platforms* (e.g., artillery firing from a hill).  
+---
+
+### 🔹 Enhancements
+- Add **air drag** to create more realistic simulations
+- Consider launches from **elevated platforms** (e.g., artillery firing from a hill)
+ 
 
 ---
   
