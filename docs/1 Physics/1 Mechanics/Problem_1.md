@@ -84,34 +84,27 @@ R = \frac{v_0^2}{g} \sin 2\theta
 
 ## 💻 *4. Implementation (Python Simulation)*  
 
-Below is a Python script to simulate the projectile range as a function of \( \theta \):
+### 🔹 Graph Interpretation
+- The *maximum range* occurs at **θ = 45°**  
+- The function is *symmetric* about **45°**  
+- Higher **v₀** increases range *quadratically*
 
-``` python
-import numpy as np
-import matplotlib.pyplot as plt
+---
 
-# Constants
-v0 = 20  # Initial velocity (m/s)
-g = 9.81  # Gravity (m/s²)
+### 🔹 Limitations of the Model
+- Assumes **no air resistance**
+- Assumes **flat terrain** (ignores hills, obstacles)
+- Ignores **wind effects**, which can alter trajectories
 
-# Angles from 0 to 90 degrees
-theta = np.linspace(0, 90, 100)
-theta_rad = np.radians(theta)  # Convert to radians
+---
 
-# Compute range for each angle
-R = (v0**2 / g) * np.sin(2 * theta_rad)
+### 🔹 Enhancements
+- Add **air drag** to create more realistic simulations
+- Consider launches from **elevated platforms** (e.g., artillery firing from a hill)
+ 
 
-# Plot results
-plt.figure(figsize=(8, 5))
-plt.plot(theta, R, label=r'Range $R = \frac{v_0^2}{g} \sin 2\theta$', color='b')
-plt.axvline(45, linestyle="--", color="r", label=r'Maximum at $\theta = 45^\circ$')
-plt.xlabel("Launch Angle (degrees)")
-plt.ylabel("Range (m)")
-plt.title("Projectile Range vs. Launch Angle")
-plt.legend()
-plt.grid()
-plt.show()
-```
+
+
 
 ![alt text](image.png)
 
@@ -169,6 +162,9 @@ plt.ylim(0, 130)
 plt.tight_layout()
 plt.show()
 ```
+---
+  
+
 
 # 🎯 Projectile Motion Analysis
 
@@ -223,24 +219,57 @@ sin(2θ) = sin(2(90° − θ)) = sin(180° − 2θ) = sin(2θ)
 
 ![alt text](image-3.png)
 
-### 🔹 Graph Interpretation
-- The *maximum range* occurs at **θ = 45°**  
-- The function is *symmetric* about **45°**  
-- Higher **v₀** increases range *quadratically*
+https://colab.research.google.com/drive/14BpYdqwbOn7Z3weu4Y97IEqOdFX3yg9F
 
----
+``` python
+import numpy as np
+import matplotlib.pyplot as plt
 
-### 🔹 Limitations of the Model
-- Assumes **no air resistance**
-- Assumes **flat terrain** (ignores hills, obstacles)
-- Ignores **wind effects**, which can alter trajectories
+# Gravitational acceleration
+g = 9.81
 
----
+# Function to plot the trajectory
+def trajectory(v0, angle_deg):
+    angle_rad = np.radians(angle_deg)
+    t_flight = 2 * v0 * np.sin(angle_rad) / g
+    t = np.linspace(0, t_flight, num=500)
+    x = v0 * np.cos(angle_rad) * t
+    y = v0 * np.sin(angle_rad) * t - 0.5 * g * t**2
+    return x, y
 
-### 🔹 Enhancements
-- Add **air drag** to create more realistic simulations
-- Consider launches from **elevated platforms** (e.g., artillery firing from a hill)
- 
+# Graph (a)
+plt.figure(figsize=(12, 10))
+plt.subplot(2, 1, 1)
+for v0, color in zip([30, 40, 50], ['red', 'purple', 'green']):
+    x, y = trajectory(v0, 45)
+    plt.plot(x, y, color=color, label=f'{v0} m/s')
+plt.title('(a) Same angle (45°), different speeds')
+plt.xlabel('x (m)')
+plt.ylabel('y (m)')
+plt.grid(True)
+plt.legend()
+plt.axvline(91.8, color='black', linestyle='--')
+plt.axvline(163, color='black', linestyle='--')
+plt.axvline(255, color='black', linestyle='--')
+plt.xlim(0, 270)
+plt.ylim(0, 70)
 
----
-  
+# Graph (b)
+plt.subplot(2, 1, 2)
+v0 = 50
+for angle, color in zip([15, 45, 75], ['red', 'purple', 'green']):
+    x, y = trajectory(v0, angle)
+    plt.plot(x, y, color=color, label=f'{angle}°')
+plt.title('(b) Same speed (50 m/s), different angles')
+plt.xlabel('x (m)')
+plt.ylabel('y (m)')
+plt.grid(True)
+plt.legend()
+plt.axvline(128, color='black', linestyle='--')
+plt.axvline(255, color='black', linestyle='--')
+plt.xlim(0, 270)
+plt.ylim(0, 130)
+
+plt.tight_layout()
+plt.show()
+```
