@@ -244,68 +244,136 @@
 </ol>
 <hr/>
 <h2 id="4-implementation-python-simulation">💻 <em>4. Implementation (Python Simulation)</em></h2>
-<p>Below is a <em>Python script</em> that simulates the motion of a forced damped pendulum using <em>numerical integration (Runge-Kutta method)</em>.</p>
-<h3 id="step-1-install-required-libraries"><em>📌 Step 1: Install Required Libraries</em></h3>
-<p>Before running the code, install NumPy and Matplotlib if needed:</p>
-<p>bash
-pip install numpy matplotlib scipy</p>
+<h1 id="forced-damped-pendulum-graph-explanations">🌀 Forced Damped Pendulum – Graph Explanations</h1>
+<p>This document explains the results of simulating different types of pendulum motion using Python. Each case includes plots of:
+- <strong>Angle vs. Time</strong>
+- <strong>Phase Diagram (Angle vs. Angular Velocity)</strong></p>
 <hr/>
-<h3 id="step-2-python-code-for-simulation"><em>📌 Step 2: Python Code for Simulation</em></h3>
+<h2 id="1-simple-pendulum">🔹 1) Simple Pendulum</h2>
+<p><strong>Parameters:</strong><br/>
+- Damping: <code>b = 0</code><br/>
+- External Force: <code>A = 0</code></p>
+<p><strong>Explanation:</strong><br/>
+- This is an ideal pendulum with no friction and no external driving force.<br/>
+- The angle oscillates sinusoidally — classic harmonic motion.<br/>
+- The phase portrait shows a <strong>closed elliptical trajectory</strong>, indicating <strong>periodic motion</strong> with constant energy.<br/>
+- This case illustrates the basics of classical mechanics.</p>
+<hr/>
+<h2 id="2-damped-pendulum">🔹 2) Damped Pendulum</h2>
+<p><strong>Parameters:</strong><br/>
+- Damping: <code>b &gt; 0</code><br/>
+- External Force: <code>A = 0</code></p>
+<p><strong>Explanation:</strong><br/>
+- The pendulum loses energy over time due to friction.<br/>
+- The amplitude of oscillation gradually decreases until the system comes to rest.<br/>
+- The phase portrait shows a <strong>spiral converging to the center</strong>, representing <strong>damped oscillations</strong>.<br/>
+- Eventually, the pendulum reaches equilibrium.</p>
+<hr/>
+<h2 id="3-forced-pendulum">🔹 3) Forced Pendulum</h2>
+<p><strong>Parameters:</strong><br/>
+- Damping: <code>b = 0</code><br/>
+- External Force: <code>A ≠ 0</code>, ω ≠ 0</p>
+<p><strong>Explanation:</strong><br/>
+- The pendulum is driven by an external periodic force.<br/>
+- The motion becomes <strong>non-periodic and more complex</strong>, with varying amplitude.<br/>
+- The phase portrait displays <strong>non-closed loops</strong>, indicating the pendulum is <strong>constantly gaining energy</strong> from the driving force.<br/>
+- Demonstrates unstable behavior under continuous forcing.</p>
+<hr/>
+<h2 id="4-forced-damped-pendulum">🔹 4) Forced Damped Pendulum</h2>
+<p><strong>Parameters:</strong><br/>
+- Damping: <code>b &gt; 0</code><br/>
+- External Force: <code>A ≠ 0</code></p>
+<p><strong>Explanation:</strong><br/>
+- A combination of friction and periodic forcing leads to <strong>stable oscillations with limited amplitude</strong>.<br/>
+- The amplitude grows initially, then settles into a steady state.<br/>
+- The phase portrait shows a <strong>stable closed loop</strong>, indicating <strong>synchronization with the external force</strong>.<br/>
+- Very important for understanding <strong>resonant systems in engineering</strong>.</p>
+<hr/>
+<h2 id="5-chaotic-resonant-pendulum">🔹 5) Chaotic / Resonant Pendulum</h2>
+<p><strong>Parameters:</strong><br/>
+- Damping: <code>b &gt; 0</code><br/>
+- Driving Force: <code>A</code> is large, ω is near resonance</p>
+<p><strong>Explanation:</strong><br/>
+- This system exhibits <strong>chaotic or resonant behavior</strong>.<br/>
+- The angle varies unpredictably, with no fixed frequency or amplitude.<br/>
+- The phase portrait shows a <strong>complicated, tangled structure</strong>, characteristic of <strong>chaotic systems</strong>.<br/>
+- Demonstrates how <strong>deterministic systems can behave unpredictably</strong>.</p>
+<hr/>
+<h2 id="summary">🧠 Summary</h2>
+<p>These five cases demonstrate the <strong>full spectrum of pendulum dynamics</strong> — from regular harmonic motion to complex chaotic behavior.<br/>
+They highlight key physical phenomena:
+- ✅ Harmonic motion<br/>
+- ✅ Damping and energy loss<br/>
+- ✅ Forced synchronization<br/>
+- ✅ Chaos and unpredictability</p>
+<hr/>
+<p><img alt="alt text" src="../image-6.png"/>
+<img alt="alt text" src="../image-7.png"/>
+<img alt="alt text" src="../image-8.png"/>
+<img alt="alt text" src="../image-9.png"/>
+<img alt="alt text" src="../image-10.png"/></p>
+<p>https://colab.research.google.com/drive/1-JPY6Z0_slKxW_jOdRIzZBFql2v27X43</p>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
 
-# Define system parameters
-g = 9.81   # Gravity (m/s²)
-L = 1.0    # Length of pendulum (m)
-gamma = 0.2  # Damping coefficient
-A = 1.5    # Driving amplitude
-omega = 2.0  # Driving frequency
-
-# Define natural frequency
-omega_0 = np.sqrt(g / L)
-
-# Define the equations of motion
-def forced_damped_pendulum(t, y):
-    theta, omega_t = y
-    dtheta_dt = omega_t
-    domega_dt = -gamma * omega_t - omega_0**2 * np.sin(theta) + A * np.cos(omega * t)
+# Уравнение маятника: d²θ/dt² + b*dθ/dt + sin(θ) = A*cos(ω*t)
+def pendulum(t, y, b, A, omega):
+    theta, omega_ = y
+    dtheta_dt = omega_
+    domega_dt = -b * omega_ - np.sin(theta) + A * np.cos(omega * t)
     return [dtheta_dt, domega_dt]
 
-# Initial conditions: theta = 0.2 rad, omega = 0 rad/s
-y0 = [0.2, 0]
+# Визуализация: графики θ(t) и (θ, ω)
+def plot_pendulum(t, sol, title, color):
+    theta = sol[0]
+    omega = sol[1]
 
-# Time span for simulation
-t_span = (0, 50)
-t_eval = np.linspace(0, 50, 1000)
+    fig, ax = plt.subplots(1, 2, figsize=(14, 4))
+    fig.suptitle(title, fontsize=16)
 
-# Solve ODE using Runge-Kutta method
-sol = solve_ivp(forced_damped_pendulum, t_span, y0, t_eval=t_eval, method='RK45')
+    ax[0].plot(t, theta, color=color)
+    ax[0].set_title("Time Series")
+    ax[0].set_xlabel("Time (s)")
+    ax[0].set_ylabel("Angle (rad)")
+    ax[0].grid(True)
 
-# Extract results
-t = sol.t
-theta = sol.y[0]
+    ax[1].plot(theta, omega, color=color)
+    ax[1].set_title("Phase Portrait")
+    ax[1].set_xlabel("θ (rad)")
+    ax[1].set_ylabel("ω (rad/s)")
+    ax[1].grid(True)
 
-# Plot results
-plt.figure(figsize=(10, 5))
-plt.plot(t, theta, label=r'$\theta(t)$', color='b')
-plt.xlabel("Time (s)")
-plt.ylabel("Angle (rad)")
-plt.title("Forced Damped Pendulum Motion")
-plt.legend()
-plt.grid()
-plt.show()
+    plt.tight_layout()
+    plt.subplots_adjust(top=0.85)  # чтобы заголовок не налезал
+    plt.show()
+
+# Параметры моделирования
+t_span = (0, 30)
+t_eval = np.linspace(*t_span, 2000)
+initial_state = [0.1, 0.0]  # начальный угол и угловая скорость
+
+# ===== 1. Simple Pendulum =====
+sol1 = solve_ivp(pendulum, t_span, initial_state, t_eval=t_eval, args=(0.0, 0.0, 0.0))
+plot_pendulum(sol1.t, sol1.y, "1) Simple Pendulum (b=0, A=0)", "crimson")
+
+# ===== 2. Damped Pendulum =====
+sol2 = solve_ivp(pendulum, t_span, initial_state, t_eval=t_eval, args=(0.5, 0.0, 0.0))
+plot_pendulum(sol2.t, sol2.y, "2) Damped Pendulum (b=0.5, A=0)", "darkblue")
+
+# ===== 3. Forced Pendulum =====
+sol3 = solve_ivp(pendulum, t_span, initial_state, t_eval=t_eval, args=(0.0, 1.0, 2.0))
+plot_pendulum(sol3.t, sol3.y, "3) Forced Pendulum (b=0, A=1.0, ω=2.0)", "teal")
+
+# ===== 4. Forced Damped Pendulum =====
+sol4 = solve_ivp(pendulum, t_span, initial_state, t_eval=t_eval, args=(0.2, 1.2, 2.0))
+plot_pendulum(sol4.t, sol4.y, "4) Forced Damped Pendulum (b=0.2, A=1.2, ω=2.0)", "orange")
+
+# ===== 5. Chaotic / Resonant Pendulum =====
+sol5 = solve_ivp(pendulum, t_span, initial_state, t_eval=t_eval, args=(0.5, 1.5, 2/3))
+plot_pendulum(sol5.t, sol5.y, "5) Chaotic / Resonant Pendulum (b=0.5, A=1.5, ω=2/3)", "firebrick")
+
 </code></pre>
-<p><img alt="alt text" src="../image-2.png"/>ss</p>
-<h2 id="5-results-and-discussion">📊 <em>5. Results and Discussion</em></h2>
-<h3 id="graph-interpretation">🔹 <em>Graph Interpretation</em></h3>
-<ul>
-<li><em>At low damping</em> (<span class="arithmatex">\( \gamma \ll 1 \)</span>), large oscillations appear due to resonance.  </li>
-<li><em>At high forcing amplitude</em> (<span class="arithmatex">\( A \gg 1 \)</span>), the motion becomes irregular and chaotic.  </li>
-<li><em>At specific frequencies</em> (<span class="arithmatex">\( \omega \approx \omega_0 \)</span>), resonance occurs.  </li>
-</ul>
-<h3 id="phase-space-analysis-pendulum-motion-in-phase-space">🔹 <em>Phase Space Analysis (Pendulum Motion in Phase Space)</em></h3>
-<p>To visualize chaotic behavior, we can plot <em>phase portraits</em> (<span class="arithmatex">\( \theta \)</span> vs. <span class="arithmatex">\( \dot{\theta} \)</span>):</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
