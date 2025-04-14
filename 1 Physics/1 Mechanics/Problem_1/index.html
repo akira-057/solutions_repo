@@ -324,105 +324,39 @@ plt.ylim(0, 130)
 plt.tight_layout()
 plt.show()
 </code></pre>
-<p>📊 Graph (a): Different Initial Speeds, Same Angle (45°)
-Launch angle: 45° — this is the optimal angle for achieving maximum range when the initial speed is fixed.</p>
-<p>Initial speeds:</p>
-<p>30 m/s (red trajectory)</p>
-<p>40 m/s (purple trajectory)</p>
-<p>50 m/s (green trajectory)</p>
-<p>Conclusion: The greater the initial speed (with a fixed angle), the farther the projectile travels.</p>
-<p>Example ranges (R):</p>
-<p>30 m/s → R ≈ 91.8 m</p>
-<p>40 m/s → R ≈ 163 m</p>
-<p>50 m/s → R ≈ 255 m</p>
-<p>📌 Range formula:</p>
-<h1 id="r">𝑅</h1>
-<p>𝑣
-0
-2
-sin
-⁡
-(
-2
-𝑡
-ℎ
-𝑒
-𝑡
-𝑎
-)
-𝑔
-R= 
-g
-v 
-0
-2
-​
- sin(2theta)
-​</p>
-<p>When θ = 45°, sin(2θ) = sin(90°) = 1 → So the range depends only on 
-𝑣
-0
-2
-v 
-0
-2
-​</p>
-<p>📊 Graph (b): Same Initial Speed (50 m/s), Different Angles
-Initial speed: 50 m/s for all three trajectories.</p>
-<p>Angles:</p>
-<p>15° (red): low trajectory, small height and short range.</p>
-<p>45° (purple): maximum range.</p>
-<p>75° (green): high trajectory, but shorter range.</p>
-<p>Interesting fact: 15° and 75° give equal range (R ≈ 128 m), even though the shapes of the trajectories are very different.</p>
-<p>📌 Symmetry Law:
-Angles 
-𝜃
-θ and 
-90
-°
-−
-𝜃
-90°−θ give the same range, because:</p>
-<p>sin
-⁡
-(
-2
-𝜃
-)
-=
-sin
-⁡
-(
-2
-(
-90
-°
-−
-𝜃
-)
-)
-=
-sin
-⁡
-(
-180
-°
-−
-2
-𝜃
-)
-=
-sin
-⁡
-(
-2
-𝜃
-)
-sin(2θ)=sin(2(90°−θ))=sin(180°−2θ)=sin(2θ)
-🧠 Main Takeaways:
-The best angle for maximum range with a given speed is 45°.</p>
-<p>With the same angle, higher speed means greater range.</p>
-<p>Angles that add up to 90° (like 15° and 75°) give the same range, but different heights and flight paths.</p>
+<h1 id="projectile-motion-analysis">🎯 Projectile Motion Analysis</h1>
+<h2 id="graph-a-different-initial-speeds-same-angle-45">📊 Graph (a): Different Initial Speeds, Same Angle (45°)</h2>
+<p><strong>Launch angle:</strong> <code>45°</code> — this is the optimal angle for achieving maximum range when the initial speed is fixed.</p>
+<p><strong>Initial speeds:</strong>
+- <code>30 m/s</code> (🔴 red trajectory)<br/>
+- <code>40 m/s</code> (🟣 purple trajectory)<br/>
+- <code>50 m/s</code> (🟢 green trajectory)  </p>
+<p><strong>Conclusion:</strong> The greater the initial speed (with a fixed angle), the farther the projectile travels.</p>
+<p><strong>Example ranges (R):</strong>
+- <code>30 m/s</code> → <code>R ≈ 91.8 m</code>
+- <code>40 m/s</code> → <code>R ≈ 163 m</code>
+- <code>50 m/s</code> → <code>R ≈ 255 m</code></p>
+<h3 id="range-formula">📌 Range formula:</h3>
+<p>R = (v₀² * sin(2θ)) / g</p>
+<p>When <code>θ = 45°</code>, <code>sin(2θ) = sin(90°) = 1</code> → So the range depends only on <code>v₀²</code>.</p>
+<hr/>
+<h2 id="graph-b-same-initial-speed-50-ms-different-angles">📊 Graph (b): Same Initial Speed (50 m/s), Different Angles</h2>
+<p><strong>Initial speed:</strong> <code>50 m/s</code> for all three trajectories.</p>
+<p><strong>Angles:</strong>
+- <code>15°</code> (🔴 red): low trajectory, small height and short range.
+- <code>45°</code> (🟣 purple): maximum range.
+- <code>75°</code> (🟢 green): high trajectory, but shorter range.</p>
+<p><strong>Interesting fact:</strong> <code>15°</code> and <code>75°</code> give equal range (<code>R ≈ 128 m</code>), even though the shapes of the trajectories are very different.</p>
+<h3 id="symmetry-law">📌 Symmetry Law:</h3>
+<p>Angles <code>θ</code> and <code>90° − θ</code> give the same range, because:  </p>
+<p>sin(2θ) = sin(2(90° − θ)) = sin(180° − 2θ) = sin(2θ)</p>
+<hr/>
+<h2 id="main-takeaways">🧠 Main Takeaways:</h2>
+<ul>
+<li>The best angle for maximum range with a given speed is <code>45°</code>.</li>
+<li>With the same angle, higher speed means greater range.</li>
+<li>Angles that add up to <code>90°</code> (like <code>15°</code> and <code>75°</code>) give the same range, but different heights and flight paths.</li>
+</ul>
 <p><img alt="alt text" src="../image-3.png"/></p>
 <h2 id="5-results-and-discussion">📊 <em>5. Results and Discussion</em></h2>
 <h3 id="graph-interpretation">🔹 <em>Graph Interpretation</em></h3>
