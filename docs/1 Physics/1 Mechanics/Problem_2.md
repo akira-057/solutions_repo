@@ -101,7 +101,54 @@ pip install numpy matplotlib scipy
 ### *📌 Step 2: Python Code for Simulation*  
 
 
-![alt text](image-1.png)
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Define system parameters
+g = 9.81   # Gravity (m/s²)
+L = 1.0    # Length of pendulum (m)
+gamma = 0.2  # Damping coefficient
+A = 1.5    # Driving amplitude
+omega = 2.0  # Driving frequency
+
+# Define natural frequency
+omega_0 = np.sqrt(g / L)
+
+# Define the equations of motion
+def forced_damped_pendulum(t, y):
+    theta, omega_t = y
+    dtheta_dt = omega_t
+    domega_dt = -gamma * omega_t - omega_0**2 * np.sin(theta) + A * np.cos(omega * t)
+    return [dtheta_dt, domega_dt]
+
+# Initial conditions: theta = 0.2 rad, omega = 0 rad/s
+y0 = [0.2, 0]
+
+# Time span for simulation
+t_span = (0, 50)
+t_eval = np.linspace(0, 50, 1000)
+
+# Solve ODE using Runge-Kutta method
+sol = solve_ivp(forced_damped_pendulum, t_span, y0, t_eval=t_eval, method='RK45')
+
+# Extract results
+t = sol.t
+theta = sol.y[0]
+
+# Plot results
+plt.figure(figsize=(10, 5))
+plt.plot(t, theta, label=r'$\theta(t)$', color='b')
+plt.xlabel("Time (s)")
+plt.ylabel("Angle (rad)")
+plt.title("Forced Damped Pendulum Motion")
+plt.legend()
+plt.grid()
+plt.show()
+```
+
+
 
 ![alt text](image-2.png)ss
 
@@ -115,12 +162,3 @@ pip install numpy matplotlib scipy
 ### 🔹 *Phase Space Analysis (Pendulum Motion in Phase Space)*  
 
 To visualize chaotic behavior, we can plot *phase portraits* (\( \theta \) vs. \( \dot{\theta} \)):
-
-python
-plt.figure(figsize=(6,6))
-plt.plot(sol.y[0], sol.y[1], color='purple')
-plt.xlabel(r"$\theta$ (rad)")
-plt.ylabel(r"$\dot{\theta}$ (rad/s)")
-plt.title("Phase Portrait of the Forced Damped Pendulum")
-plt.grid()
-plt.show(
