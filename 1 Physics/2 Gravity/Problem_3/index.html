@@ -172,6 +172,170 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-3">Problem 3</h1>
+<h1 id="trajectories-of-a-freely-released-payload-near-earth">🌍 Trajectories of a Freely Released Payload Near Earth</h1>
+<h2 id="motivation">📌 Motivation</h2>
+<p>When a spacecraft releases a payload near Earth, the path it follows depends on:</p>
+<ul>
+<li>Its <strong>initial position and speed</strong></li>
+<li>The <strong>direction of motion</strong></li>
+<li>The <strong>gravitational pull of Earth</strong></li>
+</ul>
+<p>Understanding these paths helps in planning:</p>
+<ul>
+<li>Satellite orbits</li>
+<li>Reentry to Earth</li>
+<li>Escaping Earth's gravity for deep space travel</li>
+</ul>
+<hr/>
+<h2 id="key-concepts">🧠 Key Concepts</h2>
+<h3 id="1-newtons-law-of-universal-gravitation">1. Newton's Law of Universal Gravitation</h3>
+<blockquote>
+<p>Every object attracts every other object with a force:</p>
+</blockquote>
+<div class="arithmatex">\[
+F = \frac{G \cdot M \cdot m}{r^2}
+\]</div>
+<p>Where:</p>
+<ul>
+<li><span class="arithmatex">\( F \)</span> is the gravitational force  </li>
+<li><span class="arithmatex">\( G \)</span> is the gravitational constant  </li>
+<li><span class="arithmatex">\( M \)</span> is the mass of Earth  </li>
+<li><span class="arithmatex">\( m \)</span> is the mass of the payload  </li>
+<li><span class="arithmatex">\( r \)</span> is the distance from the center of Earth  </li>
+</ul>
+<p>This force always pulls toward the center of Earth.</p>
+<hr/>
+<h3 id="2-kinetic-and-potential-energy">2. Kinetic and Potential Energy</h3>
+<p>A payload has two key types of energy:</p>
+<ul>
+<li>
+<p><strong>Kinetic Energy</strong> (moving):<br/>
+[
+KE = \frac{1}{2}mv^2
+]</p>
+</li>
+<li>
+<p><strong>Gravitational Potential Energy</strong>:<br/>
+[
+PE = -\frac{G M m}{r}
+]</p>
+</li>
+</ul>
+<blockquote>
+<p>The total energy determines the shape of the trajectory.</p>
+</blockquote>
+<hr/>
+<h2 id="types-of-trajectories">🚀 Types of Trajectories</h2>
+<h3 id="circular-orbit">🌐 Circular Orbit</h3>
+<ul>
+<li>Speed is <strong>just right</strong> to balance gravity  </li>
+<li>Path is a <strong>circle</strong> </li>
+<li><strong>Total energy</strong> is constant and <strong>negative</strong></li>
+</ul>
+<hr/>
+<h3 id="elliptical-orbit">🔁 Elliptical Orbit</h3>
+<ul>
+<li>Speed is <strong>not perfectly balanced</strong> </li>
+<li>Payload moves <strong>closer and farther</strong> from Earth  </li>
+<li><strong>Total energy</strong> is still <strong>negative</strong></li>
+</ul>
+<hr/>
+<h3 id="parabolic-trajectory">🪃 Parabolic Trajectory</h3>
+<ul>
+<li>Speed is <strong>just enough</strong> to escape Earth  </li>
+<li><strong>Total energy</strong> is <strong>zero</strong> </li>
+<li>It’s a <strong>boundary</strong> between orbit and escape</li>
+</ul>
+<hr/>
+<h3 id="hyperbolic-trajectory">🛫 Hyperbolic Trajectory</h3>
+<ul>
+<li>Speed is <strong>greater than needed</strong> to escape  </li>
+<li>Payload <strong>leaves Earth forever</strong> </li>
+<li><strong>Total energy</strong> is <strong>positive</strong></li>
+</ul>
+<hr/>
+<h2 id="escape-velocity">🧮 Escape Velocity</h2>
+<p>The speed needed to leave Earth without falling back:</p>
+<div class="arithmatex">\[
+v_{escape} = \sqrt{\frac{2GM}{r}}
+\]</div>
+<p>At sea level:</p>
+<div class="arithmatex">\[
+v_{escape} \approx 11.2 \text{ km/s}
+\]</div>
+<hr/>
+<h2 id="numerical-simulation-concept">🔢 Numerical Simulation (Concept)</h2>
+<p>To simulate motion step-by-step:</p>
+<ol>
+<li>Set the <strong>initial position and velocity</strong> of the payload.</li>
+<li>At each time step:<ul>
+<li>Compute the gravitational force:
+  [
+  F = \frac{G M m}{r^2}
+  ]</li>
+<li>Calculate acceleration:<br/>
+  [
+  a = \frac{F}{m}
+  ]</li>
+<li>Update velocity:<br/>
+  [
+  v_{new} = v + a \cdot \Delta t
+  ]</li>
+<li>Update position:<br/>
+  [
+  r_{new} = r + v \cdot \Delta t
+  ]</li>
+</ul>
+</li>
+<li>Repeat to track the trajectory shape (circular, elliptical, parabolic, hyperbolic)</li>
+</ol>
+<hr/>
+<h2 id="visualization-goals">📊 Visualization Goals</h2>
+<ul>
+<li>A plot of <strong>Earth and the payload path</strong></li>
+<li>Comparison of <strong>multiple initial speeds</strong></li>
+<li>Labels for <strong>escape</strong>, <strong>reentry</strong>, and <strong>orbit scenarios</strong></li>
+</ul>
+<hr/>
+<h2 id="real-world-applications">🌌 Real-World Applications</h2>
+<ul>
+<li>Satellites must be released into <strong>elliptical or circular orbits</strong></li>
+<li>Spacecraft aiming for other planets use <strong>hyperbolic trajectories</strong></li>
+<li>Reentry capsules follow <strong>elliptical or parabolic paths</strong></li>
+</ul>
+<hr/>
+<h2 id="summary">✅ Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Trajectory Type</th>
+<th>Total Energy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Low speed</td>
+<td>Elliptical orbit</td>
+<td>Negative</td>
+</tr>
+<tr>
+<td>Just right speed</td>
+<td>Circular orbit</td>
+<td>Negative</td>
+</tr>
+<tr>
+<td>Exactly escape speed</td>
+<td>Parabolic path</td>
+<td>Zero</td>
+</tr>
+<tr>
+<td>Greater than escape speed</td>
+<td>Hyperbolic path</td>
+<td>Positive</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
