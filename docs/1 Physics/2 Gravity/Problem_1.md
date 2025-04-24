@@ -197,8 +197,10 @@ When \( T² \) is plotted against \( a³ \), the result is a straight line.
 T² ∝ a³
 
 ![alt text](image.png)
+
 [Visit my Collab](https://colab.research.google.com/drive/16YMcohmpKP_nGSxS3Y-7SSDqg5jTMOOL)
-``` python
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -231,9 +233,9 @@ plt.axline((0, 0), slope=1, color='gray', linestyle='--', label='Expected line (
 plt.legend()
 plt.tight_layout()
 plt.show() 
-```
 
 ---
+
 
 ## 3. CALCULATING THE MASS OF THE SUN
 
