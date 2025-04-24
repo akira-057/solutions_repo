@@ -156,3 +156,61 @@ To simulate motion step-by-step:
 | Just right speed         | Circular orbit      | Negative     |
 | Exactly escape speed     | Parabolic path      | Zero         |
 | Greater than escape speed| Hyperbolic path     | Positive     |
+
+
+
+## Problem 3: Motion of a Body in Earth's Gravitational Field
+
+**Problem statement:**
+- Create a plot with the Earth drawn to scale.
+- Initial position: 800 km above Earth's surface (placed on the right-hand side of the plot).
+- Launch a body with various initial speeds: 5 km/s, 5.5 km/s, ..., up to 13 km/s.
+- Only gravitational interaction is considered.
+
+**Model:**
+- Earth's radius: 6371 km.
+- Gravitational acceleration calculated using Newton’s law of universal gravitation.
+- Two-dimensional plane, launch point at (R_Earth + 800 km, 0).
+- Each trajectory shows motion of the body for a given initial velocity.
+
+**Result:**
+
+![Body Orbits](orbit_plot.png)
+
+- The blue circle represents Earth.
+- Each curve shows the trajectory for a specific launch speed (from 5 to 13 km/s).
+- We can observe which speeds lead to orbits, collisions with Earth, or escape into space.
+
+---
+
+## Wave Problem: Interference of Waves from Multiple Sources
+
+**Problem statement:**
+- Demonstrate wave interference for one, two, and multiple sources.
+- Display the result as a heatmap and create an animation.
+- Source arrangements:
+  - One centered source,
+  - Two along the X-axis,
+  - Three placed in a triangle.
+- Plot the results and create a gif animation.
+
+**Method:**
+- Wave equation used:  
+  `z(x, y, t) = A * sin(k * r - ω * t)`
+- The contribution from each source is summed.
+- Grid from -10 to 10 in both x and y.
+- Animation shows wave propagation and interference over time.
+
+**Result (animation):**
+
+![Wave Interference](wave_interference.gif)
+
+- Left plot: one source — circular wavefronts.
+- Middle plot: two sources — clear interference pattern.
+- Right plot: three sources in a triangle — complex interference structure.
+
+---
+
+**Conclusion:**
+- Orbital trajectories depend critically on initial velocity.
+- Wave interference clearly demonstrates the principle of superposition: the combination of phase and amplitude when multiple waves interact.
