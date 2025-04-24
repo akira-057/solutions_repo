@@ -182,7 +182,7 @@ They highlight key physical phenomena:
 ![alt text](image-9.png)
 ![alt text](image-10.png)
 
-[Visit Collab link][https://colab.research.google.com/drive/1-JPY6Z0_slKxW_jOdRIzZBFql2v27X43]
+[Visit Collab link](https://colab.research.google.com/drive/1-JPY6Z0_slKxW_jOdRIzZBFql2v27X43)
 
 ```python
 import numpy as np
