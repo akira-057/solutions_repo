@@ -118,26 +118,34 @@ If we plug into the formula, the numbers match reality, confirming Kepler’s La
 
 ## 🖥️ Computational Model (Python Preview)
 
-```python
+![alt text](image-1.png)
+
+[Visit my Collab](https://colab.research.google.com/drive/1sP4M-GU3IAjrS7AP2VkohDYUfNJVFBJn)
+
+``` python
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Constants
-G = 6.67430e-11  # Gravitational constant
-M = 5.972e24     # Mass of Earth in kg
+# 🌍 Constants
+G = 6.67430e-11       # Gravitational constant, in m^3/(kg·s^2)
+M = 5.972e24          # Mass of the Earth, in kg
 
-# Radii from 1e7 to 5e8 meters
+# 📏 Create an array of orbital radii from 10 million to 500 million meters
 radii = np.linspace(1e7, 5e8, 100)
+
+# 🕒 Calculate orbital periods using the formula:
+# T = 2π * sqrt(r^3 / (G * M))
 periods = 2 * np.pi * np.sqrt(radii**3 / (G * M))
 
-# Plot
+# 📈 Plot T² vs r³ according to Kepler’s Third Law
 plt.figure(figsize=(8, 5))
-plt.plot(radii, periods**2, label="T^2 vs r^3")
+plt.plot(radii, periods**2, color='blue', label=r'$T^2$ vs $r^3$')
 plt.xlabel("Orbital Radius (m)")
-plt.ylabel("Orbital Period Squared (s^2)")
-plt.title("Kepler's Third Law")
+plt.ylabel("Orbital Period Squared (s²)")
+plt.title("Kepler's Third Law - Circular Orbit Simulation")
 plt.grid(True)
 plt.legend()
+plt.tight_layout()
 plt.show()
 ```
 
