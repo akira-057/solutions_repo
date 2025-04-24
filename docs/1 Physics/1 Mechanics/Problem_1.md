@@ -108,7 +108,7 @@ R = \frac{v_0^2}{g} \sin 2\theta
 
 ![alt text](image.png)
 
-[Visit Collab link][https://colab.research.google.com/drive/15aipIXpntUFvD30gQxap78OZghCNOeKy]
+[Visit Collab link] [https://colab.research.google.com/drive/15aipIXpntUFvD30gQxap78OZghCNOeKy]
 
 ``` python
 import numpy as np
