@@ -172,162 +172,49 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2">Problem 2</h1>
-<h1 id="escape-velocities-and-cosmic-velocities">Escape Velocities and Cosmic Velocities</h1>
-<h2 id="motivation">🚀 Motivation</h2>
-<p>The concept of escape velocity is fundamental to space exploration, determining the energy required to break free from a celestial body's gravitational pull. Understanding the first, second, and third cosmic velocities enables us to:</p>
+<h1 id="i-why-the-motivation-and-why-cosmic-velocities-matter-sections-are-important">ℹ️ Why the "Motivation" and "Why Cosmic Velocities Matter" Sections are Important</h1>
+<h2 id="motivation">📘 Motivation</h2>
+<h3 id="what-is-it">🔹 What is it?</h3>
+<p>This section explains <strong>why the topic is important</strong>, why it matters, and where it is applied.</p>
+<h3 id="why-is-it-needed">🔹 Why is it needed?</h3>
 <ul>
-<li>Design satellite launch profiles</li>
-<li>Plan interplanetary missions</li>
-<li>Conceptualize interstellar travel</li>
-<li>Understand fundamental astrophysical processes</li>
+<li>Helps the reader <strong>get into the topic</strong>.</li>
+<li>Explains <strong>why cosmic velocities are important to study</strong>.</li>
+<li>Makes the project more <strong>meaningful and complete</strong>.</li>
+<li>Answers the question:  <blockquote>
+<p>"Why should I care about this?"</p>
+</blockquote>
+</li>
 </ul>
-<p>These velocity thresholds govern everything from placing satellites in orbit to sending probes beyond our solar system.</p>
-<h2 id="theoretical-foundations">📚 Theoretical Foundations</h2>
-<h3 id="first-cosmic-velocity-orbital-velocity">🌐 First Cosmic Velocity (Orbital Velocity)</h3>
-<p><em>Physical Meaning:</em> The minimum horizontal speed required to maintain a stable circular orbit just above a celestial body's atmosphere.</p>
-<p><em>Mathematical Expression:</em></p>
-<p>v₁ = √(GM/R)</p>
-<p>Where:
-- G = Gravitational constant (6.67430 × 10⁻¹¹ m³ kg⁻¹ s⁻²)
-- M = Mass of the celestial body
-- R = Radius of the celestial body</p>
-<h3 id="second-cosmic-velocity-escape-velocity">🪐 Second Cosmic Velocity (Escape Velocity)</h3>
-<p><em>Physical Meaning:</em> The minimum speed needed to completely escape a celestial body's gravitational field from its surface without additional propulsion.</p>
-<p><em>Mathematical Expression:</em></p>
-<p>v₂ = √(2GM/R) = v₁ × √2</p>
-<h3 id="third-cosmic-velocity">🌌 Third Cosmic Velocity</h3>
-<p><em>Physical Meaning:</em> The minimum speed required at Earth's surface to escape not just Earth's gravity, but the entire solar system's gravitational influence.</p>
-<p><em>Mathematical Expression:</em></p>
-<p>v₃ = √(v₂² + (v⊙ × √2)²)</p>
-<p>Where v⊙ is the solar escape velocity at Earth's orbital distance.</p>
-<h2 id="key-parameters">🔍 Key Parameters</h2>
-<p>These velocities depend on:
-- <em>Mass of the body</em> - More massive objects require higher velocities
-- <em>Radius of the body</em> - Larger radii result in lower escape velocities
-- <em>Orbital position</em> (for third cosmic velocity) - Distance from the central star matters</p>
-<h2 id="computational-implementation">💻 Computational Implementation</h2>
-<p>python
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib import cm</p>
-<h1 id="constants">Constants</h1>
-<p>G = 6.67430e-11  # Gravitational constant (m³ kg⁻¹ s⁻²)
-AU = 1.496e11     # Astronomical Unit (m)
-sun_mass = 1.989e30  # Solar mass (kg)</p>
-<h1 id="celestial-body-database">Celestial body database</h1>
-<p>bodies = {
-    'Earth': {'mass': 5.972e24, 'radius': 6.371e6, 'color': '#2E86AB'},
-    'Mars': {'mass': 6.39e23, 'radius': 3.3895e6, 'color': '#E83F6F'},
-    'Jupiter': {'mass': 1.898e27, 'radius': 6.9911e7, 'color': '#FF9F1C'}
-}</p>
-<p>def calculate_cosmic_velocities(body):
-    """Compute all three cosmic velocities for a celestial body"""
-    M, R = body['mass'], body['radius']</p>
-<pre><code># First cosmic velocity
-v1 = np.sqrt(G * M / R)
-
-# Second cosmic velocity
-v2 = np.sqrt(2 * G * M / R)
-
-# Third cosmic velocity (solar system escape)
-v_sun_escape = np.sqrt(2 * G * sun_mass / AU)
-v3 = np.sqrt(v2**2 + v_sun_escape**2)
-
-return v1, v2, v3
-</code></pre>
-<h1 id="calculate-and-display-results">Calculate and display results</h1>
-<p>print("| Celestial Body | 1st Cosmic (km/s) | 2nd Cosmic (km/s) | 3rd Cosmic (km/s) |")
-print("|----------------|-------------------|-------------------|-------------------|")
-for name, data in bodies.items():
-    v1, v2, v3 = calculate_cosmic_velocities(data)
-    print(f"| {name:&lt;14} | {v1/1000:&gt;17.2f} | {v2/1000:&gt;17.2f} | {v3/1000:&gt;17.2f} |")</p>
-<h1 id="visualization">Visualization</h1>
-<p>fig, ax = plt.subplots(figsize=(10, 6), dpi=100)
-x = np.arange(len(bodies))
-width = 0.25</p>
-<h1 id="create-bars-for-each-velocity">Create bars for each velocity</h1>
-<p>for i, (velocity, label) in enumerate(zip(
-    ['1st Cosmic', '2nd Cosmic', '3rd Cosmic'],
-    ['Orbital Velocity', 'Escape Velocity', 'Solar System Escape']
-)):
-    values = [calculate_cosmic_velocities(body)[i]/1000 for body in bodies.values()]
-    colors = [body['color'] for body in bodies.values()]
-    ax.bar(x + i*width, values, width, label=label, color=colors)</p>
-<h1 id="formatting">Formatting</h1>
-<p>ax.set_ylabel('Velocity (km/s)', fontsize=12)
-ax.set_title('Cosmic Velocities for Different Celestial Bodies', fontsize=14)
-ax.set_xticks(x + width)
-ax.set_xticklabels(bodies.keys(), fontsize=12)
-ax.legend(fontsize=10)
-ax.grid(axis='y', linestyle='--', alpha=0.7)</p>
-<p>plt.tight_layout()
-plt.show()</p>
-<h2 id="results-and-analysis">📊 Results and Analysis</h2>
-<p><img alt="alt text" src="image-3.png"/></p>
-<h3 id="sample-output">Sample Output:</h3>
-<table>
-<thead>
-<tr>
-<th>Celestial Body</th>
-<th>1st Cosmic (km/s)</th>
-<th>2nd Cosmic (km/s)</th>
-<th>3rd Cosmic (km/s)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Earth</td>
-<td>7.91</td>
-<td>11.19</td>
-<td>16.65</td>
-</tr>
-<tr>
-<td>Mars</td>
-<td>3.55</td>
-<td>5.03</td>
-<td>7.83</td>
-</tr>
-<tr>
-<td>Jupiter</td>
-<td>42.51</td>
-<td>60.12</td>
-<td>61.39</td>
-</tr>
-</tbody>
-</table>
-<h3 id="key-observations">Key Observations:</h3>
-<ol>
-<li><em>Jupiter's Dominance</em>: The gas giant's massive size results in escape velocities over 5× Earth's</li>
-<li><em>Mars Accessibility</em>: Lower velocities make Mars an attractive target for missions</li>
-<li><em>Solar System Escape</em>: The third cosmic velocity shows the additional energy needed to leave our solar system</li>
-</ol>
-<h2 id="applications-in-space-exploration">🛰 Applications in Space Exploration</h2>
-<h3 id="first-cosmic-velocity">First Cosmic Velocity:</h3>
+<h3 id="alternative">🔹 Alternative</h3>
+<p>If you want, you can replace it with a short introduction like:</p>
+<blockquote>
+<p>This work discusses the speeds needed to reach orbit, escape a planet's gravity, and leave the solar system.</p>
+</blockquote>
+<hr/>
+<h2 id="why-cosmic-velocities-matter">❓ Why Cosmic Velocities Matter</h2>
+<h3 id="what-is-it_1">🔹 What is it?</h3>
+<p>This concluding section shows the <strong>practical value</strong> of the entire work.</p>
+<h3 id="why-is-it-needed_1">🔹 Why is it needed?</h3>
 <ul>
-<li>Satellite deployment in low orbits</li>
-<li>Space station maintenance</li>
-<li>Earth observation missions</li>
+<li>Connects <strong>formulas and calculations with real-life applications</strong>.</li>
+<li>Shows where they are used:</li>
+<li>First cosmic velocity — for satellites and orbits.</li>
+<li>Second cosmic velocity — for missions to the Moon and Mars.</li>
+<li>Third cosmic velocity — for missions beyond the solar system (e.g., Voyager).</li>
 </ul>
-<h3 id="second-cosmic-velocity">Second Cosmic Velocity:</h3>
+<h3 id="benefits-for-the-project">🔹 Benefits for the project</h3>
 <ul>
-<li>Lunar missions</li>
-<li>Interplanetary travel</li>
-<li>Deep space probe launches</li>
+<li>Helps <strong>understand the meaning behind the calculations</strong>.</li>
+<li>Makes the report <strong>complete and logical</strong>.</li>
+<li>Creates a <strong>better impression during the defense</strong>.</li>
 </ul>
-<h3 id="third-cosmic-velocity_1">Third Cosmic Velocity:</h3>
-<ul>
-<li>Voyager missions leaving the heliosphere</li>
-<li>Future interstellar probes</li>
-<li>Understanding the Sun's gravitational influence</li>
-</ul>
-<h2 id="future-extensions">🔮 Future Extensions</h2>
-<ol>
-<li><em>Relativistic Effects</em>: Incorporating Einstein's corrections for extreme gravity</li>
-<li><em>Atmospheric Drag</em>: Modeling real-world launch conditions</li>
-<li><em>Multi-body Systems</em>: Calculating velocities in binary star systems</li>
-<li><em>Variable Gravity</em>: Exploring non-spherical mass distributions</li>
-</ol>
-<p>This analysis demonstrates how fundamental physics principles govern humanity's ability to explore space, from placing satellites in orbit to dreaming of interstellar travel.</p>
+<h3 id="how-to-simplify-it">🔹 How to simplify it</h3>
+<blockquote>
+<p>These velocities are important for space exploration because they help us understand the speeds required to launch satellites, send rockets to other planets, or even beyond the solar system.</p>
+</blockquote>
+<hr/>
+<p>✅ These sections make your work not just "formula-based" but <strong>meaningful and engaging</strong>.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
