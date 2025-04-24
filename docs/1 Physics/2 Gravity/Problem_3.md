@@ -175,7 +175,68 @@ To simulate motion step-by-step:
 
 **Result:**
 
-![Body Orbits](orbit_plot.png)
+![alt text](image-4.png)
+
+[Visit My Collab](https://colab.research.google.com/drive/1t8rJKeSnbXocOYi4MwUZABzlYJrSehkq)
+
+``` python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Гравитационные константы
+G = 6.67430e-11  # м^3 кг^-1 с^-2
+M = 5.972e24     # масса Земли, кг
+R_earth = 6.371e6  # радиус Земли, м
+
+# Начальные условия
+altitude = 800e3  # 800 км над поверхностью
+r0 = np.array([R_earth + altitude, 0])  # начальная позиция справа от Земли
+velocities = np.arange(5e3, 13.5e3, 0.5e3)  # скорости от 5 до 13 км/с
+
+# Временные параметры
+dt = 1  # шаг по времени (с)
+T = 10000  # общее время моделирования (с)
+steps = int(T / dt)
+
+# Создание графика
+fig, ax = plt.subplots(figsize=(8, 8))
+theta = np.linspace(0, 2 * np.pi, 500)
+earth_x = R_earth * np.cos(theta)
+earth_y = R_earth * np.sin(theta)
+ax.fill(earth_x, earth_y, 'b', label='Земля', alpha=0.5)
+
+# Симуляция для каждой скорости
+colors = plt.cm.viridis(np.linspace(0, 1, len(velocities)))
+
+for v0, color in zip(velocities, colors):
+    r = r0.copy()
+    v = np.array([0, v0])
+    traj_x, traj_y = [], []
+
+    for _ in range(steps):
+        r_mag = np.linalg.norm(r)
+        if r_mag < R_earth:  # если груз врезался в Землю
+            break
+        a = -G * M * r / r_mag**3
+        v += a * dt
+        r += v * dt
+        traj_x.append(r[0])
+        traj_y.append(r[1])
+
+    ax.plot(traj_x, traj_y, label=f'{v0/1000:.1f} км/с', color=color)
+
+# Оформление графика
+ax.set_aspect('equal')
+ax.set_xlim(-2e7, 2e7)
+ax.set_ylim(-2e7, 2e7)
+ax.set_xlabel('x (м)')
+ax.set_ylabel('y (м)')
+ax.set_title('Траектории груза при сбросе с высоты 800 км')
+ax.legend(loc='upper right', fontsize='small')
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+```
 
 - The blue circle represents Earth.
 - Each curve shows the trajectory for a specific launch speed (from 5 to 13 km/s).
