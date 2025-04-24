@@ -162,12 +162,13 @@ $$
 
 ## 📊 Visualization (Python)
 
-```python
-import matplotlib.pyplot as plt
-
 ![alt text](image-2.png)
 
 [Visit my collab](https://colab.research.google.com/drive/1vO_BEtypX3SSkw-R99Hm8HqmZcJ6EERA)
+
+
+```python
+import matplotlib.pyplot as plt
 
 bodies = ["Moon", "Earth", "Mars", "Jupiter"]
 v1 = [1.68, 7.9, 3.6, 42.1]
