@@ -108,7 +108,7 @@ R = \frac{v_0^2}{g} \sin 2\theta
 
 ![alt text](image.png)
 
-[https://colab.research.google.com/drive/15aipIXpntUFvD30gQxap78OZghCNOeKy](Visit Collab link)
+[Visit My Collab](https://colab.research.google.com/drive/15aipIXpntUFvD30gQxap78OZghCNOeKy)
 
 ``` python
 import numpy as np
@@ -219,7 +219,7 @@ sin(2θ) = sin(2(90° − θ)) = sin(180° − 2θ) = sin(2θ)
 
 ![alt text](image-3.png)
 
-[Visit Collab link](https://colab.research.google.com/drive/14BpYdqwbOn7Z3weu4Y97IEqOdFX3yg9F)
+[Visit My Collab](https://colab.research.google.com/drive/14BpYdqwbOn7Z3weu4Y97IEqOdFX3yg9F)
 
 ``` python
 import numpy as np
