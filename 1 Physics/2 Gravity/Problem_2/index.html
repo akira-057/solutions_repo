@@ -215,6 +215,135 @@
 </blockquote>
 <hr/>
 <p>✅ These sections make your work not just "formula-based" but <strong>meaningful and engaging</strong>.</p>
+<h1 id="cosmic-velocities-and-escape-velocities">🚀 Cosmic Velocities and Escape Velocities</h1>
+<h2 id="what-are-cosmic-velocities">📘 What Are Cosmic Velocities?</h2>
+<p>Cosmic velocities are speeds needed to move around or escape a celestial body:</p>
+<ul>
+<li><strong>First Cosmic Velocity (v₁)</strong>: To orbit the body in a circle (like satellites).</li>
+<li><strong>Second Cosmic Velocity (v₂)</strong>: To escape its gravity (like flying to space).</li>
+<li><strong>Third Cosmic Velocity (v₃)</strong>: To leave the Solar System.</li>
+</ul>
+<hr/>
+<h2 id="derivations">🧠 Derivations</h2>
+<hr/>
+<h3 id="1-first-cosmic-velocity-v_1">1️⃣ First Cosmic Velocity <span class="arithmatex">\( v_1 \)</span></h3>
+<p><strong>Meaning</strong>: Minimum speed to orbit just above the surface.</p>
+<h4 id="derivation">Derivation:</h4>
+<ul>
+<li>Centripetal force:</li>
+</ul>
+<p>$$
+  F = \frac{m \cdot v^2}{r}
+  $$</p>
+<ul>
+<li>Gravitational force:</li>
+</ul>
+<p>$$
+  F = \frac{G \cdot M \cdot m}{r^2}
+  $$</p>
+<p>Equating:</p>
+<div class="arithmatex">\[
+\frac{m \cdot v^2}{r} = \frac{G \cdot M \cdot m}{r^2}
+\]</div>
+<p>Cancelling <span class="arithmatex">\( m \)</span> and solving:</p>
+<div class="arithmatex">\[
+v_1 = \sqrt{\frac{G \cdot M}{r}}
+\]</div>
+<hr/>
+<h3 id="2-second-cosmic-velocity-v_2">2️⃣ Second Cosmic Velocity <span class="arithmatex">\( v_2 \)</span></h3>
+<p><strong>Meaning</strong>: Minimum speed to escape a planet's gravity.</p>
+<h4 id="derivation_1">Derivation:</h4>
+<p>From energy conservation:</p>
+<div class="arithmatex">\[
+\frac{1}{2}mv^2 - \frac{G M m}{r} = 0
+\]</div>
+<p>Solving:</p>
+<div class="arithmatex">\[
+v_2 = \sqrt{\frac{2 G M}{r}} = \sqrt{2} \cdot v_1
+\]</div>
+<hr/>
+<h3 id="3-third-cosmic-velocity-v_3">3️⃣ Third Cosmic Velocity <span class="arithmatex">\( v_3 \)</span></h3>
+<p><strong>Meaning</strong>: Speed to escape the Sun starting from Earth’s orbit.</p>
+<h4 id="formula">Formula:</h4>
+<div class="arithmatex">\[
+v_3 = \sqrt{\frac{2 G M_{sun}}{r_{orbit}}}
+\]</div>
+<hr/>
+<h2 id="earth-example-values">🌍 Earth: Example Values</h2>
+<ul>
+<li><span class="arithmatex">\( G = 6.674 \cdot 10^{-11} \, \text{m}^3/\text{kg s}^2 \)</span> </li>
+<li><span class="arithmatex">\( M = 5.972 \cdot 10^{24} \, \text{kg} \)</span> </li>
+<li><span class="arithmatex">\( r = 6.371 \cdot 10^6 \, \text{m} \)</span> </li>
+<li><span class="arithmatex">\( M_{sun} = 1.989 \cdot 10^{30} \, \text{kg} \)</span> </li>
+<li><span class="arithmatex">\( r_{earth\ orbit} = 1.496 \cdot 10^{11} \, \text{m} \)</span></li>
+</ul>
+<h3 id="calculated">Calculated:</h3>
+<ul>
+<li><span class="arithmatex">\( v_1 \approx 7.9 \, \text{km/s} \)</span></li>
+<li><span class="arithmatex">\( v_2 \approx 11.2 \, \text{km/s} \)</span></li>
+<li><span class="arithmatex">\( v_3 \approx 42.1 \, \text{km/s} \)</span></li>
+</ul>
+<hr/>
+<h2 id="comparison-table">🌌 Comparison Table</h2>
+<table>
+<thead>
+<tr>
+<th>Celestial Body</th>
+<th>Mass (kg)</th>
+<th>Radius (m)</th>
+<th><span class="arithmatex">\( v_1 \)</span> (km/s)</th>
+<th><span class="arithmatex">\( v_2 \)</span> (km/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Moon</td>
+<td><span class="arithmatex">\(7.35 \cdot 10^{22}\)</span></td>
+<td><span class="arithmatex">\(1.74 \cdot 10^6\)</span></td>
+<td>1.68</td>
+<td>2.38</td>
+</tr>
+<tr>
+<td>Earth</td>
+<td><span class="arithmatex">\(5.97 \cdot 10^{24}\)</span></td>
+<td><span class="arithmatex">\(6.37 \cdot 10^6\)</span></td>
+<td>7.9</td>
+<td>11.2</td>
+</tr>
+<tr>
+<td>Mars</td>
+<td><span class="arithmatex">\(6.42 \cdot 10^{23}\)</span></td>
+<td><span class="arithmatex">\(3.39 \cdot 10^6\)</span></td>
+<td>3.6</td>
+<td>5.0</td>
+</tr>
+<tr>
+<td>Jupiter</td>
+<td><span class="arithmatex">\(1.90 \cdot 10^{27}\)</span></td>
+<td><span class="arithmatex">\(6.99 \cdot 10^7\)</span></td>
+<td>42.1</td>
+<td>59.5</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="visualization-python">📊 Visualization (Python)</h2>
+<p>```python
+import matplotlib.pyplot as plt</p>
+<p><img alt="alt text" src="../image-2.png"/></p>
+<p><a href="https://colab.research.google.com/drive/1vO_BEtypX3SSkw-R99Hm8HqmZcJ6EERA">Visit my collab</a></p>
+<p>bodies = ["Moon", "Earth", "Mars", "Jupiter"]
+v1 = [1.68, 7.9, 3.6, 42.1]
+v2 = [2.38, 11.2, 5.0, 59.5]</p>
+<p>x = range(len(bodies))</p>
+<p>plt.bar(x, v1, width=0.4, label="1st Cosmic Velocity", align='center')
+plt.bar([i + 0.4 for i in x], v2, width=0.4, label="2nd Cosmic Velocity", align='center')</p>
+<p>plt.xticks([i + 0.2 for i in x], bodies)
+plt.ylabel("Velocity (km/s)")
+plt.title("Comparison of Cosmic Velocities")
+plt.legend()
+plt.grid(axis='y')
+plt.show()</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
