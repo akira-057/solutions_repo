@@ -139,6 +139,7 @@ plt.title("Kepler's Third Law")
 plt.grid(True)
 plt.legend()
 plt.show()
+```
 
 # GRAVITY PROBLEM 1: A COSMIC INVESTIGATION
 
@@ -233,7 +234,8 @@ plt.axline((0, 0), slope=1, color='gray', linestyle='--', label='Expected line (
 
 plt.legend()
 plt.tight_layout()
-plt.show() ```
+plt.show()
+```
 ---
 
 
