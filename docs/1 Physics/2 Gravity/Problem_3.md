@@ -2,6 +2,8 @@
 
 # 🌍 Trajectories of a Freely Released Payload Near Earth
 
+![alt text](image-3.png)
+
 ## 📌 Motivation
 
 When a spacecraft releases a payload near Earth, the path it follows depends on:
