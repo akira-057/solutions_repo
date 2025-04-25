@@ -264,6 +264,7 @@ plt.show()
 
 **Result (animation):**
 
+![alt text](image-5.png)
 
 [Visit My Collab](wave_interference.gif)
 
