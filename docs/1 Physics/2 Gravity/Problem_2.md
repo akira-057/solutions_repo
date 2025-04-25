@@ -164,7 +164,7 @@ $$
 
 ![alt text](image-2.png)
 
-[Visit my collab](https://colab.research.google.com/drive/1vO_BEtypX3SSkw-R99Hm8HqmZcJ6EERA)
+[Visit My Collab](https://colab.research.google.com/drive/1vO_BEtypX3SSkw-R99Hm8HqmZcJ6EERA)
 
 
 ```python
