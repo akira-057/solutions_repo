@@ -265,8 +265,6 @@ plt.show()
 **Result (animation):**
 
 from IPython.display import Image
-
-# Убедись, что gif находится в том же каталоге
 Image(filename="wave_interference.gif")
 
 [Visit My Collab](wave_interference.gif)
