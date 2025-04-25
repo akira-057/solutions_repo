@@ -264,7 +264,12 @@ plt.show()
 
 **Result (animation):**
 
-![Wave Interference](wave_interference.gif)
+from IPython.display import Image
+
+# Убедись, что gif находится в том же каталоге
+Image(filename="wave_interference.gif")
+
+[Visit My Collab](wave_interference.gif)
 
 - Left plot: one source — circular wavefronts.
 - Middle plot: two sources — clear interference pattern.
