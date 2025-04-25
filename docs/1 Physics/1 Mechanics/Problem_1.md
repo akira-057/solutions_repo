@@ -103,9 +103,6 @@ R = \frac{v_0^2}{g} \sin 2\theta
 - Consider launches from **elevated platforms** (e.g., artillery firing from a hill)
  
 
-
-
-
 ![alt text](image.png)
 
 [Visit My Collab](https://colab.research.google.com/drive/15aipIXpntUFvD30gQxap78OZghCNOeKy)
