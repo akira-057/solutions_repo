@@ -22,7 +22,10 @@
 
 ![alt text](image-5.png)
 
-![Visit My Collab](wave_interference.gif)
+![Gif Animation](wave_interference.gif)
+
+![3D Animation](wave_interference_3d.gif)
+
 
 ``` python
 import numpy as np
