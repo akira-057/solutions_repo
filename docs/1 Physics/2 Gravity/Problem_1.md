@@ -224,8 +224,8 @@ $$
 ## 3. Finding the Mass of the Earth
 
 The Moon orbits Earth with:
-- Radius \( R = 3.844 \times 10^{8} \, \text{m} \),
-- Period \( T = 27.32 \times 24 \times 3600 \, \text{seconds} \).
+- Radius \($ R = 3.844 \times 10^{8} \, \text{m}$ \),
+- Period \($ T = 27.32 \times 24 \times 3600 \, \text{seconds}$ \).
 
 Substituting into the formula:
 
