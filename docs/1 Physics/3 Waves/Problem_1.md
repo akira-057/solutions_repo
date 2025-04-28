@@ -20,8 +20,6 @@
 
 **Result (animation):**
 
-![alt text](image-5.png)
-
 ![Gif Animation](wave_interference.gif)
 
 ![3D Animation](wave_interference_3d.gif)
