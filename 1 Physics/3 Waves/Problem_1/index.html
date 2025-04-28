@@ -66,27 +66,7 @@
 <ul class="current">
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
 <ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="#problem-1-interference-patterns-on-a-water-surface">Problem 1: Interference Patterns on a Water Surface</a>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#motivation">Motivation:</a>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#task-breakdown">Task Breakdown:</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#1-select-a-regular-polygon">1. Select a Regular Polygon:</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#2-position-the-sources">2. Position the Sources:</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#3-wave-equations">3. Wave Equations:</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#4-superposition-of-waves">4. Superposition of Waves:</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#5-analyze-interference-patterns">5. Analyze Interference Patterns:</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#6-visualization">6. Visualization:</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#implementation-in-python">Implementation in Python:</a>
+<li class="toctree-l3"><a class="reference internal" href="#wave-problem-interference-of-waves-from-multiple-sources">Wave Problem: Interference of Waves from Multiple Sources</a>
 </li>
 </ul>
 </li>
@@ -194,126 +174,90 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
-<h3 id="problem-1-interference-patterns-on-a-water-surface">Problem 1: Interference Patterns on a Water Surface</h3>
-<h3 id="motivation">Motivation:</h3>
-<p>Interference patterns form when waves from different sources overlap, creating new wave patterns on a surface. On water, this can be easily observed when ripples from different points meet and combine. Depending on their phase relationship, the waves may either reinforce (constructive interference) or cancel each other out (destructive interference). This concept helps us visualize wave behavior, understand phase relationships, and provides insight into real-world applications such as sound waves, electromagnetic waves, and water ripples.</p>
-<h3 id="task-breakdown">Task Breakdown:</h3>
-<h4 id="1-select-a-regular-polygon">1. <em>Select a Regular Polygon:</em></h4>
-<p>We begin by selecting a regular polygon (for example, an equilateral triangle, square, or pentagon) where point sources of waves will be placed at the vertices.</p>
-<h4 id="2-position-the-sources">2. <em>Position the Sources:</em></h4>
-<p>We then place wave sources at the vertices of the polygon, assuming that each source emits a wave with the same amplitude, wavelength, and frequency. </p>
-<h4 id="3-wave-equations">3. <em>Wave Equations:</em></h4>
-<p>Each point source emits a wave that can be described by the equation for a circular wave in the water surface. The displacement at a point <span class="arithmatex">\((x, y)\)</span> on the water surface due to a point source at <span class="arithmatex">\((x_i, y_i)\)</span> is given by:</p>
-<div class="arithmatex">\[
-\text{Displacement} = A \cos(k r - \omega t + \phi)
-\]</div>
-<p>Where:
-- <span class="arithmatex">\(A\)</span> is the amplitude,
-- <span class="arithmatex">\(k = \frac{2\pi}{\lambda}\)</span> is the wave number,
-- <span class="arithmatex">\(\lambda\)</span> is the wavelength,
-- <span class="arithmatex">\(r = \sqrt{(x - x_i)^2 + (y - y_i)^2}\)</span> is the distance from the source to the point,
-- <span class="arithmatex">\(\omega = 2\pi f\)</span> is the angular frequency,
-- <span class="arithmatex">\(f\)</span> is the frequency, and
-- <span class="arithmatex">\(\phi\)</span> is the initial phase of the wave.</p>
-<h4 id="4-superposition-of-waves">4. <em>Superposition of Waves:</em></h4>
-<p>The principle of superposition states that the total displacement at any point is the sum of the displacements from each source. Therefore, for <span class="arithmatex">\(N\)</span> sources placed at the vertices of the polygon, the total displacement is:</p>
-<div class="arithmatex">\[
-\text{Total Displacement} = \sum_{i=1}^{N} A \cos(k r_i - \omega t + \phi)
-\]</div>
-<p>Where <span class="arithmatex">\(r_i\)</span> is the distance from the <span class="arithmatex">\(i\)</span>-th source to the point <span class="arithmatex">\((x, y)\)</span>.</p>
-<h4 id="5-analyze-interference-patterns">5. <em>Analyze Interference Patterns:</em></h4>
-<p>The superimposed wave function will exhibit regions of constructive interference (where the displacements add up to amplify the wave) and destructive interference (where the displacements cancel each other out). By analyzing this, we can understand the pattern of wave interaction.</p>
-<h4 id="6-visualization">6. <em>Visualization:</em></h4>
-<p>We can visualize the interference patterns by plotting the total displacement at each point on a grid, where the x and y axes represent spatial coordinates on the water surface.</p>
+<h2 id="wave-problem-interference-of-waves-from-multiple-sources">Wave Problem: Interference of Waves from Multiple Sources</h2>
+<p><strong>Problem statement:</strong>
+- Demonstrate wave interference for one, two, and multiple sources.
+- Display the result as a heatmap and create an animation.
+- Source arrangements:
+  - One centered source,
+  - Two along the X-axis,
+  - Three placed in a triangle.
+- Plot the results and create a gif animation.</p>
+<p><strong>Method:</strong>
+- Wave equation used:<br/>
+<code>z(x, y, t) = A * sin(k * r - ω * t)</code>
+- The contribution from each source is summed.
+- Grid from -10 to 10 in both x and y.
+- Animation shows wave propagation and interference over time.</p>
+<p><strong>Result (animation):</strong></p>
+<p><img alt="alt text" src="../image-5.png"/></p>
+<p><img alt="Visit My Collab" src="../wave_interference.gif"/></p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+
+# --- Grid Setup ---
+size = 200
+x = np.linspace(-10, 10, size)
+y = np.linspace(-10, 10, size)
+X, Y = np.meshgrid(x, y)
+
+# --- Wave Function ---
+def wave_source(X, Y, x0, y0, t, wavelength=1, speed=1):
+    r = np.sqrt((X - x0)**2 + (Y - y0)**2)
+    k = 2 * np.pi / wavelength
+    omega = k * speed
+    return np.sin(k * r - omega * t) / (r + 1e-6)  # avoid division by zero
+
+# --- Source Patterns ---
+def get_sources(pattern):
+    if pattern == "one":
+        return [(0, 0)]
+    elif pattern == "two":
+        return [(-3, 0), (3, 0)]
+    elif pattern == "triangle":
+        R = 4
+        angles = np.linspace(0, 2*np.pi, 4)[:-1]
+        return [(R * np.cos(a), R * np.sin(a)) for a in angles]
+    elif pattern == "pentagon":
+        R = 5
+        angles = np.linspace(0, 2*np.pi, 6)[:-1]
+        return [(R * np.cos(a), R * np.sin(a)) for a in angles]
+
+patterns = ["one", "two", "triangle", "pentagon"]
+
+# --- Plot Setup ---
+fig, ax = plt.subplots(figsize=(6,6))
+heatmap = ax.imshow(np.zeros((size, size)), cmap='RdBu', vmin=-1, vmax=1, extent=(-10, 10, -10, 10))
+title = ax.set_title("")
+
+# --- Frame Update Function ---
+def update(frame):
+    pattern = patterns[(frame // 20) % len(patterns)]
+    t = frame % 20
+    sources = get_sources(pattern)
+    Z = sum(wave_source(X, Y, sx, sy, t) for sx, sy in sources)
+    heatmap.set_data(Z)
+    title.set_text(f"Wave Interference: {pattern.capitalize()} ({len(sources)} source{'s' if len(sources) &gt; 1 else ''})")
+    return heatmap, title
+
+# --- Create Animation ---
+ani = animation.FuncAnimation(fig, update, frames=80, interval=100, blit=False)
+
+# --- Save GIF ---
+ani.save("wave_interference.gif", writer="pillow")
+plt.close()
+print("✅ GIF saved as wave_interference.gif")
+</code></pre>
+<ul>
+<li>Left plot: one source — circular wavefronts.</li>
+<li>Middle plot: two sources — clear interference pattern.</li>
+<li>Right plot: three sources in a triangle — complex interference structure.</li>
+</ul>
 <hr/>
-<h3 id="implementation-in-python">Implementation in Python:</h3>
-<p>Below is the Python code to simulate and visualize the interference patterns caused by multiple point sources located at the vertices of a regular polygon (e.g., square). This simulation assumes that all sources emit waves with the same parameters.</p>
-<p>python
-import numpy as np
-import matplotlib.pyplot as plt</p>
-<h1 id="constants">Constants</h1>
-<p>A = 1           # Amplitude of the wave
-lambda_ = 1     # Wavelength
-f = 1           # Frequency
-omega = 2 * np.pi * f  # Angular frequency
-k = 2 * np.pi / lambda_  # Wave number
-phi = 0         # Initial phase of the wave
-radius = 5      # Radius of the circle where the sources are placed
-num_sources = 4 # Number of sources (e.g., 4 for a square)
-grid_size = 200  # Grid size for the plot (increase for higher resolution)</p>
-<h1 id="create-a-grid-of-points-x-y">Create a grid of points (x, y)</h1>
-<p>x = np.linspace(-10, 10, grid_size)
-y = np.linspace(-10, 10, grid_size)
-X, Y = np.meshgrid(x, y)</p>
-<h1 id="calculate-the-coordinates-of-the-sources-vertices-of-the-regular-polygon">Calculate the coordinates of the sources (vertices of the regular polygon)</h1>
-<p>theta = np.linspace(0, 2 * np.pi, num_sources, endpoint=False)
-source_x = radius * np.cos(theta)
-source_y = radius * np.sin(theta)</p>
-<h1 id="function-to-calculate-wave-displacement-at-a-point-x-y-due-to-a-source">Function to calculate wave displacement at a point (x, y) due to a source</h1>
-<p>def wave_displacement(x, y, source_x, source_y, A, k, omega, t, phi):
-    r = np.sqrt((x - source_x)<strong>2 + (y - source_y)</strong>2)  # Distance from the source
-    return A * np.cos(k * r - omega * t + phi)  # Wave displacement equation</p>
-<h1 id="create-a-grid-to-store-the-displacement">Create a grid to store the displacement</h1>
-<p>displacement = np.zeros_like(X)</p>
-<h1 id="time">Time</h1>
-<p>t = 0</p>
-<h1 id="calculate-the-total-displacement-due-to-all-sources-using-superposition">Calculate the total displacement due to all sources using superposition</h1>
-<p>for i in range(num_sources):
-    displacement += wave_displacement(X, Y, source_x[i], source_y[i], A, k, omega, t, phi)</p>
-<h1 id="plotting-the-interference-pattern">Plotting the interference pattern</h1>
-<p>plt.figure(figsize=(10, 8))
-plt.contourf(X, Y, displacement, cmap='twilight', levels=100)  # Contour plot with twilight colormap
-plt.colorbar(label="Wave Displacement", pad=0.01, aspect=10)  # Color bar</p>
-<h1 id="plot-sources-as-bright-markers-bigger-and-highlighted">Plot sources as bright markers (bigger and highlighted)</h1>
-<p>plt.scatter(source_x, source_y, color="yellow", edgecolors="black", s=100, label="Wave Sources", zorder=5)</p>
-<h1 id="add-title-and-labels-with-improved-font-style">Add title and labels with improved font style</h1>
-<p>plt.title("Interference Pattern on a Water Surface", fontsize=16, fontweight='bold')
-plt.xlabel("X Position (Units)", fontsize=12)
-plt.ylabel("Y Position (Units)", fontsize=12)</p>
-<h1 id="grid-and-axis-customization">Grid and axis customization</h1>
-<p>plt.grid(True, which='both', linestyle='--', linewidth=0.5, color='gray', alpha=0.7)
-plt.axhline(0, color='black',linewidth=1)
-plt.axvline(0, color='black',linewidth=1)</p>
-<h1 id="add-a-legend-with-a-customized-style">Add a legend with a customized style</h1>
-<p>plt.legend(fontsize=12, frameon=True, facecolor='white', edgecolor='black')</p>
-<h1 id="add-a-subtitle-explaining-the-plot">Add a subtitle explaining the plot</h1>
-<p>plt.figtext(0.5, 0.02, "This plot shows the interference pattern formed by waves from a regular polygon of sources.", 
-            ha="center", fontsize=12, color='darkslategray')</p>
-<h1 id="show-the-plot">Show the plot</h1>
-<p>plt.tight_layout()
-plt.show()</p>
-<p><img alt="alt text" src="image.png"/></p>
-<h3 id="key-features-of-the-code">Key Features of the Code:</h3>
-<ol>
-<li><em>Grid Creation</em>: </li>
-<li>
-<p>A mesh grid is created over a specified range of x and y values. This represents the water surface where the interference pattern will be plotted.</p>
-</li>
-<li>
-<p><em>Wave Function</em>: </p>
-</li>
-<li>The displacement due to each source is calculated based on the wave equation.</li>
-<li>
-<p>The distance between each point on the grid and the source is calculated to determine the wave displacement.</p>
-</li>
-<li>
-<p><em>Superposition</em>: </p>
-</li>
-<li>
-<p>The total wave displacement is calculated by summing the contributions from each point source.</p>
-</li>
-<li>
-<p><em>Visualization</em>: </p>
-</li>
-<li>The contourf function is used to plot the interference pattern, which is color-coded to show regions of constructive and destructive interference.</li>
-<li>
-<p>The sources are marked as yellow points for clear identification.</p>
-</li>
-<li>
-<p><em>Customization</em>:</p>
-</li>
-<li>The plot is customized with labels, grid lines, legends, and a color bar for better clarity and aesthetics.</li>
-</ol>
+<p><strong>Conclusion:</strong>
+- Orbital trajectories depend critically on initial velocity.
+- Wave interference clearly demonstrates the principle of superposition: the combination of phase and amplitude when multiple waves interact.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
