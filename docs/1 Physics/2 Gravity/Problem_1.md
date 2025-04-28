@@ -186,3 +186,49 @@ plt.show()
 ### 🔹 *Limitations*
 - *Kepler’s Law assumes circular orbits, but real orbits are **elliptical*.  
 - *External forces (e.g., other planets’ gravity) can slightly alter orbits*.  
+
+
+Got it — you want a **Markdown version** with nice formatting, clear explanations, and using **LaTeX-style** math (`$$`) for all formulas.  
+Here's the full Markdown version you can paste into Google Colab or Jupyter Notebook:
+
+---
+
+#  Using Kepler's Law to Find the Mass of the Earth and the Sun
+
+## 1. Kepler’s Third Law
+
+Rearranging the Kepler formula to find the mass \( M \):
+
+$$
+M = \frac{4\pi^2 R^3}{G T^2}
+$$
+
+---
+
+## 2. Finding the Mass of the Sun
+
+The Earth’s orbit around the Sun has:
+- Radius $R = 1.496 \times 10^{11} \, \text{m}$ (1 Astronomical Unit),
+- Period $T = 365.25 \times 24 \times 3600 \, \text{seconds}$.
+
+Substituting into the formul gives:
+
+$$
+M_{\text{sun}} \approx 1.99 \times 10^{30} \, \text{kg}
+$$
+
+✅ This matches the known value for the mass of the Sun!
+
+---
+
+## 3. Finding the Mass of the Earth
+
+The Moon orbits Earth with:
+- Radius \( R = 3.844 \times 10^{8} \, \text{m} \),
+- Period \( T = 27.32 \times 24 \times 3600 \, \text{seconds} \).
+
+Substituting into the formula:
+
+$$
+M_{\text{earth}} = \frac{4\pi^2 (3.844 \times 10^8)^3}{6.67430 \times 10^{-11} (27.32 \times 24 \times 3600)^2} \approx 5.97 \times 10^{24} \, \text{kg}
+$$
