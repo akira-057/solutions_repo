@@ -172,6 +172,88 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="electromagnetism"><strong>Electromagnetism</strong></h1>
+<h2 id="problem-1-simulation-of-the-lorentz-force"><strong>Problem 1 — Simulation of the Lorentz Force</strong></h2>
+<hr/>
+<h2 id="motivation">🌟 Motivation</h2>
+<p>The <strong>Lorentz force</strong> governs how a charged particle moves through <strong>electric</strong> and <strong>magnetic fields</strong>. Understanding this phenomenon is essential in a wide range of scientific and engineering applications:</p>
+<ul>
+<li>⚛ <strong>Particle Accelerators</strong> — Guide and speed up particles using magnetic fields.  </li>
+<li>🧪 <strong>Mass Spectrometry</strong> — Identify chemical substances by separating ions by mass and charge.  </li>
+<li>🔥 <strong>Plasma Confinement</strong> — Trap hot plasma in devices for nuclear fusion (e.g., Tokamaks).  </li>
+<li>🌌 <strong>Space Physics</strong> — Explain how charged particles (like solar wind) interact with magnetic fields in space.</li>
+</ul>
+<p>The Lorentz force is described by the equation:</p>
+<h3 id="f-qe-v-b"><strong>𝐅 = q(𝐄 + 𝐯 × 𝐁)</strong></h3>
+<p>Where:<br/>
+- <strong>𝐅</strong> — Lorentz force<br/>
+- <strong>q</strong> — Particle charge<br/>
+- <strong>𝐄</strong> — Electric field vector<br/>
+- <strong>𝐯</strong> — Particle velocity<br/>
+- <strong>𝐁</strong> — Magnetic field vector<br/>
+- <strong>×</strong> — Cross product</p>
+<hr/>
+<h2 id="1-applications-of-the-lorentz-force">⚙️ 1. Applications of the Lorentz Force</h2>
+<h3 id="real-world-examples">🧭 Real-World Examples:</h3>
+<ul>
+<li><strong>Cyclotrons</strong> use magnetic fields to spiral particles at high speeds.</li>
+<li><strong>Mass spectrometers</strong> rely on Lorentz force to sort ions.</li>
+<li><strong>Fusion reactors</strong> contain plasma using powerful magnetic traps.</li>
+<li><strong>Satellites and space probes</strong> analyze particle motion in Earth’s magnetosphere.</li>
+</ul>
+<h3 id="roles-of-fields">🔍 Roles of Fields:</h3>
+<ul>
+<li><strong>Electric field (𝐄)</strong> accelerates or slows the particle.  </li>
+<li><strong>Magnetic field (𝐁)</strong> bends the trajectory, causing circular or spiral paths.</li>
+</ul>
+<hr/>
+<h2 id="2-simulating-particle-motion">🧮 2. Simulating Particle Motion</h2>
+<p>We will explore different field configurations:</p>
+<ul>
+<li><strong>Only Magnetic Field</strong> </li>
+<li><strong>Parallel Electric and Magnetic Fields</strong> </li>
+<li><strong>Perpendicular (Crossed) Fields</strong></li>
+</ul>
+<p>To simulate motion, we’ll use <strong>numerical methods</strong> like the <strong>Euler method</strong> to compute the particle’s trajectory step by step.</p>
+<hr/>
+<h2 id="3-parameters-to-explore">🎛 3. Parameters to Explore</h2>
+<p>To understand the system behavior, we’ll vary the following:</p>
+<ul>
+<li>🔌 <strong>Electric Field Strength (𝐄)</strong> </li>
+<li>🧲 <strong>Magnetic Field Strength (𝐁)</strong> </li>
+<li>🚀 <strong>Initial Velocity (𝐯)</strong> </li>
+<li>⚡ <strong>Charge (q)</strong> </li>
+<li>⚖️ <strong>Mass (m)</strong></li>
+</ul>
+<p>These parameters affect:</p>
+<ul>
+<li>The <strong>radius</strong> of circular motion  </li>
+<li>The <strong>drift speed</strong> of the particle in crossed fields  </li>
+<li>The <strong>acceleration or deflection</strong> of the path</li>
+</ul>
+<hr/>
+<h2 id="4-visualization">📈 4. Visualization</h2>
+<p>We'll build <strong>2D and 3D plots</strong> of particle trajectories to visualize motion under various conditions.</p>
+<h3 id="key-physical-quantities">✨ Key Physical Quantities:</h3>
+<ul>
+<li>
+<p><strong>Larmor Radius</strong> (circular orbit in magnetic field):<br/>
+  [
+  r = <span class="arithmatex">\(\frac{m \cdot v}{q \cdot B}\)</span>
+  ]</p>
+</li>
+<li>
+<p><strong>Drift Velocity</strong> in crossed electric and magnetic fields:<br/>
+  [
+  <span class="arithmatex">\(\vec{v}_{\text{drift}} = \frac{\vec{E} \times \vec{B}}{B^2}\)</span>
+  ]</p>
+</li>
+</ul>
+<p>These plots will illustrate how particles spiral, drift, and accelerate depending on the field setup.</p>
+<hr/>
+<p><img alt="alt text" src="../image.png"/></p>
+<p><img alt="alt text" src="../image-1.png"/></p>
+<p><a href="https://colab.research.google.com/drive/1sFJ5APtXlwNWeYUIvaAIGCzSz6Js5_gf#scrollTo=yQyUvuFT1zkR">Visit My Collab</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
