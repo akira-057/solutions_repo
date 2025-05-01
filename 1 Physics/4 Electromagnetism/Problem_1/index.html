@@ -253,7 +253,160 @@
 <hr/>
 <p><img alt="alt text" src="../image.png"/></p>
 <p><img alt="alt text" src="../image-1.png"/></p>
+<h2 id="discussion-of-results">🧪 Discussion of Results</h2>
+<hr/>
+<h3 id="trajectory-shape">🔄 <strong>Trajectory Shape</strong></h3>
+<p>The particle moves in a <strong>circular path</strong> within a plane <strong>perpendicular</strong> to the magnetic field.<br/>
+This is characteristic motion observed in devices like <strong>cyclotrons</strong> and <strong>mass spectrometers</strong>.</p>
+<hr/>
+<h3 id="no-electric-field">⚡ <strong>No Electric Field</strong></h3>
+<p>We set the electric field to <strong>𝐄 = 0</strong>,<br/>
+so there is <strong>no acceleration</strong> along the field direction —<br/>
+the particle <strong>only rotates</strong> in response to the magnetic field.</p>
+<hr/>
+<h3 id="physical-interpretation">🧠 <strong>Physical Interpretation</strong></h3>
+<p>The <strong>radius</strong> of the circular trajectory depends on the particle's:</p>
+<ul>
+<li><strong>velocity (v)</strong></li>
+<li><strong>mass (m)</strong></li>
+<li><strong>charge (q)</strong></li>
+<li><strong>magnetic field strength (B)</strong></li>
+</ul>
+<p>It is given by the formula:</p>
+<div class="arithmatex">\[
+$ r = \frac{m \cdot v}{q \cdot B} $
+\]</div>
+<p>This type of motion is utilized in a <strong>cyclotron</strong>,<br/>
+where the magnetic field bends the trajectory into a spiral,<br/>
+allowing for <strong>gradual acceleration</strong> of particles.</p>
+<hr/>
 <p><a href="https://colab.research.google.com/drive/1sFJ5APtXlwNWeYUIvaAIGCzSz6Js5_gf#scrollTo=yQyUvuFT1zkR">Visit My Collab</a></p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Настройки начальных параметров
+q = 1.0    # заряд (Кл)
+m = 1.0    # масса (кг)
+v0 = np.array([1.0, 0.0, 0.0])  # начальная скорость (м/с)
+E = np.array([0.0, 0.0, 0.0])   # электрическое поле (В/м)
+B = np.array([0.0, 0.0, 1.0])   # магнитное поле (Тл)
+dt = 0.01                       # шаг по времени (с)
+T = 20                          # общее время симуляции (с)
+steps = int(T / dt)
+
+# Инициализация массивов
+r = np.zeros((steps, 3))  # координаты
+v = np.zeros((steps, 3))  # скорости
+r[0] = [0.0, 0.0, 0.0]
+v[0] = v0
+
+# Метод Эйлера для расчета траектории
+for i in range(steps - 1):
+    F = q * (E + np.cross(v[i], B))
+    a = F / m
+    v[i + 1] = v[i] + a * dt
+    r[i + 1] = r[i] + v[i] * dt
+
+# --- ВИЗУАЛИЗАЦИЯ ---
+
+# 2D график
+plt.figure(figsize=(8, 6))
+plt.plot(r[:, 0], r[:, 1])
+plt.title("2D траектория в магнитном поле (XY-плоскость)")
+plt.xlabel("x (м)")
+plt.ylabel("y (м)")
+plt.grid(True)
+plt.axis("equal")
+plt.show()
+
+# 3D график
+fig = plt.figure(figsize=(10, 7))
+ax = fig.add_subplot(111, projection='3d')
+ax.plot(r[:, 0], r[:, 1], r[:, 2])
+ax.set_title("3D траектория частицы")
+ax.set_xlabel("x (м)")
+ax.set_ylabel("y (м)")
+ax.set_zlabel("z (м)")
+plt.show()
+</code></pre>
+<hr/>
+<p><img alt="alt text" src="../image-2.png"/></p>
+<p><img alt="alt text" src="../image-3.png"/></p>
+<h2 id="analysis-of-results">🔍 Analysis of Results</h2>
+<hr/>
+<h3 id="type-of-motion">🌀 <strong>Type of Motion</strong></h3>
+<p>The particle follows a <strong>drift trajectory</strong>,<br/>
+where <strong>circular motion</strong> is superimposed on a <strong>linear motion</strong> along the <strong>X-axis</strong>.<br/>
+This is a classic example of <strong>𝐄 × 𝐁 drift</strong>.</p>
+<hr/>
+<h3 id="drift-velocity-theoretical-calculation">⚙️ <strong>Drift Velocity — Theoretical Calculation</strong></h3>
+<p>The drift velocity is given by:</p>
+<div class="arithmatex">\[
+$\vec{v}_{\text{drift}} = \frac{\vec{E} \times \vec{B}}{B^2}
+$ \]</div>
+<p>Given:
+- <strong>𝐄 = [0, 1, 0]</strong><br/>
+- <strong>𝐁 = [0, 0, 1]</strong></p>
+<p>Then:</p>
+<div class="arithmatex">\[
+$ \vec{v}_{\text{drift}} = \frac{[1, 0, 0]}{1^2} = [1, 0, 0]
+$ \]</div>
+<p>✅ <strong>Result:</strong><br/>
+The particle drifts along the <strong>X-axis</strong> with a constant velocity.</p>
+<hr/>
+<h3 id="practical-significance">🧩 <strong>Practical Significance</strong></h3>
+<p>This <strong>𝐄 × 𝐁 drift</strong> effect is widely used in:</p>
+<ul>
+<li><strong>Plasma physics</strong> — to control plasma behavior in <strong>magnetic confinement systems</strong></li>
+<li><strong>Magnetic traps</strong> — for confining charged particles</li>
+<li><strong>Beam control</strong> — in devices requiring precise particle guidance</li>
+</ul>
+<p>It is a key mechanism in systems such as <strong>fusion reactors</strong>, <strong>mass filters</strong>, and <strong>charged particle beams</strong>.</p>
+<hr/>
+<p><a href="https://colab.research.google.com/drive/1sFJ5APtXlwNWeYUIvaAIGCzSz6Js5_gf#scrollTo=yQyUvuFT1zkR">Visit my collab</a></p>
+<pre><code class="language-python"># Новый сценарий: перекрёстные электрическое и магнитное поля (E ⊥ B)
+
+# Новые параметры полей
+E = np.array([0.0, 1.0, 0.0])   # электрическое поле вдоль Y
+B = np.array([0.0, 0.0, 1.0])   # магнитное поле вдоль Z
+v0 = np.array([1.0, 0.0, 0.0])  # начальная скорость вдоль X
+
+# Инициализация массивов
+r_cross = np.zeros((steps, 3))  # координаты
+v_cross = np.zeros((steps, 3))  # скорости
+r_cross[0] = [0.0, 0.0, 0.0]
+v_cross[0] = v0
+
+# Симуляция
+for i in range(steps - 1):
+    F = q * (E + np.cross(v_cross[i], B))
+    a = F / m
+    v_cross[i + 1] = v_cross[i] + a * dt
+    r_cross[i + 1] = r_cross[i] + v_cross[i] * dt
+
+# --- ВИЗУАЛИЗАЦИЯ ПЕРЕКРЁСТНЫХ ПОЛЕЙ ---
+
+# 2D график (XY-плоскость)
+plt.figure(figsize=(8, 6))
+plt.plot(r_cross[:, 0], r_cross[:, 1])
+plt.title("2D траектория в перекрёстных полях (E ⊥ B)")
+plt.xlabel("x (м)")
+plt.ylabel("y (м)")
+plt.grid(True)
+plt.axis("equal")
+plt.show()
+
+# 3D график
+fig = plt.figure(figsize=(10, 7))
+ax = fig.add_subplot(111, projection='3d')
+ax.plot(r_cross[:, 0], r_cross[:, 1], r_cross[:, 2])
+ax.set_title("3D траектория частицы в перекрёстных полях")
+ax.set_xlabel("x (м)")
+ax.set_ylabel("y (м)")
+ax.set_zlabel("z (м)")
+plt.show()
+</code></pre>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
