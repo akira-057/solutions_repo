@@ -96,4 +96,196 @@ These plots will illustrate how particles spiral, drift, and accelerate dependin
 
 ![alt text](image-1.png)
 
+## 🧪 Discussion of Results
+
+---
+
+### 🔄 **Trajectory Shape**
+
+The particle moves in a **circular path** within a plane **perpendicular** to the magnetic field.  
+This is characteristic motion observed in devices like **cyclotrons** and **mass spectrometers**.
+
+---
+
+### ⚡ **No Electric Field**
+
+We set the electric field to **𝐄 = 0**,  
+so there is **no acceleration** along the field direction —  
+the particle **only rotates** in response to the magnetic field.
+
+---
+
+### 🧠 **Physical Interpretation**
+
+The **radius** of the circular trajectory depends on the particle's:
+
+- **velocity (v)**
+- **mass (m)**
+- **charge (q)**
+- **magnetic field strength (B)**
+
+It is given by the formula:
+
+\[
+$ r = \frac{m \cdot v}{q \cdot B} $
+\]
+
+This type of motion is utilized in a **cyclotron**,  
+where the magnetic field bends the trajectory into a spiral,  
+allowing for **gradual acceleration** of particles.
+
+---
+
+
 [Visit My Collab](https://colab.research.google.com/drive/1sFJ5APtXlwNWeYUIvaAIGCzSz6Js5_gf#scrollTo=yQyUvuFT1zkR)
+
+
+``` python
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Настройки начальных параметров
+q = 1.0    # заряд (Кл)
+m = 1.0    # масса (кг)
+v0 = np.array([1.0, 0.0, 0.0])  # начальная скорость (м/с)
+E = np.array([0.0, 0.0, 0.0])   # электрическое поле (В/м)
+B = np.array([0.0, 0.0, 1.0])   # магнитное поле (Тл)
+dt = 0.01                       # шаг по времени (с)
+T = 20                          # общее время симуляции (с)
+steps = int(T / dt)
+
+# Инициализация массивов
+r = np.zeros((steps, 3))  # координаты
+v = np.zeros((steps, 3))  # скорости
+r[0] = [0.0, 0.0, 0.0]
+v[0] = v0
+
+# Метод Эйлера для расчета траектории
+for i in range(steps - 1):
+    F = q * (E + np.cross(v[i], B))
+    a = F / m
+    v[i + 1] = v[i] + a * dt
+    r[i + 1] = r[i] + v[i] * dt
+
+# --- ВИЗУАЛИЗАЦИЯ ---
+
+# 2D график
+plt.figure(figsize=(8, 6))
+plt.plot(r[:, 0], r[:, 1])
+plt.title("2D траектория в магнитном поле (XY-плоскость)")
+plt.xlabel("x (м)")
+plt.ylabel("y (м)")
+plt.grid(True)
+plt.axis("equal")
+plt.show()
+
+# 3D график
+fig = plt.figure(figsize=(10, 7))
+ax = fig.add_subplot(111, projection='3d')
+ax.plot(r[:, 0], r[:, 1], r[:, 2])
+ax.set_title("3D траектория частицы")
+ax.set_xlabel("x (м)")
+ax.set_ylabel("y (м)")
+ax.set_zlabel("z (м)")
+plt.show()
+```
+--- 
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)
+
+## 🔍 Analysis of Results
+
+---
+
+### 🌀 **Type of Motion**
+
+The particle follows a **drift trajectory**,  
+where **circular motion** is superimposed on a **linear motion** along the **X-axis**.  
+This is a classic example of **𝐄 × 𝐁 drift**.
+
+---
+
+### ⚙️ **Drift Velocity — Theoretical Calculation**
+
+The drift velocity is given by:
+
+\[
+$\vec{v}_{\text{drift}} = \frac{\vec{E} \times \vec{B}}{B^2}
+$ \]
+
+Given:
+- **𝐄 = [0, 1, 0]**  
+- **𝐁 = [0, 0, 1]**
+
+Then:
+
+\[
+$ \vec{v}_{\text{drift}} = \frac{[1, 0, 0]}{1^2} = [1, 0, 0]
+$ \]
+
+✅ **Result:**  
+The particle drifts along the **X-axis** with a constant velocity.
+
+---
+
+### 🧩 **Practical Significance**
+
+This **𝐄 × 𝐁 drift** effect is widely used in:
+
+- **Plasma physics** — to control plasma behavior in **magnetic confinement systems**
+- **Magnetic traps** — for confining charged particles
+- **Beam control** — in devices requiring precise particle guidance
+
+It is a key mechanism in systems such as **fusion reactors**, **mass filters**, and **charged particle beams**.
+
+---
+
+
+[Visit my collab](https://colab.research.google.com/drive/1sFJ5APtXlwNWeYUIvaAIGCzSz6Js5_gf#scrollTo=yQyUvuFT1zkR)
+
+``` python
+# Новый сценарий: перекрёстные электрическое и магнитное поля (E ⊥ B)
+
+# Новые параметры полей
+E = np.array([0.0, 1.0, 0.0])   # электрическое поле вдоль Y
+B = np.array([0.0, 0.0, 1.0])   # магнитное поле вдоль Z
+v0 = np.array([1.0, 0.0, 0.0])  # начальная скорость вдоль X
+
+# Инициализация массивов
+r_cross = np.zeros((steps, 3))  # координаты
+v_cross = np.zeros((steps, 3))  # скорости
+r_cross[0] = [0.0, 0.0, 0.0]
+v_cross[0] = v0
+
+# Симуляция
+for i in range(steps - 1):
+    F = q * (E + np.cross(v_cross[i], B))
+    a = F / m
+    v_cross[i + 1] = v_cross[i] + a * dt
+    r_cross[i + 1] = r_cross[i] + v_cross[i] * dt
+
+# --- ВИЗУАЛИЗАЦИЯ ПЕРЕКРЁСТНЫХ ПОЛЕЙ ---
+
+# 2D график (XY-плоскость)
+plt.figure(figsize=(8, 6))
+plt.plot(r_cross[:, 0], r_cross[:, 1])
+plt.title("2D траектория в перекрёстных полях (E ⊥ B)")
+plt.xlabel("x (м)")
+plt.ylabel("y (м)")
+plt.grid(True)
+plt.axis("equal")
+plt.show()
+
+# 3D график
+fig = plt.figure(figsize=(10, 7))
+ax = fig.add_subplot(111, projection='3d')
+ax.plot(r_cross[:, 0], r_cross[:, 1], r_cross[:, 2])
+ax.set_title("3D траектория частицы в перекрёстных полях")
+ax.set_xlabel("x (м)")
+ax.set_ylabel("y (м)")
+ax.set_zlabel("z (м)")
+plt.show()
+```
