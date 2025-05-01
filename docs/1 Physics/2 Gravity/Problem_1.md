@@ -22,7 +22,7 @@ By deriving and simulating this relationship, we gain insight into the governing
 For a body in *circular orbit* around a much larger mass (e.g., a planet around a star), the *gravitational force* provides the necessary *centripetal force*:
 
 \[
-F_{\text{gravity}} = F_{\text{centripetal}}
+$F_{\text{gravity}} = F_{\text{centripetal}}$
 \]
 
 ---
@@ -30,11 +30,11 @@ F_{\text{gravity}} = F_{\text{centripetal}}
 ## 🔹 Newton’s Law of Gravitation
 
 \[
-F_{\text{gravity}} = \frac{G M m}{r^2}
+$F_{\text{gravity}} = \frac{G M m}{r^2}$
 \]
 
 Where:
-- \( G \) = Gravitational constant \( (6.674 \times 10^{-11} \, \text{m}^3 \, \text{kg}^{-1} \, \text{s}^{-2}) \)
+- \( G \) = Gravitational constant \( $(6.674 \times 10^{-11} \, \text{m}^3 \, \text{kg}^{-1} \, \text{s}^{-2}) $\)
 - \( M \) = Mass of the central body (e.g., Sun, Earth)
 - \( m \) = Mass of the orbiting body
 - \( r \) = Orbital radius
@@ -44,19 +44,19 @@ Where:
 ## 🔹 Centripetal Force
 
 \[
-F_{\text{centripetal}} = \frac{m v^2}{r}
+$F_{\text{centripetal}} = \frac{m v^2}{r}$
 \]
 
 Equating both forces:
 
 \[
-\frac{G M m}{r^2} = \frac{m v^2}{r}
+$\frac{G M m}{r^2} = \frac{m v^2}{r}$
 \]
 
 Cancel \( m \), and solve for \( v \):
 
 \[
-v = \sqrt{\frac{G M}{r}}
+v = $\sqrt{\frac{G M}{r}}$
 \]
 
 ---
@@ -66,13 +66,13 @@ v = \sqrt{\frac{G M}{r}}
 The orbital period \( T \) is the time to complete one full orbit:
 
 \[
-T = \frac{2\pi r}{v}
+T = $\frac{2\pi r}{v}$
 \]
 
 Substitute velocity:
 
 \[
-T = \frac{2\pi r}{\sqrt{\frac{G M}{r}}} = 2\pi \sqrt{\frac{r^3}{G M}}
+T = $\frac{2\pi r}{\sqrt{\frac{G M}{r}}} = 2\pi \sqrt{\frac{r^3}{G M}}$
 \]
 
 ---
@@ -80,13 +80,13 @@ T = \frac{2\pi r}{\sqrt{\frac{G M}{r}}} = 2\pi \sqrt{\frac{r^3}{G M}}
 ## ✅ **Kepler’s Third Law (Final Form)**
 
 \[
-T^2 = \frac{4\pi^2}{G M} r^3
+T^2 = $\frac{4\pi^2}{G M} r^3$
 \]
 
 This shows:
 
 \[
-T^2 \propto r^3
+T^2 $\propto r^3$
 \]
 
 ---
@@ -112,7 +112,7 @@ T^2 \propto r^3
 If we take *Earth’s orbit* as a reference (\( r = 1 \) AU, \( T = 1 \) year), then for any planet:  
 
 \[
-\frac{T_{\text{planet}}^2}{r_{\text{planet}}^3} \approx 1
+$\frac{T_{\text{planet}}^2}{r_{\text{planet}}^3} \approx 1$
 \]
 
 This relationship helps predict unknown orbital parameters of newly discovered planets.

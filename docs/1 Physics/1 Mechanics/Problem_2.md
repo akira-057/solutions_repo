@@ -20,21 +20,21 @@ This system is crucial for understanding:
 The forced damped pendulum follows the nonlinear differential equation:
 
 \[
-\ddot{\theta} + \gamma \dot{\theta} + \omega_0^2 \sin\theta = A \cos(\omega t)
-\]
+ $ \ddot{\theta} + \gamma \dot{\theta} + \omega_0^2 \sin\theta = A \cos(\omega t)
+$ \]
 
 where:  
-- \( \theta \) = angular displacement  
-- \( \gamma \) = damping coefficient  
-- \( \omega_0 \) = natural frequency of the pendulum (\( \omega_0 = \sqrt{\frac{g}{L}} \))  
-- \( A \) = amplitude of the external driving force  
-- \( \omega \) = driving frequency  
+- \($ \theta $\) = angular displacement  
+- \($ \gamma $\) = damping coefficient  
+- \($ \omega_0$ \) = natural frequency of the pendulum (\($ \omega_0 = \sqrt{\frac{g}{L}} $\))  
+- \($ A $\) = amplitude of the external driving force  
+- \($ \omega $\) = driving frequency  
 
-For *small angles* (\( \theta \approx \sin\theta \)), the equation simplifies to:  
+For *small angles* (\($ \theta \approx \sin\theta $\)), the equation simplifies to:  
 
 \[
-\ddot{\theta} + \gamma \dot{\theta} + \omega_0^2 \theta = A \cos(\omega t)
-\]
+$ \ddot{\theta} + \gamma \dot{\theta} + \omega_0^2 \theta = A \cos(\omega t)
+$ \]
 
 which resembles the equation of a *driven damped harmonic oscillator*.  
 
@@ -42,11 +42,11 @@ which resembles the equation of a *driven damped harmonic oscillator*.
 
 ### 📌 *Resonance Condition*  
 
-Resonance occurs when the *driving frequency* \( \omega \) matches the *natural frequency* \( \omega_0 \), leading to maximum energy absorption and large oscillations:
+Resonance occurs when the *driving frequency* \($ \omega $\) matches the *natural frequency* \($ \omega_0 $\), leading to maximum energy absorption and large oscillations:
 
 \[
-\omega_{\text{res}} \approx \sqrt{\omega_0^2 - \frac{\gamma^2}{4}}
-\]
+$ \omega_{\text{res}} \approx \sqrt{\omega_0^2 - \frac{\gamma^2}{4}}
+$ \]
 
 At resonance, even small driving forces can produce large oscillations, which is crucial in *mechanical engineering and structural safety*.
 
@@ -54,17 +54,17 @@ At resonance, even small driving forces can produce large oscillations, which is
 
 ## 📊 *2. Analysis of Dynamics*  
 
-### 🔹 *Effect of Damping (\( \gamma \))*
+### 🔹 *Effect of Damping (\($ \gamma $\))*
 - *Low damping:* The pendulum exhibits large oscillations and resonance.  
 - *High damping:* The system stabilizes quickly with reduced oscillations.  
 
-### 🔹 *Effect of Driving Amplitude (\( A \))*
+### 🔹 *Effect of Driving Amplitude (\($ A $\))*
 - *Low amplitude:* The pendulum undergoes periodic motion.  
 - *High amplitude:* The system transitions into *chaotic motion* for certain frequencies.  
 
-### 🔹 *Effect of Driving Frequency (\( \omega \))*
-- When \( \omega \approx \omega_0 \), *resonance* occurs.  
-- When \( \omega \) is far from \( \omega_0 \), the response is weak.  
+### 🔹 *Effect of Driving Frequency (\($ \omega $\))*
+- When \( $\omega \approx \omega_0 $\), *resonance* occurs.  
+- When \($ \omega $\) is far from \($ \omega_0 $\), the response is weak.  
 - *Nonlinear behavior* emerges at certain parameter values, leading to chaos.  
 
 ---

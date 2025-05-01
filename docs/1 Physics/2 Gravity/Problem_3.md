@@ -48,12 +48,12 @@ A payload has two key types of energy:
 
 - **Kinetic Energy** (moving):  
 \[
-KE = \frac{1}{2}mv^2
+$ KE = \frac{1}{2}mv^2 $
 \]
 
 - **Gravitational Potential Energy**:  
 \[
-PE = -\frac{G M m}{r}
+$ PE = -\frac{G M m}{r} $
 \]
 
 > The total energy determines the shape of the trajectory.
@@ -95,13 +95,13 @@ PE = -\frac{G M m}{r}
 The speed needed to leave Earth without falling back:
 
 \[
-v_{escape} = \sqrt{\frac{2GM}{r}}
+$ v_{escape} = \sqrt{\frac{2GM}{r}} $
 \]
 
 At sea level:
 
 \[
-v_{escape} \approx 11.2 \text{ km/s}
+$ v_{escape} \approx 11.2 \text{ km/s} $
 \]
 
 ---
@@ -114,19 +114,19 @@ To simulate motion step-by-step:
 2. At each time step:
     - Compute the gravitational force:
       \[
-      F = \frac{G M m}{r^2}
+      $ F = \frac{G M m}{r^2} $
       \]
     - Calculate acceleration:  
       \[
-      a = \frac{F}{m}
+      $ a = \frac{F}{m} $
       \]
     - Update velocity:  
       \[
-      v_{new} = v + a \cdot \Delta t
+      $ v_{new} = v + a \cdot \Delta t $
       \]
     - Update position:  
       \[
-      r_{new} = r + v \cdot \Delta t
+      $ r_{new} = r + v \cdot \Delta t $
       \]
 3. Repeat to track the trajectory shape (circular, elliptical, parabolic, hyperbolic)
 

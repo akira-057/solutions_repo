@@ -12,26 +12,26 @@ Projectile motion appears simple, yet it encapsulates deep physical principles. 
 
 ### 📜 *Equations of Motion*  
 
-A projectile launched with an initial velocity \( v_0 \) at an angle \( \theta \) follows a *parabolic* trajectory under the influence of gravity. We derive its motion using Newton's laws.
+A projectile launched with an initial velocity \($ v_0 $\) at an angle \($ \theta$ \) follows a *parabolic* trajectory under the influence of gravity. We derive its motion using Newton's laws.
 
 #### 🔹 *Horizontal Motion*
 Since there is no acceleration in the horizontal direction (assuming no air resistance), the velocity remains constant
 
 \[
-x(t) = v_0 \cos\theta \cdot t
+$ x(t) = v_0 \cos\theta \cdot t $
 \]
 
 #### 🔹 *Vertical Motion*
-The vertical motion is governed by constant acceleration due to gravity \( g \):
+The vertical motion is governed by constant acceleration due to gravity \($ g \):
 
 \[
-y(t) = v_0 \sin\theta \cdot t - \frac{1}{2} g t^2
+$ y(t) = v_0 \sin\theta \cdot t - \frac{1}{2} g t^2 $
 \]
 
-The projectile reaches the ground when \( y = 0 \), solving for \( t \):
+The projectile reaches the ground when \($ y = 0 $\), solving for \($ t $\):
 
 \[
-t_f = \frac{2 v_0 \sin\theta}{g}
+$ t_f = \frac{2 v_0 \sin\theta}{g} $
 \]
 
 This is the total *time of flight*.
@@ -40,37 +40,36 @@ This is the total *time of flight*.
 
 ## 📏 *2. Analysis of the Range*  
 
-The *range* \( R \) is the horizontal distance covered by the projectile when it lands:
+The *range* \($ R \) is the horizontal distance covered by the projectile when it lands:
 
 \[
-R = x(t_f) = v_0 \cos\theta \cdot \frac{2 v_0 \sin\theta}{g}
-\]
+$ R = x(t_f) = v_0 \cos\theta \cdot \frac{2 v_0 \sin\theta}{g} $\]
 
-Using the identity \( 2\sin\theta\cos\theta = \sin 2\theta \), we get:
+Using the identity \($ 2\sin\theta\cos\theta = \sin 2\theta $\), we get:
 
 \[
-R = \frac{v_0^2}{g} \sin 2\theta
+R = $\frac{v_0^2}{g} \sin 2\theta $
 \]
 
 ### 📌 *Key Observations:*
 1. *Maximum Range:*  
-   The range is maximized when \( \sin 2\theta = 1 \), i.e., \( 2\theta = 90^\circ \) → *\( \theta = 45^\circ \)*.
+   The range is maximized when \($ \sin 2\theta = 1 $\), i.e., \($ 2\theta = 90^\circ $\) → *\($ \theta = 45^\circ $\)*.
 
 2. *Symmetry:*  
-   The function \( R(\theta) \) is *symmetric* around \( 45^\circ \), meaning \( R(\theta) = R(90^\circ - \theta) \).
+   The function \($ R(\theta) $\) is *symmetric* around \($ 45^\circ $\), meaning \($ R(\theta) = R(90^\circ - \theta) $\).
 
 3. *Effect of Initial Velocity:*  
-   Since \( R \propto v_0^2 \), doubling \( v_0 \) quadruples the range.
+   Since \($ R \propto v_0^2 $\), doubling \($ v_0 $\) quadruples the range.
 
 4. *Effect of Gravity:*  
-   Since \( R \propto \frac{1}{g} \), projectiles travel *farther* on planets with lower gravity (e.g., the Moon).  
+   Since \($ R \propto \frac{1}{g} $\), projectiles travel *farther* on planets with lower gravity (e.g., the Moon).  
 
 ---
 
 ## 🌎 *3. Practical Applications*  
 
 1. *Sports:*  
-   - Soccer: Kicking a ball at \( 45^\circ \) for maximum distance.  
+   - Soccer: Kicking a ball at \($ 45^\circ $\) for maximum distance.  
    - Basketball: Analyzing the optimal shooting angle.  
 
 2. *Engineering & Ballistics:*  
