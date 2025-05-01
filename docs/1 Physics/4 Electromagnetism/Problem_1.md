@@ -192,9 +192,10 @@ plt.show()
 ```
 --- 
 
-![alt text](image-2.png)
+![alt text](image-7.png)
 
-![alt text](image-3.png)
+![alt text](image-8.png)
+
 
 ## 🔍 Analysis of Results
 
@@ -247,45 +248,47 @@ It is a key mechanism in systems such as **fusion reactors**, **mass filters**, 
 [Visit my collab](https://colab.research.google.com/drive/1sFJ5APtXlwNWeYUIvaAIGCzSz6Js5_gf#scrollTo=yQyUvuFT1zkR)
 
 ``` python
-# Новый сценарий: перекрёстные электрическое и магнитное поля (E ⊥ B)
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
-# Новые параметры полей
-E = np.array([0.0, 1.0, 0.0])   # электрическое поле вдоль Y
-B = np.array([0.0, 0.0, 1.0])   # магнитное поле вдоль Z
-v0 = np.array([1.0, 0.0, 0.0])  # начальная скорость вдоль X
+# Параметры
+q = 1.6e-19        # заряд (Кл)
+m = 9.1e-31        # масса (кг)
+E = np.array([0, 1e3, 0])  # Электрическое поле (В/м)
+B = np.array([0, 0, 1])    # Магнитное поле (Тл)
+v0 = np.cross(E, B) / np.linalg.norm(B)**2  # скорость дрейфа
 
-# Инициализация массивов
-r_cross = np.zeros((steps, 3))  # координаты
-v_cross = np.zeros((steps, 3))  # скорости
-r_cross[0] = [0.0, 0.0, 0.0]
-v_cross[0] = v0
+# Временные параметры
+t_max = 1e-7
+dt = 1e-9
+t = np.arange(0, t_max, dt)
 
-# Симуляция
-for i in range(steps - 1):
-    F = q * (E + np.cross(v_cross[i], B))
-    a = F / m
-    v_cross[i + 1] = v_cross[i] + a * dt
-    r_cross[i + 1] = r_cross[i] + v_cross[i] * dt
+# Положение частицы
+x = v0[0] * t
+y = v0[1] * t
+z = v0[2] * t
 
-# --- ВИЗУАЛИЗАЦИЯ ПЕРЕКРЁСТНЫХ ПОЛЕЙ ---
+# === Построение графиков ===
+fig = plt.figure(figsize=(10, 10))
 
-# 2D график (XY-плоскость)
-plt.figure(figsize=(8, 6))
-plt.plot(r_cross[:, 0], r_cross[:, 1])
-plt.title("2D траектория в перекрёстных полях (E ⊥ B)")
-plt.xlabel("x (м)")
-plt.ylabel("y (м)")
-plt.grid(True)
-plt.axis("equal")
-plt.show()
+# --- 2D график ---
+ax1 = fig.add_subplot(2, 1, 1)
+ax1.plot(x, y, color='orange')
+ax1.set_title('2D траектория в перекрёстных полях (E ⊥ B)', fontsize=14)
+ax1.set_xlabel('x (м)')
+ax1.set_ylabel('y (м)')
+ax1.grid(True)
+ax1.axis('equal')
 
-# 3D график
-fig = plt.figure(figsize=(10, 7))
-ax = fig.add_subplot(111, projection='3d')
-ax.plot(r_cross[:, 0], r_cross[:, 1], r_cross[:, 2])
-ax.set_title("3D траектория частицы в перекрёстных полях")
-ax.set_xlabel("x (м)")
-ax.set_ylabel("y (м)")
-ax.set_zlabel("z (м)")
+# --- 3D график ---
+ax2 = fig.add_subplot(2, 1, 2, projection='3d')
+ax2.plot(x, y, z, color='orange')
+ax2.set_title('3D траектория частицы в перекрёстных полях', fontsize=14)
+ax2.set_xlabel('x (м)')
+ax2.set_ylabel('y (м)')
+ax2.set_zlabel('z (м)')
+
+plt.tight_layout()
 plt.show()
 ```
