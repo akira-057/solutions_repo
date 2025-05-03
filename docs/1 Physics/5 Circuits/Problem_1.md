@@ -26,6 +26,10 @@ $$
 
 **Visualization in Python (Colab compatible):**
 
+![alt text](image.png)
+
+[Visit My Collab](https://colab.research.google.com/drive/1mecniYSjbo6Bq1a3tsMVI_4kCshRFlPw)
+
 ```python
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -53,6 +57,11 @@ Resistors are connected between the same two nodes. Voltage is the same across t
 $$
 \frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2} + \cdots + \frac{1}{R_n}
 $$
+
+![alt text](image-1.png)
+
+[Visit My Collab](https://colab.research.google.com/drive/1FULioBWi2poCUVH18-9Xmo62p4xPh1jP)
+
 
 ``` python
 import networkx as nx
@@ -87,23 +96,29 @@ $$
 
 **Visualization:**
 
+![alt text](image-2.png)
+
+[Visit My Collab](https://colab.research.google.com/drive/156DiWMIwDqDleeHBDCWUkJEyoMFbtdbB0)
+
 ``` python
 import networkx as nx
 import matplotlib.pyplot as plt
 
+# Простая серия двух резисторов: R1=2Ω, R2=3Ω
 G = nx.Graph()
-G.add_edge("A", "B", label="2Ω")
-G.add_edge("B", "C", label="3Ω")
-G.add_edge("C", "D", label="5Ω")
-pos = {"A": (0,0), "B": (1,0), "C": (2,0), "D": (3,0)}
+G.add_edge("A", "B", label="R_1=2Ω")
+G.add_edge("B", "C", label="R_2=3Ω")
+pos = {"A": (0,0), "B": (1,0), "C": (2,0)}
 
 nx.draw_networkx_nodes(G, pos, node_color='lightblue', node_size=500)
 nx.draw_networkx_labels(G, pos)
-edge_labels = {(u, v): d['label'] for u, v, d in G.edges(data=True)}
+edges = G.edges(data=True)
+edge_labels = { (u, v):d['label'] for u,v,d in edges }
 nx.draw_networkx_edges(G, pos)
 nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
 plt.axis('off')
 plt.show()
+
 ```
 
 ## ⚡ Example 2: Simple Parallel
@@ -166,6 +181,11 @@ $$
 
 **Visualization:**
 
+![alt text](image-3.png)
+
+[Visit My Collab](https://colab.research.google.com/drive/156DiWMIwDqDleeHBDCWUkJEyoMFbtdbB#scrollTo=oLb49Gz-6c-v)
+
+
 ``` python
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -201,65 +221,6 @@ plt.show()
 
 **3. Repeat until only one edge remains → equivalent resistance.**
 
-``` python
-import networkx as nx
-import matplotlib.pyplot as plt
-
-def draw_step1():
-    G = nx.Graph()
-    G.add_edge("A", "B", label="R1")
-    G.add_edge("B", "C", label="R2")
-    G.add_edge("A", "C", label="R3")  # Параллельно R1+R2
-
-    pos = {"A": (0, 0), "B": (1, 1), "C": (2, 0)}
-    edge_labels = nx.get_edge_attributes(G, 'label')
-
-    plt.figure(figsize=(4, 4))  # Уменьшение размера графика
-    nx.draw(G, pos, with_labels=True, node_color='lightblue', node_size=500, font_weight='bold')
-    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
-    plt.title("Step 1: Initial Circuit")
-    plt.axis('off')
-    plt.show()
-
-def draw_step2():
-    G2 = nx.MultiGraph()
-    G2.add_edge("A", "C", label="R12 (R1+R2)")
-    G2.add_edge("A", "C", label="R3")
-
-    pos = {"A": (0, 0), "C": (2, 0)}
-    plt.figure(figsize=(4, 4))  # Уменьшение размера графика
-    nx.draw_networkx_nodes(G2, pos, node_color='lightblue', node_size=500)
-    nx.draw_networkx_labels(G2, pos, font_weight='bold')
-    # Рисуем две дуги для параллельных резисторов
-    nx.draw_networkx_edges(G2, pos, edgelist=[("A", "C")], connectionstyle="arc3,rad=0.2", width=2)
-    nx.draw_networkx_edges(G2, pos, edgelist=[("A", "C")], connectionstyle="arc3,rad=-0.2", width=2)
-    plt.text(1, 0.3, "R12", horizontalalignment='center', fontsize=10)
-    plt.text(1, -0.3, "R3", horizontalalignment='center', fontsize=10)
-    plt.title("Step 2: Series Combined → Parallel")
-    plt.axis('off')
-    plt.show()
-
-def draw_step3():
-    G3 = nx.Graph()
-    G3.add_edge("A", "C", label="R_eq")
-
-    pos = {"A": (0, 0), "C": (2, 0)}
-    edge_labels = nx.get_edge_attributes(G3, 'label')
-
-    plt.figure(figsize=(4, 4))  # Уменьшение размера графика
-    nx.draw(G3, pos, with_labels=True, node_color='lightblue', node_size=500, font_weight='bold')
-    nx.draw_networkx_edge_labels(G3, pos, edge_labels=edge_labels)
-    plt.title("Step 3: Final Equivalent Resistance")
-    plt.axis('off')
-    plt.show()
-
-# Вызов всех трёх шагов с отступами
-draw_step1()
-plt.subplots_adjust(hspace=0.4)  # Добавляем пространство между графиками
-draw_step2()
-plt.subplots_adjust(hspace=0.4)  # Добавляем пространство между графиками
-draw_step3()
-```
 ---
 
 ## 🧠 Conclusion
