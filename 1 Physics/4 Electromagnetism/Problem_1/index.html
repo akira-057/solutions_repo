@@ -183,230 +183,168 @@
 <li>🔥 <strong>Plasma Confinement</strong> — Trap hot plasma in devices for nuclear fusion (e.g., Tokamaks).  </li>
 <li>🌌 <strong>Space Physics</strong> — Explain how charged particles (like solar wind) interact with magnetic fields in space.</li>
 </ul>
-<p>The Lorentz force is described by the equation:</p>
-<h3 id="f-qe-v-b"><strong>𝐅 = q(𝐄 + 𝐯 × 𝐁)</strong></h3>
-<p>Where:<br/>
-- <strong>𝐅</strong> — Lorentz force<br/>
-- <strong>q</strong> — Particle charge<br/>
-- <strong>𝐄</strong> — Electric field vector<br/>
-- <strong>𝐯</strong> — Particle velocity<br/>
-- <strong>𝐁</strong> — Magnetic field vector<br/>
-- <strong>×</strong> — Cross product</p>
 <hr/>
-<h2 id="1-applications-of-the-lorentz-force">⚙️ 1. Applications of the Lorentz Force</h2>
-<h3 id="real-world-examples">🧭 Real-World Examples:</h3>
+<h2 id="electromagnetism-problem-lorentz-force">⚡ Electromagnetism Problem: Lorentz Force</h2>
+<h2 id="given">Given:</h2>
 <ul>
-<li><strong>Cyclotrons</strong> use magnetic fields to spiral particles at high speeds.</li>
-<li><strong>Mass spectrometers</strong> rely on Lorentz force to sort ions.</li>
-<li><strong>Fusion reactors</strong> contain plasma using powerful magnetic traps.</li>
-<li><strong>Satellites and space probes</strong> analyze particle motion in Earth’s magnetosphere.</li>
-</ul>
-<h3 id="roles-of-fields">🔍 Roles of Fields:</h3>
-<ul>
-<li><strong>Electric field (𝐄)</strong> accelerates or slows the particle.  </li>
-<li><strong>Magnetic field (𝐁)</strong> bends the trajectory, causing circular or spiral paths.</li>
+<li><strong>Charge:</strong> <span class="arithmatex">\(q = 1\ \text{C}\)</span></li>
+<li><strong>Mass:</strong> <span class="arithmatex">\(m = 1\ \text{g} = 0.001\ \text{kg}\)</span></li>
 </ul>
 <hr/>
-<h2 id="2-simulating-particle-motion">🧮 2. Simulating Particle Motion</h2>
-<p>We will explore different field configurations:</p>
-<ul>
-<li><strong>Only Magnetic Field</strong> </li>
-<li><strong>Parallel Electric and Magnetic Fields</strong> </li>
-<li><strong>Perpendicular (Crossed) Fields</strong></li>
-</ul>
-<p>To simulate motion, we’ll use <strong>numerical methods</strong> like the <strong>Euler method</strong> to compute the particle’s trajectory step by step.</p>
-<hr/>
-<h2 id="3-parameters-to-explore">🎛 3. Parameters to Explore</h2>
-<p>To understand the system behavior, we’ll vary the following:</p>
-<ul>
-<li>🔌 <strong>Electric Field Strength (𝐄)</strong> </li>
-<li>🧲 <strong>Magnetic Field Strength (𝐁)</strong> </li>
-<li>🚀 <strong>Initial Velocity (𝐯)</strong> </li>
-<li>⚡ <strong>Charge (q)</strong> </li>
-<li>⚖️ <strong>Mass (m)</strong></li>
-</ul>
-<p>These parameters affect:</p>
-<ul>
-<li>The <strong>radius</strong> of circular motion  </li>
-<li>The <strong>drift speed</strong> of the particle in crossed fields  </li>
-<li>The <strong>acceleration or deflection</strong> of the path</li>
-</ul>
-<hr/>
-<h2 id="4-visualization">📈 4. Visualization</h2>
-<p>We'll build <strong>2D and 3D plots</strong> of particle trajectories to visualize motion under various conditions.</p>
-<h3 id="key-physical-quantities">✨ Key Physical Quantities:</h3>
-<ul>
-<li>
-<p><strong>Larmor Radius</strong> (circular orbit in magnetic field):<br/>
-  [
-  r = <span class="arithmatex">\(\frac{m \cdot v}{q \cdot B}\)</span>
-  ]</p>
-</li>
-<li>
-<p><strong>Drift Velocity</strong> in crossed electric and magnetic fields:<br/>
-  [
-  <span class="arithmatex">\(\vec{v}_{\text{drift}} = \frac{\vec{E} \times \vec{B}}{B^2}\)</span>
-  ]</p>
-</li>
-</ul>
-<p>These plots will illustrate how particles spiral, drift, and accelerate depending on the field setup.</p>
-<hr/>
-<p><img alt="alt text" src="../image.png"/></p>
-<p><img alt="alt text" src="../image-1.png"/></p>
-<h2 id="discussion-of-results">🧪 Discussion of Results</h2>
-<hr/>
-<h3 id="trajectory-shape">🔄 <strong>Trajectory Shape</strong></h3>
-<p>The particle moves in a <strong>circular path</strong> within a plane <strong>perpendicular</strong> to the magnetic field.<br/>
-This is characteristic motion observed in devices like <strong>cyclotrons</strong> and <strong>mass spectrometers</strong>.</p>
-<hr/>
-<h3 id="no-electric-field">⚡ <strong>No Electric Field</strong></h3>
-<p>We set the electric field to <strong>𝐄 = 0</strong>,<br/>
-so there is <strong>no acceleration</strong> along the field direction —<br/>
-the particle <strong>only rotates</strong> in response to the magnetic field.</p>
-<hr/>
-<h3 id="physical-interpretation">🧠 <strong>Physical Interpretation</strong></h3>
-<p>The <strong>radius</strong> of the circular trajectory depends on the particle's:</p>
-<ul>
-<li><strong>velocity (v)</strong></li>
-<li><strong>mass (m)</strong></li>
-<li><strong>charge (q)</strong></li>
-<li><strong>magnetic field strength (B)</strong></li>
-</ul>
-<p>It is given by the formula:</p>
+<h2 id="1-theory-lorentz-force">1. Theory: Lorentz Force</h2>
+<p>The Lorentz force is defined as:</p>
 <div class="arithmatex">\[
-$ r = \frac{m \cdot v}{q \cdot B} $
+\vec{F} = q(\vec{E} + \vec{v} \times \vec{B})
 \]</div>
-<p>This type of motion is utilized in a <strong>cyclotron</strong>,<br/>
-where the magnetic field bends the trajectory into a spiral,<br/>
-allowing for <strong>gradual acceleration</strong> of particles.</p>
-<hr/>
-<p><a href="https://colab.research.google.com/drive/1sFJ5APtXlwNWeYUIvaAIGCzSz6Js5_gf#scrollTo=yQyUvuFT1zkR">Visit My Collab</a></p>
-<pre><code class="language-python">import numpy as np
+<p>Where:</p>
+<ul>
+<li><span class="arithmatex">\(\vec{F}\)</span> — force acting on the charge,</li>
+<li><span class="arithmatex">\(q\)</span> — charge,</li>
+<li><span class="arithmatex">\(\vec{E}\)</span> — electric field vector,</li>
+<li><span class="arithmatex">\(\vec{B}\)</span> — magnetic field vector,</li>
+<li><span class="arithmatex">\(\vec{v}\)</span> — velocity of the particle.</li>
+</ul>
+<p><img alt="alt text" src="../image-12.png"/></p>
+<p><a href="https://colab.research.google.com/drive/1Bv1xWJ2zIVPVlxB-y_DUu2DTKRkTseQx">Visit My colab</a></p>
+<pre><code class="language-python"># КРУГОВАЯ ТРАЕКТОРИЯ
+import numpy as np
+from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 
-# Настройки начальных параметров
-q = 1.0    # заряд (Кл)
-m = 1.0    # масса (кг)
-v0 = np.array([1.0, 0.0, 0.0])  # начальная скорость (м/с)
-E = np.array([0.0, 0.0, 0.0])   # электрическое поле (В/м)
-B = np.array([0.0, 0.0, 1.0])   # магнитное поле (Тл)
-dt = 0.01                       # шаг по времени (с)
-T = 20                          # общее время симуляции (с)
-steps = int(T / dt)
+# Параметры
+q = 1  # Кл
+m = 0.001  # кг
+qm = q / m
 
-# Инициализация массивов
-r = np.zeros((steps, 3))  # координаты
-v = np.zeros((steps, 3))  # скорости
-r[0] = [0.0, 0.0, 0.0]
-v[0] = v0
+# Уравнения Лоренца
+def lorentz_rhs(t, y):
+    vx, vy, vz = y[3:]
+    B = np.array([0, 0, 1])  # Магнитное поле вдоль z
+    v = np.array([vx, vy, vz])
+    dvdt = qm * np.cross(v, B)
+    return [vx, vy, vz, *dvdt]
 
-# Метод Эйлера для расчета траектории
-for i in range(steps - 1):
-    F = q * (E + np.cross(v[i], B))
-    a = F / m
-    v[i + 1] = v[i] + a * dt
-    r[i + 1] = r[i] + v[i] * dt
+# Начальные условия: положение и скорость
+y0 = [0, 0, 0, 1, 0, 0]  # v вдоль x, B вдоль z
 
-# --- ВИЗУАЛИЗАЦИЯ ---
+# Временной интервал
+t_span = (0, 0.05)
+t_eval = np.linspace(*t_span, 1000)
 
-# 2D график
-plt.figure(figsize=(8, 6))
-plt.plot(r[:, 0], r[:, 1])
-plt.title("2D траектория в магнитном поле (XY-плоскость)")
-plt.xlabel("x (м)")
-plt.ylabel("y (м)")
+# Решение ОДУ
+sol = solve_ivp(lorentz_rhs, t_span, y0, t_eval=t_eval)
+
+# График
+plt.figure(figsize=(6,6))
+plt.plot(sol.y[0], sol.y[1])
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Circular trajectory (v ⟂ B)')
+plt.axis('equal')
 plt.grid(True)
-plt.axis("equal")
-plt.show()
-
-# 3D график
-fig = plt.figure(figsize=(10, 7))
-ax = fig.add_subplot(111, projection='3d')
-ax.plot(r[:, 0], r[:, 1], r[:, 2])
-ax.set_title("3D траектория частицы")
-ax.set_xlabel("x (м)")
-ax.set_ylabel("y (м)")
-ax.set_zlabel("z (м)")
 plt.show()
 </code></pre>
 <hr/>
-<p><img alt="alt text" src="../image-7.png"/></p>
-<p><img alt="alt text" src="../image-8.png"/></p>
-<h2 id="analysis-of-results">🔍 Analysis of Results</h2>
-<hr/>
-<h3 id="type-of-motion">🌀 <strong>Type of Motion</strong></h3>
-<p>The particle follows a <strong>drift trajectory</strong>,<br/>
-where <strong>circular motion</strong> is superimposed on a <strong>linear motion</strong> along the <strong>X-axis</strong>.<br/>
-This is a classic example of <strong>𝐄 × 𝐁 drift</strong>.</p>
-<hr/>
-<h3 id="drift-velocity-theoretical-calculation">⚙️ <strong>Drift Velocity — Theoretical Calculation</strong></h3>
-<p>The drift velocity is given by:</p>
+<h2 id="2-equation-of-motion">2. Equation of Motion</h2>
+<p>From Newton's second law:</p>
 <div class="arithmatex">\[
-$\vec{v}_{\text{drift}} = \frac{\vec{E} \times \vec{B}}{B^2}
-$ \]</div>
-<p>Given:
-- <strong>𝐄 = [0, 1, 0]</strong><br/>
-- <strong>𝐁 = [0, 0, 1]</strong></p>
-<p>Then:</p>
+m \frac{d\vec{v}}{dt} = q(\vec{E} + \vec{v} \times \vec{B})
+\]</div>
+<p>Dividing both sides by mass <span class="arithmatex">\(m\)</span>:</p>
 <div class="arithmatex">\[
-$ \vec{v}_{\text{drift}} = \frac{[1, 0, 0]}{1^2} = [1, 0, 0]
-$ \]</div>
-<p>✅ <strong>Result:</strong><br/>
-The particle drifts along the <strong>X-axis</strong> with a constant velocity.</p>
-<hr/>
-<h3 id="practical-significance">🧩 <strong>Practical Significance</strong></h3>
-<p>This <strong>𝐄 × 𝐁 drift</strong> effect is widely used in:</p>
-<ul>
-<li><strong>Plasma physics</strong> — to control plasma behavior in <strong>magnetic confinement systems</strong></li>
-<li><strong>Magnetic traps</strong> — for confining charged particles</li>
-<li><strong>Beam control</strong> — in devices requiring precise particle guidance</li>
-</ul>
-<p>It is a key mechanism in systems such as <strong>fusion reactors</strong>, <strong>mass filters</strong>, and <strong>charged particle beams</strong>.</p>
-<hr/>
-<p><a href="https://colab.research.google.com/drive/1sFJ5APtXlwNWeYUIvaAIGCzSz6Js5_gf#scrollTo=yQyUvuFT1zkR">Visit my collab</a></p>
-<pre><code class="language-python">import numpy as np
+\frac{d\vec{v}}{dt} = \frac{q}{m}(\vec{E} + \vec{v} \times \vec{B})
+\]</div>
+<p><img alt="alt text" src="../image-13.png"/></p>
+<p><a href="https://colab.research.google.com/drive/1yGPCk_v0ouBSo2W5vaFOOQtDYtBwbxed">Visit My Colab</a></p>
+<pre><code class="language-python"># СПИРАЛЬНАЯ ТРАЕКТОРИЯ ВДОЛЬ Z
+import numpy as np
+from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-# Параметры
-q = 1.6e-19        # заряд (Кл)
-m = 9.1e-31        # масса (кг)
-E = np.array([0, 1e3, 0])  # Электрическое поле (В/м)
-B = np.array([0, 0, 1])    # Магнитное поле (Тл)
-v0 = np.cross(E, B) / np.linalg.norm(B)**2  # скорость дрейфа
+q = 1  # Кл
+m = 0.001  # кг
+qm = q / m
 
-# Временные параметры
-t_max = 1e-7
-dt = 1e-9
-t = np.arange(0, t_max, dt)
+def lorentz_rhs(t, y):
+    vx, vy, vz = y[3:]
+    B = np.array([0, 0, 1])  # B вдоль z
+    v = np.array([vx, vy, vz])
+    dvdt = qm * np.cross(v, B)
+    return [vx, vy, vz, *dvdt]
 
-# Положение частицы
-x = v0[0] * t
-y = v0[1] * t
-z = v0[2] * t
+y0 = [0, 0, 0, 1, 0, 1]  # v по x и по z
 
-# === Построение графиков ===
-fig = plt.figure(figsize=(10, 10))
+t_span = (0, 0.1)
+t_eval = np.linspace(*t_span, 1000)
 
-# --- 2D график ---
-ax1 = fig.add_subplot(2, 1, 1)
-ax1.plot(x, y, color='orange')
-ax1.set_title('2D траектория в перекрёстных полях (E ⊥ B)', fontsize=14)
-ax1.set_xlabel('x (м)')
-ax1.set_ylabel('y (м)')
-ax1.grid(True)
-ax1.axis('equal')
+sol = solve_ivp(lorentz_rhs, t_span, y0, t_eval=t_eval)
 
-# --- 3D график ---
-ax2 = fig.add_subplot(2, 1, 2, projection='3d')
-ax2.plot(x, y, z, color='orange')
-ax2.set_title('3D траектория частицы в перекрёстных полях', fontsize=14)
-ax2.set_xlabel('x (м)')
-ax2.set_ylabel('y (м)')
-ax2.set_zlabel('z (м)')
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.plot(sol.y[0], sol.y[1], sol.y[2])
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+ax.set_title('Spiral along the axis z')
+plt.show()
+</code></pre>
+<hr/>
+<h2 id="3-python-simulation-scenarios">3. Python Simulation (Scenarios)</h2>
+<p>We implement three scenarios to observe the resulting particle trajectories:</p>
+<h3 id="a-circular-trajectory">a. Circular Trajectory</h3>
+<p><strong>Conditions:</strong>
+- <span class="arithmatex">\(\vec{E} = 0\)</span>
+- <span class="arithmatex">\(\vec{B} = (0, 0, B)\)</span> (along the <span class="arithmatex">\(z\)</span>-axis)
+- Initial velocity: <span class="arithmatex">\(\vec{v}_0 = (v, 0, 0)\)</span></p>
+<p><strong>Expected result:</strong> Circular motion in the <span class="arithmatex">\(xy\)</span>-plane.</p>
+<hr/>
+<h3 id="b-spiral-along-the-z-axis">b. Spiral Along the Z-axis</h3>
+<p><strong>Conditions:</strong>
+- <span class="arithmatex">\(\vec{E} = 0\)</span>
+- <span class="arithmatex">\(\vec{B} = (0, 0, B)\)</span>
+- Initial velocity: <span class="arithmatex">\(\vec{v}_0 = (v, 0, v_z)\)</span></p>
+<p><strong>Expected result:</strong> Helical (spiral) motion along the <span class="arithmatex">\(z\)</span>-axis.</p>
+<hr/>
+<h3 id="c-interesting-drift-trajectory">c. Interesting Drift Trajectory</h3>
+<p><strong>Conditions:</strong>
+- <span class="arithmatex">\(\vec{E} \ne 0\)</span>, <span class="arithmatex">\(\vec{B} \ne 0\)</span>
+- Example: <span class="arithmatex">\(\vec{E} = (0, E, 0)\)</span>, <span class="arithmatex">\(\vec{B} = (0, 0, B)\)</span>
+- Initial velocity: <span class="arithmatex">\(\vec{v}_0 = (v_x, 0, 0)\)</span></p>
+<p><strong>Expected result:</strong> Complex drift motion due to both electric and magnetic fields (E×B drift).</p>
+<p><img alt="alt text" src="../image-14.png"/></p>
+<p><a href="https://colab.research.google.com/drive/11LVY-oECIBTi-wBZgVslF2bd77V0VSkG">Visit My Colab</a></p>
+<pre><code class="language-python"># СЛОЖНАЯ ТРАЕКТОРИЯ В НАКЛОННОМ ПОЛЕ
+import numpy as np
+from scipy.integrate import solve_ivp
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
-plt.tight_layout()
+q = 1
+m = 0.001
+qm = q / m
+
+def lorentz_rhs(t, y):
+    vx, vy, vz = y[3:]
+    B = np.array([0.5, 0, 1])  # Наклонное поле
+    v = np.array([vx, vy, vz])
+    dvdt = qm * np.cross(v, B)
+    return [vx, vy, vz, *dvdt]
+
+y0 = [0, 0, 0, 1, 0, 0.5]  # скорость по x и z
+
+t_span = (0, 0.1)
+t_eval = np.linspace(*t_span, 1000)
+
+sol = solve_ivp(lorentz_rhs, t_span, y0, t_eval=t_eval)
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.plot(sol.y[0], sol.y[1], sol.y[2])
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+ax.set_title('Complex 3D trajectory (inclined B)')
 plt.show()
 </code></pre>
 </div>
