@@ -169,14 +169,14 @@ The graph shows the **spiral trajectory** of a charged particle in a **magnetic 
 - **Initial position:**
 
   $$
-  \vec{r}_0 = (0,\ 0,\ 0)
+\vec{r}_0 = (0,\ 0,\ 0)
   $$
 
 - **Velocity:**
 
-  $$
+$$
   \vec{v}_0 = v_{\perp} \, \hat{x} + v_{\parallel} \, \hat{z}
-  $$
+$$
 
 - **Magnetic field:**
 
