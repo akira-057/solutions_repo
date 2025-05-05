@@ -116,4 +116,4 @@ for name, population in populations.items():
     plt.suptitle(f"Sampling Distribution of the Mean - {name}", fontsize=18)
     plt.tight_layout()
     plt.show()
-    ```
+```
