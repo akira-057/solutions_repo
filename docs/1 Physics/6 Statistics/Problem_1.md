@@ -79,7 +79,7 @@ The classic "bell curve" that is symmetric around the mean.
 
 [Visit My Colab](https://colab.research.google.com/drive/1earTz9fEE6AFTS9FfG3Pp4AjYf79A1Yw)
 
-```python
+```python 
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
