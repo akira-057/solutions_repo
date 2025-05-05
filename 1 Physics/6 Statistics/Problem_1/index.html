@@ -239,38 +239,42 @@ x_1, x_2, \dots, x_n
 <img alt="alt text" src="../image-1.png"/>
 <img alt="alt text" src="../image-2.png"/></p>
 <p><a href="https://colab.research.google.com/drive/1earTz9fEE6AFTS9FfG3Pp4AjYf79A1Yw">Visit My Colab</a></p>
-<p>```python 
-import numpy as np
+<pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns</p>
-<p>sns.set(style="whitegrid")</p>
-<p>uniform_population = np.random.uniform(0, 1, 10000)
+import seaborn as sns
+
+sns.set(style="whitegrid")
+
+uniform_population = np.random.uniform(0, 1, 10000)
 exponential_population = np.random.exponential(1, 10000)
-binomial_population = np.random.binomial(n=1, p=0.5, size=10000)</p>
-<p>populations = {
+binomial_population = np.random.binomial(n=1, p=0.5, size=10000)
+
+populations = {
     'Uniform': uniform_population,
     'Exponential': exponential_population,
     'Binomial': binomial_population
-}</p>
-<p>sample_sizes = [5, 10, 30, 50]</p>
-<p>for name, population in populations.items():
-    plt.figure(figsize=(16, 10))</p>
-<pre><code>for i, size in enumerate(sample_sizes, 1):
-    sample_means = []
-    for _ in range(1000):
-        sample = np.random.choice(population, size=size)
-        sample_means.append(np.mean(sample))
+}
 
-    plt.subplot(2, 2, i)
-    sns.histplot(sample_means, bins=30, kde=True, color="skyblue")
-    plt.title(f"{name} Distribution - Sample Size {size}")
-    plt.xlabel("Sample Mean")
-    plt.ylabel("Frequency")
+sample_sizes = [5, 10, 30, 50]
 
-plt.suptitle(f"Sampling Distribution of the Mean - {name}", fontsize=18)
-plt.tight_layout()
-plt.show()
-```
+for name, population in populations.items():
+    plt.figure(figsize=(16, 10))
+
+    for i, size in enumerate(sample_sizes, 1):
+        sample_means = []
+        for _ in range(1000):
+            sample = np.random.choice(population, size=size)
+            sample_means.append(np.mean(sample))
+
+        plt.subplot(2, 2, i)
+        sns.histplot(sample_means, bins=30, kde=True, color="skyblue")
+        plt.title(f"{name} Distribution - Sample Size {size}")
+        plt.xlabel("Sample Mean")
+        plt.ylabel("Frequency")
+
+    plt.suptitle(f"Sampling Distribution of the Mean - {name}", fontsize=18)
+    plt.tight_layout()
+    plt.show()
 </code></pre>
 </div>
 </div><footer>
