@@ -501,6 +501,8 @@ draw_step3()
 
 ![alt text](image-8.png)
 
+[Visit my html](https://akira-057.github.io/solutions_repo/1%20Physics/5%20Circuits/html/problem.Circuits.html)
+
 [Visit My Colab](https://colab.research.google.com/drive/1Hwq_705VVshzwhTy8VPFkzuEyY7YOewS)
 
 ``` python
