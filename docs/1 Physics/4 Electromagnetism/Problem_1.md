@@ -40,9 +40,65 @@ Where:
 - $\vec{B}$ — magnetic field vector,
 - $\vec{v}$ — velocity of the particle.
 
+
 ![alt text](image-12.png)
 
-[Visit My colab](https://colab.research.google.com/drive/1Bv1xWJ2zIVPVlxB-y_DUu2DTKRkTseQx)
+# 📌 Circular Trajectory of a Charged Particle
+
+This plot shows the **circular trajectory** of a charged particle in a **uniform magnetic field** when its velocity is **perpendicular** to the magnetic field direction.  
+This is a classic case of motion governed by the **Lorentz force**.
+
+---
+
+## ⚙️ Initial Configuration
+
+- **Initial position:**
+
+  $$
+  \vec{r}_0 = (0,\ 0,\ 0)
+  $$
+
+- **Initial velocity (perpendicular to the field):**
+
+  $$
+  \vec{v}_0 = v_x\,\hat{x}
+  $$
+
+- **Magnetic field (along the $z$-axis):**
+
+  $$
+  \vec{B} = B\,\hat{z}
+  $$
+
+---
+
+## ⚛️ Key Insight
+
+When the velocity is **perpendicular** to the magnetic field ($\vec{v} \perp \vec{B}$), the particle experiences a **centripetal Lorentz force**:
+
+$$
+\vec{F} = q\,(\vec{v} \times \vec{B})
+$$
+
+This force causes the particle to move in a **circular path** in the plane **perpendicular to** $\vec{B}$ (i.e., the **$x$–$y$ plane**).
+
+- No motion occurs along the magnetic field direction
+- The radius of the circular path is given by:
+
+  $$
+  R = \frac{mv}{|q|B}
+  $$
+
+---
+
+### 🧪 Applications
+
+- Cyclotron motion
+- Magnetic confinement in plasma devices
+- Basic model for gyration in space physics
+
+---
+
 
 ``` python
 # КРУГОВАЯ ТРАЕКТОРИЯ
@@ -101,6 +157,54 @@ $$
 $$
 
 ![alt text](image-13.png)
+
+# 📌 Spiral Motion Along the **z**-Axis
+
+The graph shows the **spiral trajectory** of a charged particle in a **magnetic field** directed along the **z-axis**. This type of motion is typical for charged particles in **magnetic traps** and in **plasma physics**.
+
+---
+
+## ⚙️ Initial Conditions
+
+- **Initial position:**
+
+  $$
+  \vec{r}_0 = (0,\ 0,\ 0)
+  $$
+
+- **Velocity:**
+
+  $$
+  \vec{v}_0 = v_{\perp} \, \hat{x} + v_{\parallel} \, \hat{z}
+  $$
+
+- **Magnetic field:**
+
+  $$
+  \vec{B} = B \, \hat{z}
+  $$
+
+---
+
+## 🔄 Motion Components
+
+| Component         | Direction                 | Effect                                     |
+|-------------------|----------------------------|--------------------------------------------|
+| $v_{\perp}$       | Perpendicular to $\vec{B}$ | Circular motion (due to Lorentz force)     |
+| $v_{\parallel}$   | Parallel to $\vec{B}$      | Translational motion along the $z$-axis    |
+
+---
+
+## 🌀 Resulting Trajectory
+
+The combination of these two components leads to a **spiral (helical)** trajectory along the $z$-axis:
+
+- The particle rotates in the $xOy$ plane
+- Simultaneously moves along the $z$-axis
+- Final path: a **helix along the magnetic field line**
+
+---
+
 
 [Visit My Colab](https://colab.research.google.com/drive/1yGPCk_v0ouBSo2W5vaFOOQtDYtBwbxed)
 
@@ -177,6 +281,55 @@ We implement three scenarios to observe the resulting particle trajectories:
 **Expected result:** Complex drift motion due to both electric and magnetic fields (E×B drift).
 
 ![alt text](image-14.png)
+# 📌 Complex 3D Trajectory in an Inclined Magnetic Field
+
+The figure below illustrates a **complex helical trajectory** of a charged particle moving in a **uniform but inclined magnetic field**. Unlike simple circular or spiral motion along a principal axis, this path arises due to the interaction of velocity components and a magnetic field that is **not aligned** with the coordinate axes.
+
+---
+
+## ⚙️ Initial Configuration
+
+- **Initial position:**
+
+  $$
+  \vec{r}_0 = (0,\ 0,\ 0)
+  $$
+
+- **Initial velocity:**
+
+  $$
+  \vec{v}_0 = v_x\,\hat{x} + v_y\,\hat{y} + v_z\,\hat{z}
+  $$
+
+- **Inclined magnetic field:**
+
+  $$
+  \vec{B} = B_x\,\hat{x} + B_y\,\hat{y} + B_z\,\hat{z}
+  $$
+
+---
+
+## 🔍 Key Insight
+
+In an **inclined magnetic field**, the particle exhibits **complex 3D motion**:
+
+- **Circular motion** in the plane **perpendicular** to $\vec{B}$
+- **Linear motion** **along** the direction of $\vec{B}$
+- The combination produces a **helical (drift) trajectory** in 3D space
+
+---
+
+### 🧪 Physical Context
+
+This type of motion is relevant to:
+
+- **Space physics** (e.g., cosmic ray propagation)
+- **Magnetic confinement** (e.g., in fusion devices)
+- **Non-uniform or inclined field** analysis
+
+---
+
+
 
 [Visit My Colab](https://colab.research.google.com/drive/11LVY-oECIBTi-wBZgVslF2bd77V0VSkG)
 
