@@ -205,7 +205,51 @@
 <li><span class="arithmatex">\(\vec{v}\)</span> — velocity of the particle.</li>
 </ul>
 <p><img alt="alt text" src="../image-12.png"/></p>
-<p><a href="https://colab.research.google.com/drive/1Bv1xWJ2zIVPVlxB-y_DUu2DTKRkTseQx">Visit My colab</a></p>
+<h1 id="circular-trajectory-of-a-charged-particle">📌 Circular Trajectory of a Charged Particle</h1>
+<p>This plot shows the <strong>circular trajectory</strong> of a charged particle in a <strong>uniform magnetic field</strong> when its velocity is <strong>perpendicular</strong> to the magnetic field direction.<br/>
+This is a classic case of motion governed by the <strong>Lorentz force</strong>.</p>
+<hr/>
+<h2 id="initial-configuration">⚙️ Initial Configuration</h2>
+<ul>
+<li><strong>Initial position:</strong></li>
+</ul>
+<p>$$
+  \vec{r}_0 = (0,\ 0,\ 0)
+  $$</p>
+<ul>
+<li><strong>Initial velocity (perpendicular to the field):</strong></li>
+</ul>
+<p>$$
+  \vec{v}_0 = v_x\,\hat{x}
+  $$</p>
+<ul>
+<li><strong>Magnetic field (along the <span class="arithmatex">\(z\)</span>-axis):</strong></li>
+</ul>
+<p>$$
+  \vec{B} = B\,\hat{z}
+  $$</p>
+<hr/>
+<h2 id="key-insight">⚛️ Key Insight</h2>
+<p>When the velocity is <strong>perpendicular</strong> to the magnetic field (<span class="arithmatex">\(\vec{v} \perp \vec{B}\)</span>), the particle experiences a <strong>centripetal Lorentz force</strong>:</p>
+<div class="arithmatex">\[
+\vec{F} = q\,(\vec{v} \times \vec{B})
+\]</div>
+<p>This force causes the particle to move in a <strong>circular path</strong> in the plane <strong>perpendicular to</strong> <span class="arithmatex">\(\vec{B}\)</span> (i.e., the <strong><span class="arithmatex">\(x\)</span>–<span class="arithmatex">\(y\)</span> plane</strong>).</p>
+<ul>
+<li>No motion occurs along the magnetic field direction</li>
+<li>The radius of the circular path is given by:</li>
+</ul>
+<p>$$
+  R = \frac{mv}{|q|B}
+  $$</p>
+<hr/>
+<h3 id="applications">🧪 Applications</h3>
+<ul>
+<li>Cyclotron motion</li>
+<li>Magnetic confinement in plasma devices</li>
+<li>Basic model for gyration in space physics</li>
+</ul>
+<hr/>
 <pre><code class="language-python"># КРУГОВАЯ ТРАЕКТОРИЯ
 import numpy as np
 from scipy.integrate import solve_ivp
@@ -255,6 +299,60 @@ m \frac{d\vec{v}}{dt} = q(\vec{E} + \vec{v} \times \vec{B})
 \frac{d\vec{v}}{dt} = \frac{q}{m}(\vec{E} + \vec{v} \times \vec{B})
 \]</div>
 <p><img alt="alt text" src="../image-13.png"/></p>
+<h1 id="spiral-motion-along-the-z-axis">📌 Spiral Motion Along the <strong>z</strong>-Axis</h1>
+<p>The graph shows the <strong>spiral trajectory</strong> of a charged particle in a <strong>magnetic field</strong> directed along the <strong>z-axis</strong>. This type of motion is typical for charged particles in <strong>magnetic traps</strong> and in <strong>plasma physics</strong>.</p>
+<hr/>
+<h2 id="initial-conditions">⚙️ Initial Conditions</h2>
+<ul>
+<li><strong>Initial position:</strong></li>
+</ul>
+<p>$$
+  \vec{r}_0 = (0,\ 0,\ 0)
+  $$</p>
+<ul>
+<li><strong>Velocity:</strong></li>
+</ul>
+<p>$$
+  \vec{v}<em>0 = v</em>{\perp} \, \hat{x} + v_{\parallel} \, \hat{z}
+  $$</p>
+<ul>
+<li><strong>Magnetic field:</strong></li>
+</ul>
+<p>$$
+  \vec{B} = B \, \hat{z}
+  $$</p>
+<hr/>
+<h2 id="motion-components">🔄 Motion Components</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Direction</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(v_{\perp}\)</span></td>
+<td>Perpendicular to <span class="arithmatex">\(\vec{B}\)</span></td>
+<td>Circular motion (due to Lorentz force)</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(v_{\parallel}\)</span></td>
+<td>Parallel to <span class="arithmatex">\(\vec{B}\)</span></td>
+<td>Translational motion along the <span class="arithmatex">\(z\)</span>-axis</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="resulting-trajectory">🌀 Resulting Trajectory</h2>
+<p>The combination of these two components leads to a <strong>spiral (helical)</strong> trajectory along the <span class="arithmatex">\(z\)</span>-axis:</p>
+<ul>
+<li>The particle rotates in the <span class="arithmatex">\(xOy\)</span> plane</li>
+<li>Simultaneously moves along the <span class="arithmatex">\(z\)</span>-axis</li>
+<li>Final path: a <strong>helix along the magnetic field line</strong></li>
+</ul>
+<hr/>
 <p><a href="https://colab.research.google.com/drive/1yGPCk_v0ouBSo2W5vaFOOQtDYtBwbxed">Visit My Colab</a></p>
 <pre><code class="language-python"># СПИРАЛЬНАЯ ТРАЕКТОРИЯ ВДОЛЬ Z
 import numpy as np
@@ -313,6 +411,45 @@ plt.show()
 - Initial velocity: <span class="arithmatex">\(\vec{v}_0 = (v_x, 0, 0)\)</span></p>
 <p><strong>Expected result:</strong> Complex drift motion due to both electric and magnetic fields (E×B drift).</p>
 <p><img alt="alt text" src="../image-14.png"/></p>
+<h1 id="complex-3d-trajectory-in-an-inclined-magnetic-field">📌 Complex 3D Trajectory in an Inclined Magnetic Field</h1>
+<p>The figure below illustrates a <strong>complex helical trajectory</strong> of a charged particle moving in a <strong>uniform but inclined magnetic field</strong>. Unlike simple circular or spiral motion along a principal axis, this path arises due to the interaction of velocity components and a magnetic field that is <strong>not aligned</strong> with the coordinate axes.</p>
+<hr/>
+<h2 id="initial-configuration_1">⚙️ Initial Configuration</h2>
+<ul>
+<li><strong>Initial position:</strong></li>
+</ul>
+<p>$$
+  \vec{r}_0 = (0,\ 0,\ 0)
+  $$</p>
+<ul>
+<li><strong>Initial velocity:</strong></li>
+</ul>
+<p>$$
+  \vec{v}_0 = v_x\,\hat{x} + v_y\,\hat{y} + v_z\,\hat{z}
+  $$</p>
+<ul>
+<li><strong>Inclined magnetic field:</strong></li>
+</ul>
+<p>$$
+  \vec{B} = B_x\,\hat{x} + B_y\,\hat{y} + B_z\,\hat{z}
+  $$</p>
+<hr/>
+<h2 id="key-insight_1">🔍 Key Insight</h2>
+<p>In an <strong>inclined magnetic field</strong>, the particle exhibits <strong>complex 3D motion</strong>:</p>
+<ul>
+<li><strong>Circular motion</strong> in the plane <strong>perpendicular</strong> to <span class="arithmatex">\(\vec{B}\)</span></li>
+<li><strong>Linear motion</strong> <strong>along</strong> the direction of <span class="arithmatex">\(\vec{B}\)</span></li>
+<li>The combination produces a <strong>helical (drift) trajectory</strong> in 3D space</li>
+</ul>
+<hr/>
+<h3 id="physical-context">🧪 Physical Context</h3>
+<p>This type of motion is relevant to:</p>
+<ul>
+<li><strong>Space physics</strong> (e.g., cosmic ray propagation)</li>
+<li><strong>Magnetic confinement</strong> (e.g., in fusion devices)</li>
+<li><strong>Non-uniform or inclined field</strong> analysis</li>
+</ul>
+<hr/>
 <p><a href="https://colab.research.google.com/drive/11LVY-oECIBTi-wBZgVslF2bd77V0VSkG">Visit My Colab</a></p>
 <pre><code class="language-python"># СЛОЖНАЯ ТРАЕКТОРИЯ В НАКЛОННОМ ПОЛЕ
 import numpy as np
