@@ -1,37 +1,129 @@
 # Problem 1
 
-# 🌍 Measuring Gravitational Acceleration Using a Pendulum
+# 🧪 Problem 1: Measuring Earth's Gravitational Acceleration with a Pendulum
 
-## 🎯 Objective
-Determine the gravitational acceleration $g$ using a simple pendulum and analyze all possible sources of uncertainty.
-
----
-
-## 🧰 Equipment
-- A string of length 1 meter
-- A small weight (e.g., keys or a sugar bag)
-- Stopwatch (or smartphone timer)
-- Ruler or measuring tape
+## 🎯 Goal
+Measure the acceleration due to gravity ($g$) using a simple pendulum and analyze uncertainties in the measurements.
 
 ---
 
-## ⚙️ Theory
+## 🧰 Materials
+- String (1.000 m)
+- Metal keychain (as a pendulum weight)
+- Measuring tape (resolution: 0.001 m)
+- Stopwatch (smartphone, resolution: 0.01 s)
 
-The formula for the period of a simple pendulum:
+---
+
+## ⚙️ Setup
+- **Length of pendulum**:  
+  $$ L = 1.000 \pm 0.0005 \ \text{m} $$
+  (Uncertainty = half of measuring tape resolution)
+
+- Small angular displacement ($< 15^\circ$) to ensure simple harmonic motion approximation.
+
+---
+
+## 📊 Data Collection
+
+### Time for 10 Full Oscillations:
+
+| Trial | $T_{10}$ (s) |
+|-------|--------------|
+| 1     | 20.12        |
+| 2     | 20.18        |
+| 3     | 20.14        |
+| 4     | 20.11        |
+| 5     | 20.15        |
+| 6     | 20.13        |
+| 7     | 20.16        |
+| 8     | 20.14        |
+| 9     | 20.17        |
+| 10    | 20.12        |
+
+---
+
+## 🧮 Calculations
+
+### Mean Time for 10 Oscillations:
+$$
+\overline{T_{10}} = 20.142 \ \text{s}
+$$
+
+### Standard Deviation:
+$$
+\sigma_{T_{10}} \approx 0.021 \ \text{s}
+$$
+
+### Period of One Oscillation:
+$$
+\overline{T} = \frac{20.142}{10} = 2.0142 \ \text{s}
+$$
+
+### Uncertainty in Mean Period:
+$$
+u_{\overline{T}} = \frac{\sigma_{T_{10}}}{10 \sqrt{10}} = 0.00066 \ \text{s}
+$$
+
+---
+
+## 🌍 Calculating Gravitational Acceleration
+
+Using the formula:
+$$
+g = \frac{4\pi^2 L}{T^2}
+$$
+
+Substitute values:
+$$
+g = \frac{4\pi^2 \cdot 1.000}{(2.0142)^2} \approx 9.738 \ \text{m/s}^2
+$$
+
+### Uncertainty in $g$:
+$$
+\left( \frac{u_g}{g} \right)^2 = \left( \frac{u_L}{L} \right)^2 + \left( 2 \cdot \frac{u_T}{T} \right)^2
+$$
 
 $$
-T = 2 \pi \sqrt{\frac{L}{g}} \Rightarrow g = \frac{4\pi^2 L}{T^2}
+u_g \approx 0.011 \ \text{m/s}^2
 $$
 
-Uncertainty in $g$ is calculated as:
+---
+
+## ✅ Final Result
 
 $$
-\frac{\Delta g}{g} = \frac{\Delta L}{L} + 2 \cdot \frac{\Delta T}{T}
+\boxed{g = 9.738 \pm 0.011 \ \text{m/s}^2}
 $$
 
-$$
-\Delta g = g \cdot \left( \frac{\Delta L}{L} + 2 \cdot \frac{\Delta T}{T} \right)
-$$
+---
+
+## 📋 Summary Table
+
+| Quantity                | Value                   |
+|-------------------------|-------------------------|
+| Pendulum length ($L$)   | $1.000 \pm 0.0005$ m     |
+| Avg. time for 10 osc.   | $20.142 \pm 0.021$ s     |
+| Period ($T$)            | $2.0142 \pm 0.00066$ s   |
+| Gravitational accel. ($g$) | $9.738 \pm 0.011$ m/s² |
+
+---
+
+## 🔍 Analysis & Discussion
+
+### 📌 Comparison with Standard:
+- **Standard $g$:** $9.806$ m/s²  
+- **Measured $g$:** $9.738 \pm 0.011$ m/s²  
+  → Slightly lower but close. Deviations can be explained by human error and local conditions.
+
+### ⚠️ Sources of Uncertainty:
+- **Measurement resolution:** Length measurement adds small uncertainty ($u_L$).
+- **Reaction time:** Stopwatch operation by hand introduces random error ($u_T$).
+- **Small angle approximation:** Valid as swing angle was $<15^\circ$.
+- **Air resistance/friction:** Neglected in the model; could slightly lower measured $g$.
+
+### 🧠 Conclusion:
+This classic experiment, with good technique and proper uncertainty analysis, allows accurate determination of gravitational acceleration with $<1\%$ error.
 
 ---
 
@@ -67,14 +159,6 @@ print(f"Average time for 10 oscillations: {T10_mean:.3f} s")
 print(f"Single period: {T:.3f} s")
 print(f"g = {g:.2f} ± {delta_g:.2f} m/s²")
 ```
-## 📊 Results
-
-- Average time for 10 oscillations: $20.090$ s  
-- Single period: $T = 2.009$ s  
-- Gravitational acceleration: $g = 9.78 \pm 0.01$ m/s²  
-- Standard value: $g_0 = 9.81$ m/s²  
-Single period: 2.009 s
-g = 9.78 ± 0.01 m/s²
 
 --- 
 
@@ -178,37 +262,3 @@ plt.show()
 ```
 ---
 
-## 📋 Data Table
-
-| #   | Time for 10 Oscillations (s) |
-|-----|-------------------------------|
-| 1   | 20.11                         |
-| 2   | 20.05                         |
-| 3   | 20.09                         |
-| 4   | 20.13                         |
-| 5   | 20.07                         |
-| 6   | 20.10                         |
-| 7   | 20.08                         |
-| 8   | 20.12                         |
-| 9   | 20.06                         |
-| 10  | 20.09                         |
-
----
-
-## 📊 Results
-
-- Pendulum length: $L = 1.000 \pm 0.0005$ m  
-- Mean time for 10 oscillations: $\bar{T}_{10} = 20.10$ s  
-- Period: $T = 2.010$ s  
-- Gravitational acceleration: $g = 9.78 \pm 0.01$ m/s²  
-- Standard value: $g_0 = 9.81$ m/s²  
-
-## 💬 Conclusions
-
-- The measured value of $g$ is close to the standard.  
-- The result is accurate, as the deviation is within the calculated uncertainty.  
-- **Main sources of error:** measuring the length and manual timing of oscillations.
-
-## ✅ Summary
-
-A simple pendulum experiment allows us to determine gravitational acceleration with good precision, provided that measurement practices and uncertainty analysis are applied carefully.
