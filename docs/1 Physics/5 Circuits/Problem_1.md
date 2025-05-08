@@ -362,204 +362,326 @@ $$
 $$
 
 ---
+![alt text](image-9.png)
+![alt text](image-10.png)
+![alt text](image-11.png)
+![alt text](image-12.png)
+![alt text](image-13.png)
+Equivalent Resistance (Case 1): 12.50 Ohms
 
-
-![alt text](image-4.png)
-
-[Visit My Colab](https://colab.research.google.com/drive/1hQBy5Z7NLXKtdlR65DiOjcUy4eC1zF9b)
-
+[Visit My Colab](https://colab.research.google.com/drive/1xuguB5GX1W-mUATxRGEySZYFuOlGphAo)
 
 ``` python
 import networkx as nx
 import matplotlib.pyplot as plt
 
-# Create the graph (example of a complex resistor network)
-G = nx.Graph()
+def draw_graph(G, step_title):
+    pos = nx.spring_layout(G, seed=42)
+    plt.figure(figsize=(6, 4))
+    edge_labels = {}
+    for u, v, data in G.edges(data=True):
+        label = f"{data['resistance']}Ω"
+        if G.number_of_edges(u, v) > 1:
+            label = ', '.join(f"{d['resistance']}Ω" for d in G.get_edge_data(u, v).values())
+        edge_labels[(u, v)] = label
+    nx.draw(G, pos, with_labels=True, node_color='lightblue', node_size=800)
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
+    plt.title(step_title)
+    plt.show()
 
-# Add nodes
-nodes = ['A', '1', '2', '3', '4', 'B']
-G.add_nodes_from(nodes)
+def combine_series(G):
+    changed = True
+    while changed:
+        changed = False
+        for node in list(G.nodes):
+            if G.degree(node) == 2 and node not in ("B+", "B-"):
+                neighbors = list(G.neighbors(node))
+                if len(neighbors) == 2:
+                    u, v = neighbors
+                    # Find the two edges and their resistances
+                    edge1 = next(iter(G.get_edge_data(u, node).values()))
+                    edge2 = next(iter(G.get_edge_data(node, v).values()))
+                    R_new = edge1['resistance'] + edge2['resistance']
+                    G.remove_node(node)
+                    G.add_edge(u, v, resistance=R_new)
+                    changed = True
+                    draw_graph(G, f"{u} - {v} (series): {R_new}Ω")
+                    break
 
-# Add edges with resistor values as labels
-edges = [
-    ('A', '1', 5),
-    ('A', '2', 10),
-    ('1', '3', 3),
-    ('2', '3', 2),
-    ('3', '4', 4),
-    ('4', 'B', 6),
-    ('2', '4', 1)
-]
+def combine_parallel(G):
+    to_process = list(G.edges(keys=True))
+    seen = set()
+    for u, v, k in to_process:
+        if (u, v) in seen or (v, u) in seen:
+            continue
+        if G.number_of_edges(u, v) > 1:
+            resistances = [d['resistance'] for d in G.get_edge_data(u, v).values()]
+            R_parallel = 1 / sum(1/r for r in resistances)
+            G.remove_edges_from([(u, v, key) for key in G.get_edge_data(u, v).keys()])
+            G.add_edge(u, v, resistance=R_parallel)
+            draw_graph(G, f"{u} - {v} (parallel): {R_parallel:.2f}Ω")
+        seen.add((u, v))
 
-for u, v, r in edges:
-    G.add_edge(u, v, resistance=r)
+def reduce_graph(G):
+    draw_graph(G, "Initial Graph")
+    while True:
+        nodes_before = len(G.nodes)
+        combine_series(G)
+        combine_parallel(G)
+        if len(G.nodes) == nodes_before:
+            break
+    return G
 
-# Draw the graph
-pos = {
-    'A': (0, 1),
-    '1': (1, 2),
-    '2': (1, 0),
-    '3': (2, 1),
-    '4': (3, 1),
-    'B': (4, 1)
+def get_equivalent_resistance(G, source, target):
+    if G.has_edge(source, target):
+        return next(iter(G.get_edge_data(source, target).values()))['resistance']
+    else:
+        return None
+
+def example_case_1():
+    G = nx.MultiGraph()
+    G.add_nodes_from(["B+", "B-", "A", "B", "C"])
+    G.add_edge("B+", "A", resistance=2)  # R2
+    G.add_edge("A", "B", resistance=3)   # R3
+    G.add_edge("B+", "B", resistance=5)  # R1
+    G.add_edge("B", "C", resistance=4)   # R4
+    G.add_edge("C", "B-", resistance=6)  # R5
+
+    reduce_graph(G)
+    Req = get_equivalent_resistance(G, "B+", "B-")
+    print(f"Equivalent Resistance (Case 1): {Req:.2f} Ohms")
+
+example_case_1()
+```
+---
+
+![alt text](image-14.png)
+![alt text](image-15.png)
+![alt text](image-16.png)
+![alt text](image-17.png)
+![alt text](image-18.png)
+![alt text](image-19.png)
+![alt text](image-20.png)
+![alt text](image-21.png)
+Equivalent Resistance (Case 2): 6.60 Ω
+
+[Visit My Colab](https://colab.research.google.com/drive/1izFl9MdwZutic1o1vXm3KwhAO9tf_Jqr)
+
+``` python
+import networkx as nx
+import matplotlib.pyplot as plt
+
+# Ручные координаты как в Case 2
+pos_case2 = {
+    "B+": (0, 1),
+    "A": (1, 1),
+    "X1": (2, 2),  # верхний путь
+    "X2": (3, 2),
+    "Y1": (2, 0),  # нижний путь
+    "Y2": (3, 0),
+    "B": (4, 1),
+    "B-": (5, 1)
 }
 
-edge_labels = nx.get_edge_attributes(G, 'resistance')
-
-plt.figure(figsize=(8, 5))
-nx.draw(G, pos, with_labels=True, node_color='lightblue', node_size=800, font_weight='bold')
-nx.draw_networkx_edge_labels(G, pos, edge_labels={(u, v): f"{d}Ω" for (u, v), d in edge_labels.items()})
-plt.title("Step 0: Original Circuit (Graph Representation)")
-plt.axis('off')
-plt.show()
-```
----
-
-![alt text](image-5.png)
-![alt text](image-6.png)
-![alt text](image-7.png)
-
-[Visit My Colab](https://colab.research.google.com/drive/1onCj748cPiKifULpypyIKxVo3E-Zzqbr)
-
-
-``` python
-import matplotlib.pyplot as plt
-import networkx as nx
-
-def draw_step1():
-    G = nx.Graph()
-    G.add_edge('A', 'B', label='R1')
-    G.add_edge('B', 'C', label='R2')
-    G.add_edge('A', 'C', label='R3')  # Параллельная ветвь
-    G.add_edge('C', 'D', label='')
-
-    pos = {'A': (0, 1), 'B': (1, 1), 'C': (2, 1), 'D': (3, 1)}
-
-    plt.figure(figsize=(6, 2))
-    nx.draw(G, pos, with_labels=True, node_color='lightblue', node_size=700)
-
-    # Цвета
-    edge_colors = []
-    for edge in G.edges():
-        if edge == ('A', 'B') or edge == ('B', 'C'):
-            edge_colors.append('red')  # Выделим R1 и R2
-        else:
-            edge_colors.append('black')
-
-    nx.draw_networkx_edges(G, pos, edge_color=edge_colors, width=2)
-    labels = nx.get_edge_attributes(G, 'label')
-    nx.draw_networkx_edge_labels(G, pos, edge_labels=labels, font_size=10)
-    plt.title("Step 1: Combine R1 and R2 in Series")
-    plt.axis('off')
-    plt.show()
-
-def draw_step2():
-    G = nx.Graph()
-    G.add_edge('A', 'C', label='R1+R2')  # серия
-    G.add_edge('A', 'C', label='R3')     # параллельно
-    G.add_edge('C', 'D', label='')
-
-    pos = {'A': (0, 1), 'C': (2, 1), 'D': (3, 1)}
-
-    plt.figure(figsize=(6, 2))
-    nx.draw(G, pos, with_labels=True, node_color='lightblue', node_size=700)
-
-    # Покажем обе ветви отдельно
-    nx.draw_networkx_edges(G, pos, edgelist=[('A', 'C')], edge_color='green', width=2, style='dashed')
-    nx.draw_networkx_edges(G, pos, edgelist=[('C', 'D')], edge_color='black')
-
-    # Укажем каждую метку вручную
-    labels = {('A', 'C'): 'R1+R2 & R3'}
-    nx.draw_networkx_edge_labels(G, pos, edge_labels=labels, font_size=10)
-
-    plt.title("Step 2: Combine with R3 in Parallel")
-    plt.axis('off')
-    plt.show()
-
-def draw_step3():
-    G = nx.Graph()
-    G.add_edge('A', 'C', label='Req')
-    G.add_edge('C', 'D', label='')
-
-    pos = {'A': (0, 1), 'C': (2, 1), 'D': (3, 1)}
-
-    plt.figure(figsize=(6, 2))
-    nx.draw(G, pos, with_labels=True, node_color='lightblue', node_size=700)
-    nx.draw_networkx_edges(G, pos, edge_color='blue', width=3)
-    labels = nx.get_edge_attributes(G, 'label')
-    nx.draw_networkx_edge_labels(G, pos, edge_labels=labels, font_size=10)
-    plt.title("Step 3: Final Simplified Circuit")
-    plt.axis('off')
-    plt.show()
-
-# Вызов всех шагов
-draw_step1()
-draw_step2()
-draw_step3()
-```
----
-
-![alt text](image-8.png)
-
-[Visit my html](https://akira-057.github.io/solutions_repo/1%20Physics/5%20Circuits/html/problem.Circuits.html)
-
-[Visit My Colab](https://colab.research.google.com/drive/1Hwq_705VVshzwhTy8VPFkzuEyY7YOewS)
-
-``` python
-import matplotlib.pyplot as plt
-import networkx as nx
-import ipywidgets as widgets
-from IPython.display import display
-
-def plot_step(step):
-    G = nx.Graph()
-
-    if step == 1:
-        # Шаг 1: начальная схема
-        pos = {'A': (0, 1), 'B': (1, 1.3), 'C': (2, 1), 'D': (3, 1)}
-        G.add_edge('A', 'B')
-        G.add_edge('B', 'C')
-        G.add_edge('A', 'C')  # R3
-        G.add_edge('C', 'D')
-
-        labels = {('A', 'B'): 'R1', ('B', 'C'): 'R2', ('A', 'C'): 'R3'}
-        colors = ['red', 'red', 'gray', 'black']
-        title = "Шаг 1: Объединяем R1 и R2 (последовательно)"
-
-    elif step == 2:
-        # Шаг 2: параллельное соединение R3 и (R1+R2)
-        pos = {'A': (0, 1), 'X': (1, 1.6), 'Y': (1, 0.4), 'C': (2, 1), 'D': (3, 1)}
-        G.add_edge('A', 'X')
-        G.add_edge('X', 'C')
-        G.add_edge('A', 'Y')
-        G.add_edge('Y', 'C')
-        G.add_edge('C', 'D')
-
-        labels = {('A', 'X'): 'R1+R2', ('A', 'Y'): 'R3'}
-        colors = ['green', 'green', 'red', 'red', 'black']
-        title = "Шаг 2: Параллель R3 и (R1+R2)"
-
-    else:
-        # Шаг 3: финальная схема
-        pos = {'A': (0, 1), 'C': (2, 1), 'D': (3, 1)}
-        G.add_edge('A', 'C')
-        G.add_edge('C', 'D')
-
-        labels = {('A', 'C'): 'Req'}
-        colors = ['blue', 'black']
-        title = "Шаг 3: Финальная схема"
-
-    plt.figure(figsize=(7, 3))
-    nx.draw(G, pos, with_labels=True, node_color='lightblue', node_size=700)
-    nx.draw_networkx_edges(G, pos, edge_color=colors, width=2)
-    nx.draw_networkx_edge_labels(G, pos, edge_labels=labels, font_size=11)
+def draw_case2(G, title):
+    plt.figure(figsize=(8, 4))
+    edge_labels = nx.get_edge_attributes(G, 'resistance')
+    nx.draw(G, pos=pos_case2, with_labels=True, node_size=800, node_color='lightgreen')
+    nx.draw_networkx_edge_labels(G, pos=pos_case2, edge_labels=edge_labels)
     plt.title(title)
     plt.axis('off')
     plt.show()
 
-    # ⬅️ Запускаем интерактивный слайдер (переключение шагов)
-widgets.interact(plot_step, step=widgets.IntSlider(min=1, max=3, step=1, value=1))
+def combine_series_case2(G):
+    changed = True
+    while changed:
+        changed = False
+        for node in list(G.nodes):
+            if node not in ("B+", "B-") and G.degree(node) == 2:
+                u, v = list(G.neighbors(node))
+                r1 = G.get_edge_data(u, node)[0]['resistance']
+                r2 = G.get_edge_data(node, v)[0]['resistance']
+                G.remove_node(node)
+                G.add_edge(u, v, resistance=r1 + r2)
+                draw_case2(G, f"Series combined: {u}-{v} = {r1}+{r2} Ω")
+                changed = True
+                break
 
-plt.show()  # Эта строка выводит только график
+def combine_parallel_case2(G):
+    for u, v in list(G.edges()):
+        if G.number_of_edges(u, v) > 1:
+            resistances = [edata['resistance'] for k, edata in G[u][v].items()]
+            R_parallel = 1 / sum(1/r for r in resistances)
+            G.remove_edges_from([(u, v, k) for k in G[u][v]])
+            G.add_edge(u, v, resistance=R_parallel)
+            draw_case2(G, f"Parallel combined: {u}-{v} = {R_parallel:.2f} Ω")
+
+def reduce_graph_case2(G):
+    draw_case2(G, "Initial Circuit (Case 2)")
+    while True:
+        before = len(G.edges)
+        combine_series_case2(G)
+        combine_parallel_case2(G)
+        if len(G.edges) == before:
+            break
+
+def get_equivalent_resistance(G, source, target):
+    return list(G.get_edge_data(source, target).values())[0]['resistance']
+
+def example_case_2():
+    G = nx.MultiGraph()
+
+    # Узлы
+    G.add_nodes_from(["B+", "A", "X1", "X2", "Y1", "Y2", "B", "B-"])
+
+    # Верхний путь: R2, R4
+    G.add_edge("A", "X1", resistance=2)   # R2
+    G.add_edge("X1", "X2", resistance=4)  # R4
+    G.add_edge("X2", "B", resistance=0)   # соединение
+
+    # Нижний путь: R3, R5
+    G.add_edge("A", "Y1", resistance=3)   # R3
+    G.add_edge("Y1", "Y2", resistance=6)  # R5
+    G.add_edge("Y2", "B", resistance=0)   # соединение
+
+    # Начало и конец
+    G.add_edge("B+", "A", resistance=1)   # R1
+    G.add_edge("B", "B-", resistance=2)   # R6
+
+    reduce_graph_case2(G)
+    Req = get_equivalent_resistance(G, "B+", "B-")
+    print(f"Equivalent Resistance (Case 2): {Req:.2f} Ω")
+
+example_case_2()
+```
+---
+
+![alt text](image-23.png)
+
+[Visit My Colab](https://colab.research.google.com/drive/12W7lCLVaxKMBX_hkdXIAOJcMU3NZQYju)
+
+``` python
+import networkx as nx
+import matplotlib.pyplot as plt
+
+def draw_parallel_config_full():
+    fig, axs = plt.subplots(1, 2, figsize=(14, 5))
+
+    # Общие параметры
+    node_color_main = 'limegreen'
+    node_color_io = 'lightgray'
+    node_size = 1200
+    font_size = 10
+
+    # === До упрощения ===
+    G1 = nx.DiGraph()
+    G1.add_edges_from([
+        ('I1', 'o1'), ('In', 'o1'),
+        ('o1', 'p1', {'resistance': 'R1'}),
+        ('p1', 'o3'),
+        ('o1', 'p2', {'resistance': 'R2'}),
+        ('p2', 'o3'),
+        ('o3', 'D1'), ('o3', 'D4')
+    ])
+    pos1 = {
+        'I1': (-1, 2), 'In': (-1, 0),
+        'o1': (0, 1),
+        'p1': (1, 2), 'p2': (1, 0),
+        'o3': (2, 1),
+        'D1': (3, 2), 'D4': (3, 0)
+    }
+
+    node_colors1 = [node_color_main if n in ['o1', 'o3'] else node_color_io for n in G1.nodes]
+    nx.draw(G1, pos1, ax=axs[0], with_labels=True, node_color=node_colors1,
+            node_size=node_size, font_size=font_size, arrows=True)
+    edge_labels1 = nx.get_edge_attributes(G1, 'resistance')
+    nx.draw_networkx_edge_labels(G1, pos1, edge_labels=edge_labels1, ax=axs[0])
+    axs[0].set_title("Before (Parallel)")
+
+    # === После упрощения ===
+    G2 = nx.DiGraph()
+    G2.add_edges_from([
+        ('I1', 'o1'), ('In', 'o1'),
+        ('o1', 'o3', {'resistance': 'R12'}),
+        ('o3', 'D1'), ('o3', 'Dm')
+    ])
+    pos2 = {
+        'I1': (-1, 2), 'In': (-1, 0),
+        'o1': (0, 1), 'o3': (2, 1),
+        'D1': (3, 2), 'Dm': (3, 0)
+    }
+
+    node_colors2 = [node_color_main if n in ['o1', 'o3'] else node_color_io for n in G2.nodes]
+    nx.draw(G2, pos2, ax=axs[1], with_labels=True, node_color=node_colors2,
+            node_size=node_size, font_size=font_size, arrows=True)
+    edge_labels2 = nx.get_edge_attributes(G2, 'resistance')
+    nx.draw_networkx_edge_labels(G2, pos2, edge_labels=edge_labels2, ax=axs[1])
+    axs[1].set_title("After (1/R1 + 1/R2 = 1/R12)")
+
+    for ax in axs:
+        ax.axis('off')
+
+    plt.suptitle("Building Block: Parallel Configuration", fontsize=14)
+    plt.tight_layout()
+    plt.show()
+
+draw_parallel_config_full()
 ```
 
+---
+
+![alt text](image-24.png)
+
+[Visit My Colab](https://colab.research.google.com/drive/1ZVcaHinWAY1pP4ZMUoyxuqSqv9GDCDqy)
+
+``` python
+import networkx as nx
+import matplotlib.pyplot as plt
+
+def draw_detailed_series_config():
+    fig, axs = plt.subplots(1, 2, figsize=(12, 4))
+
+    # Граф до упрощения
+    G1 = nx.DiGraph()
+    G1.add_edges_from([
+        ('I1', 'o1'), ('In', 'o1'),
+        ('o1', 'o2', {'resistance': 'R1'}),
+        ('o2', 'o3', {'resistance': 'R2'}),
+        ('o3', 'D1'), ('o3', 'D4')
+    ])
+    pos1 = {
+        'I1': (-1, 2), 'In': (-1, 0),
+        'o1': (0, 1), 'o2': (1, 1), 'o3': (2, 1),
+        'D1': (3, 2), 'D4': (3, 0)
+    }
+    node_colors1 = ['red' if n == 'o2' else 'lightgray' if n.startswith('I') or n.startswith('D') else 'lightgreen' for n in G1.nodes]
+    nx.draw(G1, pos=pos1, ax=axs[0], with_labels=True, node_size=1000, node_color=node_colors1)
+    nx.draw_networkx_edge_labels(G1, pos=pos1, edge_labels=nx.get_edge_attributes(G1, 'resistance'), ax=axs[0])
+    axs[0].set_title('Before (Series)')
+
+    # Граф после упрощения
+    G2 = nx.DiGraph()
+    G2.add_edges_from([
+        ('I1', 'o1'), ('In', 'o1'),
+        ('o1', 'o3', {'resistance': 'R12'}),
+        ('o3', 'D1'), ('o3', 'Dm')
+    ])
+    pos2 = {
+        'I1': (-1, 2), 'In': (-1, 0),
+        'o1': (0, 1), 'o3': (2, 1),
+        'D1': (3, 2), 'Dm': (3, 0)
+    }
+    node_colors2 = ['lightgray' if n.startswith('I') or n.startswith('D') else 'lightgreen' for n in G2.nodes]
+    nx.draw(G2, pos=pos2, ax=axs[1], with_labels=True, node_size=1000, node_color=node_colors2)
+    nx.draw_networkx_edge_labels(G2, pos=pos2, edge_labels=nx.get_edge_attributes(G2, 'resistance'), ax=axs[1])
+    axs[1].set_title('After (R12 = R1 + R2)')
+
+    for ax in axs:
+        ax.axis('off')
+
+    plt.suptitle("Building Block: Series Configuration", fontsize=14)
+    plt.tight_layout()
+    plt.show()
+
+draw_detailed_series_config()
+```
