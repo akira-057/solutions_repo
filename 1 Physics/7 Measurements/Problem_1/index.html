@@ -450,6 +450,140 @@ plt.legend()
 plt.show()
 </code></pre>
 <hr/>
+<h1 id="measuring-the-acceleration-due-to-gravity-using-a-falling-apple">🧪 Measuring the Acceleration Due to Gravity Using a Falling Apple</h1>
+<h2 id="objective">🎯 Objective</h2>
+<p>To measure the acceleration due to gravity <span class="arithmatex">\(g\)</span> through a simple experiment in which an apple of mass <span class="arithmatex">\(m = 0.170\ \text{kg}\)</span> is dropped from a height of <span class="arithmatex">\(h = 1.00\ \text{m}\)</span>. Analyze uncertainties and compare the result with the standard value <span class="arithmatex">\(g = 9.81\ \text{m/s}^2\)</span>.</p>
+<hr/>
+<h2 id="equipment">🔧 Equipment</h2>
+<ul>
+<li>Apple with mass <span class="arithmatex">\(0.170\ \text{kg}\)</span></li>
+<li>Ruler or tape measure (resolution: <span class="arithmatex">\(0.01\ \text{m}\)</span>)</li>
+<li>Stopwatch or phone timer (resolution: <span class="arithmatex">\(0.01\ \text{s}\)</span>)</li>
+<li>Sheet for recording data</li>
+</ul>
+<hr/>
+<h2 id="procedure">📐 Procedure</h2>
+<p>The apple is dropped from a height <span class="arithmatex">\(h = 1.00\ \text{m}\)</span>. The fall time is measured manually using a stopwatch. The measurement is repeated 10 times to evaluate statistical uncertainty.</p>
+<hr/>
+<h2 id="measurement-table">📊 Measurement Table</h2>
+<table>
+<thead>
+<tr>
+<th>Trial</th>
+<th>Time <span class="arithmatex">\(t_i\)</span> (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0.45</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.43</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.44</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.46</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.44</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0.45</td>
+</tr>
+<tr>
+<td>7</td>
+<td>0.43</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0.45</td>
+</tr>
+<tr>
+<td>9</td>
+<td>0.44</td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.46</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="statistical-data-analysis">📈 Statistical Data Analysis</h2>
+<p><strong>Mean time:</strong></p>
+<div class="arithmatex">\[
+\bar{t} = \frac{1}{10} \sum_{i=1}^{10} t_i = 0.445\ \text{s}
+\]</div>
+<p><strong>Standard deviation:</strong></p>
+<div class="arithmatex">\[
+\sigma = \sqrt{\frac{1}{n - 1} \sum_{i=1}^{n} (t_i - \bar{t})^2} \approx 0.011\ \text{s}
+\]</div>
+<p><strong>Uncertainty of the mean:</strong></p>
+<div class="arithmatex">\[
+u_t = \frac{\sigma}{\sqrt{n}} = \frac{0.011}{\sqrt{10}} \approx 0.0035\ \text{s}
+\]</div>
+<hr/>
+<h2 id="gravity-calculation">🧮 Gravity Calculation</h2>
+<p><strong>Formula:</strong></p>
+<div class="arithmatex">\[
+g = \frac{2h}{t^2}
+\]</div>
+<p><strong>Substitute values:</strong></p>
+<div class="arithmatex">\[
+g = \frac{2 \cdot 1.00}{(0.445)^2} \approx \frac{2}{0.198} \approx 10.10\ \text{m/s}^2
+\]</div>
+<hr/>
+<h2 id="uncertainty-in-gravity">📏 Uncertainty in Gravity</h2>
+<p><strong>Uncertainty formula:</strong></p>
+<div class="arithmatex">\[
+u_g = \left| \frac{dg}{dt} \right| \cdot u_t = \frac{4h}{t^3} \cdot u_t
+\]</div>
+<p><strong>Substitute values:</strong></p>
+<div class="arithmatex">\[
+u_g = \frac{4 \cdot 1.00}{(0.445)^3} \cdot 0.0035 \approx 0.16\ \text{m/s}^2
+\]</div>
+<hr/>
+<h2 id="final-result_1">✅ Final Result</h2>
+<p><strong>Gravitational acceleration:</strong></p>
+<div class="arithmatex">\[
+g = 10.10 \pm 0.16\ \text{m/s}^2
+\]</div>
+<hr/>
+<h2 id="discussion">📌 Discussion</h2>
+<ul>
+<li>
+<p><strong>Comparison with standard value:</strong><br/>
+  The standard value is <span class="arithmatex">\(g = 9.81\ \text{m/s}^2\)</span>. Our result is slightly higher (~3%), likely due to human reaction time errors during manual measurements.</p>
+</li>
+<li>
+<p><strong>Main sources of uncertainty:</strong></p>
+</li>
+<li>Reaction time when starting/stopping the timer.</li>
+<li>Accurate height measurement (e.g., was it measured from the bottom or center of the apple?).</li>
+<li>
+<p>Air resistance (minor effect at low height).</p>
+</li>
+<li>
+<p><strong>Assumptions:</strong></p>
+</li>
+<li>The apple had zero initial velocity.</li>
+<li>It fell vertically without obstructions.</li>
+</ul>
+<hr/>
+<h2 id="conclusion_1">📂 Conclusion</h2>
+<p>The experiment gave a result of:</p>
+<div class="arithmatex">\[
+g = 10.10 \pm 0.16\ \text{m/s}^2
+\]</div>
+<p>which is reasonably close to the accepted value. The relative uncertainty is about 1.6%, which is acceptable for a basic experiment using manual tools.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
