@@ -262,3 +262,132 @@ plt.show()
 ```
 ---
 
+# 🧪 Measuring the Acceleration Due to Gravity Using a Falling Apple
+
+## 🎯 Objective
+To measure the acceleration due to gravity $g$ through a simple experiment in which an apple of mass $m = 0.170\ \text{kg}$ is dropped from a height of $h = 1.00\ \text{m}$. Analyze uncertainties and compare the result with the standard value $g = 9.81\ \text{m/s}^2$.
+
+---
+
+## 🔧 Equipment
+- Apple with mass $0.170\ \text{kg}$
+- Ruler or tape measure (resolution: $0.01\ \text{m}$)
+- Stopwatch or phone timer (resolution: $0.01\ \text{s}$)
+- Sheet for recording data
+
+---
+
+## 📐 Procedure
+
+The apple is dropped from a height $h = 1.00\ \text{m}$. The fall time is measured manually using a stopwatch. The measurement is repeated 10 times to evaluate statistical uncertainty.
+
+---
+
+## 📊 Measurement Table
+
+| Trial | Time $t_i$ (s) |
+|-------|----------------|
+| 1     | 0.45           |
+| 2     | 0.43           |
+| 3     | 0.44           |
+| 4     | 0.46           |
+| 5     | 0.44           |
+| 6     | 0.45           |
+| 7     | 0.43           |
+| 8     | 0.45           |
+| 9     | 0.44           |
+| 10    | 0.46           |
+
+---
+
+## 📈 Statistical Data Analysis
+
+**Mean time:**
+
+$$
+\bar{t} = \frac{1}{10} \sum_{i=1}^{10} t_i = 0.445\ \text{s}
+$$
+
+**Standard deviation:**
+
+$$
+\sigma = \sqrt{\frac{1}{n - 1} \sum_{i=1}^{n} (t_i - \bar{t})^2} \approx 0.011\ \text{s}
+$$
+
+**Uncertainty of the mean:**
+
+$$
+u_t = \frac{\sigma}{\sqrt{n}} = \frac{0.011}{\sqrt{10}} \approx 0.0035\ \text{s}
+$$
+
+---
+
+## 🧮 Gravity Calculation
+
+**Formula:**
+
+$$
+g = \frac{2h}{t^2}
+$$
+
+**Substitute values:**
+
+$$
+g = \frac{2 \cdot 1.00}{(0.445)^2} \approx \frac{2}{0.198} \approx 10.10\ \text{m/s}^2
+$$
+
+---
+
+## 📏 Uncertainty in Gravity
+
+**Uncertainty formula:**
+
+$$
+u_g = \left| \frac{dg}{dt} \right| \cdot u_t = \frac{4h}{t^3} \cdot u_t
+$$
+
+**Substitute values:**
+
+$$
+u_g = \frac{4 \cdot 1.00}{(0.445)^3} \cdot 0.0035 \approx 0.16\ \text{m/s}^2
+$$
+
+---
+
+## ✅ Final Result
+
+**Gravitational acceleration:**
+
+$$
+g = 10.10 \pm 0.16\ \text{m/s}^2
+$$
+
+---
+
+## 📌 Discussion
+
+- **Comparison with standard value:**  
+  The standard value is $g = 9.81\ \text{m/s}^2$. Our result is slightly higher (~3%), likely due to human reaction time errors during manual measurements.
+
+- **Main sources of uncertainty:**
+  - Reaction time when starting/stopping the timer.
+  - Accurate height measurement (e.g., was it measured from the bottom or center of the apple?).
+  - Air resistance (minor effect at low height).
+
+- **Assumptions:**
+  - The apple had zero initial velocity.
+  - It fell vertically without obstructions.
+
+---
+
+## 📂 Conclusion
+
+The experiment gave a result of:
+
+$$
+g = 10.10 \pm 0.16\ \text{m/s}^2
+$$
+
+which is reasonably close to the accepted value. The relative uncertainty is about 1.6%, which is acceptable for a basic experiment using manual tools.
+
+
